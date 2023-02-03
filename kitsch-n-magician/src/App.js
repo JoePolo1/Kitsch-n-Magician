@@ -1,12 +1,17 @@
 import logo from './logo.svg';
 import './App.scss';
 import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+
+import Sidebarleft from './components/Sidebarleft';
+
+
 
 function App() {
   return (
-    <Navbar />,
-    <Sidebar />
+    <div>
+      <Navbar />
+      <Sidebarleft />
+    </div>
   );
 }
 
