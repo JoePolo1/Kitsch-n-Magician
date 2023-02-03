@@ -75,6 +75,7 @@ export default function Sidebarleft() {
       >
         <Toolbar />
         <Typography paragraph>
+        <i class="fa-solid fa-plus"></i>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
           enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
