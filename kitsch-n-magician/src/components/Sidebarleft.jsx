@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import RecipeCard from './RecipeCard'
 import { green } from '@mui/material/colors';
 import Icon from '@mui/material/Icon';
+import InputWithIcon from './InputWithIcon';
 
 
 const drawerWidth = 240;
