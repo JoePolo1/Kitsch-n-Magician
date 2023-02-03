@@ -1,19 +1,10 @@
 import logo from './logo.svg';
 import './App.scss';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    
-    <header className="App-header">
-    <nav>
-      <div className="App">
-      <h1>
-        Kitsch-n-Magician
-      </h1>
-  </div>
-  </nav>
-      </header>
-    
+    <Navbar />
   );
 }
 
