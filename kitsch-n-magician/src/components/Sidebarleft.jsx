@@ -44,7 +44,7 @@ export default function Sidebarleft() {
         variant="permanent"
         anchor="left"
       >
-
+        
         <InputWithIcon />
         <List>
         
