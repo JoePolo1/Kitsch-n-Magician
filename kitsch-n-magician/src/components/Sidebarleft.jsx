@@ -17,6 +17,7 @@ import RecipeCard from './RecipeCard'
 import { green } from '@mui/material/colors';
 import Icon from '@mui/material/Icon';
 
+
 const drawerWidth = 240;
 
 export default function Sidebarleft() {
@@ -34,8 +35,7 @@ export default function Sidebarleft() {
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            zIndex: -1,
-            mt: '4em',
+            mt: '4.3em',
             width: drawerWidth,
             boxSizing: 'border-box',
           },
@@ -44,9 +44,10 @@ export default function Sidebarleft() {
         anchor="left"
       >
 
-
+        <InputWithIcon />
         <List>
-          {['Add new', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        
+          {["Add New", 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -77,7 +78,9 @@ export default function Sidebarleft() {
       >
         
         <Toolbar />
+
         <RecipeCard />
+
       </Box>
     </Box>
   );
