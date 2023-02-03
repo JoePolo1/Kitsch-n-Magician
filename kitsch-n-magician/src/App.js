@@ -1,13 +1,16 @@
 import logo from './logo.svg';
 import './App.scss';
 import Navbar from './components/Navbar';
-import NewSideBar from './components/NewSideBar';
+
+import Sidebarleft from './components/Sidebarleft';
+
+
 
 function App() {
   return (
     <div>
-    <Navbar />
-    <NewSideBar />
+      <Navbar />
+      <Sidebarleft />
     </div>
   );
 }
