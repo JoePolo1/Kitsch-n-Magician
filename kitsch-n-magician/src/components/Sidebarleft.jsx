@@ -17,6 +17,7 @@ import RecipeCard from './RecipeCard'
 import { green } from '@mui/material/colors';
 import Icon from '@mui/material/Icon';
 import InputWithIcon from './InputWithIcon';
+import IngredientListItem from './IngredientListItem';
 
 
 const drawerWidth = 240;
@@ -24,6 +25,8 @@ const drawerWidth = 240;
 
 
 export default function Sidebarleft() {
+
+let ingredientsArr = ["bread", "eggs", "salt"]; 
 
 const exampleRecipeReturned = [{
   "vegetarian": false,
@@ -555,6 +558,13 @@ const exampleRecipeReturned = [{
   "originalId": null
 }]
 
+const ingredientsList = ingredientsArr.map(ingredient => {
+  return (
+    <IngredientListItem 
+    name = {ingredient}
+    />
+  )
+})
 // This function maps the details of a recipe and puts them in a recipe card
 const recipeItemList = exampleRecipeReturned.map(item =>  {
   return (
@@ -595,16 +605,7 @@ const recipeItemList = exampleRecipeReturned.map(item =>  {
         <InputWithIcon />
         <List>
         
-          {["Add New", 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+        {ingredientsList}
         </List>
         <Divider />
         <List>
