@@ -730,8 +730,9 @@ const exampleRecipeReturned = {
   "originalId": null
 }
 
+const ingredients = ["olive oil", "bread crumbs", "carrots"]
 // (might need to export htis later)
-function findRecipeId (data) {
+function findRecipeId (data) {                                                                                                                                                                            
 
   let result = [];
 
@@ -740,8 +741,19 @@ function findRecipeId (data) {
   }
   return result;
 
+}                               
+
+// function findRecipeInfo()
+
+// console.log(`Find Recipe By ID Results are: ${findRecipeId(exampleData)}`)
+
+//Function to convert ingredients list to URL for API end point
+const urlconverter = function (array) {
+  const withoutSpaces = [];
+  array.map(element => {
+    withoutSpaces.push(element.replace(" ", '%20'))
+  })
+  return withoutSpaces.join("+");
 }
 
-function findRecipeInfo()
-
-console.log(`Find Recipe By ID Results are: ${findRecipeId(exampleData)}`)
+console.log(urlconverter(ingredients));
