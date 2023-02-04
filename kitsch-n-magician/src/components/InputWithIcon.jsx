@@ -2,15 +2,26 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Icon from '@mui/material/Icon';
-import { green } from '@mui/material/colors';
-import AddIcon from './AddIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
+import RecipeCard from './RecipeCard';
+import Sidebarleft from './Sidebarleft';
 
 
-export default function InputWithIcon() {
+
+
+export default function InputWithIcon(props) {
+
+
   return (
-    <div>
-      <AddIcon />
-      <TextField id="input-with-sx" label="Add to kitchen" variant="standard" />
-    </div>
+    <Box>
+      <FontAwesomeIcon icon={faCirclePlus} />
+      <form onSubmit={props.onSubmit} >
+      <TextField  id="input-with-sx" label="Add to kitchen" variant="standard" onChange={props.onChange} value={props.value}
+      />
+      </form>
+    </Box>
   );
 }
+
