@@ -39,8 +39,6 @@ export default function RecipeCard(props) {
     setExpanded(!expanded);
   };
 
-  console.log(props.summary)
-
   return (
     <Card sx={{ maxWidth: 2000 }}>
       <CardHeader
@@ -85,8 +83,8 @@ export default function RecipeCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-       
-          {props.summary}
+        <div dangerouslySetInnerHTML={{ __html: props.summary }} />
+          
      
         </CardContent>
       </Collapse>
