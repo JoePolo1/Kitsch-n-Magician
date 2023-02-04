@@ -20,6 +20,10 @@ import Icon from '@mui/material/Icon';
 import InputWithIcon from './InputWithIcon';
 import IngredientListItem from './IngredientListItem';
 import SearchButton from './Button';
+import { useEffect } from 'react';
+import { urlconverter, findRecipeId } from '../helpers/selectors';
+import axios from 'axios';
+
 
 
 
@@ -561,8 +565,55 @@ const exampleRecipeReturned = [{
   "originalId": null
 }]
 
-const [ingredients, setIngredients] = useState([])
-const [newIngredient, setNewIngredient] = useState('')
+const [ingredients, setIngredients] = useState([]);
+const [newIngredient, setNewIngredient] = useState('');
+const [recipeId, setRecipeId] = useState();
+const [recipes, setRecipes] = useState({
+  title: "",
+  readyInMinutes: "",
+  image: "",
+  sourceUrl: "",
+  servings: "",
+  summary: ""
+});
+
+
+// Function that passes in the ingredient list state to a URL encoded string
+const UseRecipePrimarySearch = function () {
+  
+  const ingredientUrl = urlconverter(ingredients);
+  const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=3dcd771c65c04de985eb5465618a4038&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
+
+
+    axios.get(url)
+      .then((all) => {
+        console.log(all)
+        console.log("Find recipe ID is ", findRecipeId(all.data))
+        return findRecipeId(all.data)
+      })
+      .then((recipeId) => {
+        let promiseArr = [];
+        for (let x of recipeId) {
+          console.log("X is ", x)
+          promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=3dcd771c65c04de985eb5465618a4038&includeNutrition=false`))
+        }
+        Promise.all(promiseArr)
+
+        .then((all) => {
+          console.log("then ALL is ", all);
+          setRecipes(recipes => ({
+            ...recipes,
+            title: all.data['title'],
+            readyInMinutes: all.data['readyInMinutes'],
+            image: all.data['image'],
+            sourceUrl: all.data['sourceUrl'],
+            servings: all.data['servings'],
+            summary: all.data['summary']
+          }))
+        })
+      })
+}
+
 
 const ingredientsList = ingredients.map(ingredient => {
   return (
@@ -587,12 +638,12 @@ const recipeItemList = exampleRecipeReturned.map(item =>  {
 
   return (
     <RecipeCard 
-        title={item["title"]}
-        readyInMinutes={item["readyInMinutes"]}
-        image={item["image"]}
-        sourceUrl={item["sourceUrl"]}
-        servings={item["servings"]}
-        summary={item["summary"]}
+        title={recipes.title}
+        readyInMinutes={recipes.readyInMinutes}
+        image={recipes.image}
+        sourceUrl={recipes.sourceUrl}
+        servings={recipes.servings}
+        summary={recipes.summary}
     />
   )
 })
@@ -639,7 +690,10 @@ const recipeItemList = exampleRecipeReturned.map(item =>  {
             justifyContent: 'center',
             alignItems: 'flex-end'
           }}>
-          <SearchButton />
+
+          <SearchButton
+          onClick={UseRecipePrimarySearch}
+          />
         </List>
       </Drawer>
       <Box
