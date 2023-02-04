@@ -351,7 +351,14 @@ const exampleRecipeReturned = {
         <Toolbar />
 
 
-        <RecipeCard />
+        <RecipeCard 
+        title={exampleRecipeReturned["title"]}
+        readyInMinutes={exampleRecipeReturned["readyInMinutes"]}
+        image={exampleRecipeReturned["image"]}
+        sourceUrl={exampleRecipeReturned["sourceUrl"]}
+        servings={exampleRecipeReturned["servings"]}
+        summary={exampleRecipeReturned["summary"]}
+        />
 
       </Box>
     </Box>
