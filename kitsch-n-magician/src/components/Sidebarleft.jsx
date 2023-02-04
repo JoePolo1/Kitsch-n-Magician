@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -26,7 +27,7 @@ const drawerWidth = 240;
 
 export default function Sidebarleft() {
 
-let ingredientsArr = ["bread", "eggs", "salt"]; 
+// let ingredientsArr = ["bread", "eggs", "salt"]; 
 
 const exampleRecipeReturned = [{
   "vegetarian": false,
@@ -558,15 +559,30 @@ const exampleRecipeReturned = [{
   "originalId": null
 }]
 
-const ingredientsList = ingredientsArr.map(ingredient => {
+const [ingredients, setIngredients] = useState([])
+const [newIngredient, setNewIngredient] = useState('')
+
+const ingredientsList = ingredients.map(ingredient => {
   return (
     <IngredientListItem 
     name = {ingredient}
     />
   )
 })
+
+const handleChange = event => {
+  setNewIngredient(event.target.value);
+};
+
+const handleSubmit = event => {
+  event.preventDefault()
+  setIngredients([newIngredient, ...ingredients])
+  setNewIngredient('')
+}
+
 // This function maps the details of a recipe and puts them in a recipe card
 const recipeItemList = exampleRecipeReturned.map(item =>  {
+
   return (
     <RecipeCard 
         title={item["title"]}
@@ -602,7 +618,11 @@ const recipeItemList = exampleRecipeReturned.map(item =>  {
         anchor="left"
       >
         
-        <InputWithIcon />
+        <InputWithIcon
+         onChange={handleChange}
+         onSubmit={handleSubmit}
+         value={newIngredient}
+         />
         <List>
         
         {ingredientsList}
