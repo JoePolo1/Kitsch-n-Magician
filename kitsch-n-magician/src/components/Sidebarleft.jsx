@@ -568,14 +568,7 @@ const exampleRecipeReturned = [{
 const [ingredients, setIngredients] = useState([]);
 const [newIngredient, setNewIngredient] = useState('');
 const [recipeId, setRecipeId] = useState();
-const [recipes, setRecipes] = useState({
-  title: "",
-  readyInMinutes: "",
-  image: "",
-  sourceUrl: "",
-  servings: "",
-  summary: ""
-});
+const [recipes, setRecipes] = useState([]);
 
 
 // Function that passes in the ingredient list state to a URL encoded string
@@ -602,15 +595,17 @@ const UseRecipePrimarySearch = function () {
         .then((all) => {
           console.log("then ALL is ", all);
           for (let food of all) {
-            setRecipes(recipes => ({
+            setRecipes(recipes => ([
               ...recipes,
+              {
               title: food.data.title,
               readyInMinutes: food.data.readyInMinutes,
               image: food.data.image,
               sourceUrl: food.data.sourceUrl,
               servings: food.data.servings,
               summary: food.data.summary
-            }))
+            }
+            ]))
           }
         })
       })
@@ -635,21 +630,31 @@ const handleSubmit = event => {
   setNewIngredient('')
 }
 
-// This function maps the details of a recipe and puts them in a recipe card
-const recipeItemList = exampleRecipeReturned.map(item =>  {
 
-  return (
-    <RecipeCard 
-        title={recipes.title}
-        readyInMinutes={recipes.readyInMinutes}
-        image={recipes.image}
-        sourceUrl={recipes.sourceUrl}
-        servings={recipes.servings}
-        summary={recipes.summary}
-    />
-  )
-})
 
+    // This function maps the details of a recipe and puts them in a recipe card
+    const recipeItemList = recipes.map(item =>  {
+      
+      return (
+        <RecipeCard 
+            title={item.title}
+            readyInMinutes={item.readyInMinutes}
+            image={item.image}
+            sourceUrl={item.sourceUrl}
+            servings={item.servings}
+            summary={item.summary}
+        />
+      )
+      
+    })
+    console.log("recipe item list is ", recipeItemList)
+
+
+
+
+
+
+//  Sidebar lower rendering
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -706,7 +711,7 @@ const recipeItemList = exampleRecipeReturned.map(item =>  {
         <Toolbar />
 
         
-        {recipeItemList}
+        {recipeItemList.length === 1 ? null : recipeItemList}
 
 
       </Box>
