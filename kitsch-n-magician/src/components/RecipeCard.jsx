@@ -30,12 +30,16 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+
+
 export default function RecipeCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  console.log(props.summary)
 
   return (
     <Card sx={{ maxWidth: 2000 }}>
@@ -81,9 +85,9 @@ export default function RecipeCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-
-          
-          <p>{props.summary}</p>
+       
+          {props.summary}
+     
         </CardContent>
       </Collapse>
     </Card>
