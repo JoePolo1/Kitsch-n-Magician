@@ -83,9 +83,10 @@ export default function RecipeCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
+          
         <div dangerouslySetInnerHTML={{ __html: props.summary }} />
           
-     
+  
         </CardContent>
       </Collapse>
     </Card>
