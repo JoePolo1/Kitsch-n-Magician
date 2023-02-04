@@ -14,6 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -34,11 +35,11 @@ export default function RecipeCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 2000 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            <FontAwesomeIcon icon="faPizzaSlice" color="black" />
           </Avatar>
         }
         action={
