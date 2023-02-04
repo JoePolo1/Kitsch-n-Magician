@@ -19,6 +19,7 @@ import { green } from '@mui/material/colors';
 import Icon from '@mui/material/Icon';
 import InputWithIcon from './InputWithIcon';
 import IngredientListItem from './IngredientListItem';
+import SearchButton from './Button';
 
 
 
@@ -620,26 +621,25 @@ const recipeItemList = exampleRecipeReturned.map(item =>  {
       >
         
         <InputWithIcon
-         onChange={handleChange}
-         onSubmit={handleSubmit}
-         value={newIngredient}
-         />
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          value={newIngredient}
+        />
         <List>
         
         {ingredientsList}
         </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+        <Divider
+
+        />
+        <List           
+          sx={{
+            display: 'flex',
+            position:'relative',
+            justifyContent: 'center',
+            alignItems: 'flex-end'
+          }}>
+          <SearchButton />
         </List>
       </Drawer>
       <Box
