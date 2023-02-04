@@ -9,12 +9,15 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { green, red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,8 +41,8 @@ export default function RecipeCard(props) {
     <Card sx={{ maxWidth: 2000 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            <FontAwesomeIcon icon="faPizzaSlice" color="black" />
+          <Avatar sx={{ bgcolor: "#154c79" }} aria-label="recipe">
+            <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
           </Avatar>
         }
         action={
