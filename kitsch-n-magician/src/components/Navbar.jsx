@@ -12,6 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faPizzaSlice} from '@fortawesome/free-solid-svg-icons';
 
 const pages = ['My Recipes', 'Matcher'];
 const settings = ['Register', 'Login', 'Logout'];
@@ -39,7 +41,12 @@ function Navbar() {
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <FontAwesomeIcon 
+            icon={faPizzaSlice}
+            color="#ca3a35" 
+            bounce 
+            x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -53,6 +60,7 @@ function Navbar() {
               letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
+              marginLeft: '0.5em'
             }}
           >
             Kitsch'n Magician
@@ -94,7 +102,6 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -111,7 +118,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Kitsch'n Magician
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
