@@ -577,7 +577,7 @@ const handleChange = event => {
 
 const handleSubmit = event => {
   event.preventDefault()
-  setIngredients([newIngredient, ...ingredients])
+  setIngredients([newIngredient.trim(), ...ingredients])
   setNewIngredient('')
 }
 
