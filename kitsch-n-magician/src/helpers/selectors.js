@@ -730,7 +730,7 @@ const exampleRecipeReturned = {
   "originalId": null
 }
 
-const ingredients = ["olive oil", "bread crumbs", "carrots"]
+const ingredients = ["olIVE oil", "brEad cruMbs", "caRRots"]
 // (might need to export htis later)
 function findRecipeId (data) {                                                                                                                                                                            
 
@@ -751,7 +751,8 @@ function findRecipeId (data) {
 const urlconverter = function (array) {
   const withoutSpaces = [];
   array.map(element => {
-    withoutSpaces.push(element.replace(" ", '%20'))
+    const lowerCase = element.toLowerCase()
+    withoutSpaces.push(lowerCase.replace(" ", '%20'))
   })
   return withoutSpaces.join("+");
 }
