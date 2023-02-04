@@ -21,6 +21,7 @@ import InputWithIcon from './InputWithIcon';
 import IngredientListItem from './IngredientListItem';
 
 
+
 const drawerWidth = 240;
 
 
