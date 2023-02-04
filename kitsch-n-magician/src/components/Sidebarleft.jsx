@@ -601,15 +601,17 @@ const UseRecipePrimarySearch = function () {
 
         .then((all) => {
           console.log("then ALL is ", all);
-          setRecipes(recipes => ({
-            ...recipes,
-            title: all.data['title'],
-            readyInMinutes: all.data['readyInMinutes'],
-            image: all.data['image'],
-            sourceUrl: all.data['sourceUrl'],
-            servings: all.data['servings'],
-            summary: all.data['summary']
-          }))
+          for (let food of all) {
+            setRecipes(recipes => ({
+              ...recipes,
+              title: food.data.title,
+              readyInMinutes: food.data.readyInMinutes,
+              image: food.data.image,
+              sourceUrl: food.data.sourceUrl,
+              servings: food.data.servings,
+              summary: food.data.summary
+            }))
+          }
         })
       })
 }
