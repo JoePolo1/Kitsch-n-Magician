@@ -47,7 +47,6 @@ export default function RecipeCard(props) {
           </IconButton>
         }
         title={props.title}
-        subheader="September 14, 2016"
       />
       <CardMedia
         component="img"
@@ -64,8 +63,8 @@ export default function RecipeCard(props) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="View Recipe">
+        <a href={props.sourceUrl}>View Recipe</a>
         </IconButton>
         <ExpandMore
           expand={expanded}
@@ -78,8 +77,9 @@ export default function RecipeCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <button href={props.url}>View Recipe</button>
-          <html>{props.summary}</html>
+
+          
+          <p>{props.summary}</p>
         </CardContent>
       </Collapse>
     </Card>
