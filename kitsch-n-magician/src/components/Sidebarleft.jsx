@@ -27,6 +27,9 @@ import axios from 'axios';
 
 
 
+
+
+
 const drawerWidth = 240;
 
 
@@ -575,7 +578,7 @@ const [recipes, setRecipes] = useState([]);
 const UseRecipePrimarySearch = function () {
   
   const ingredientUrl = urlconverter(ingredients);
-  const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=3dcd771c65c04de985eb5465618a4038&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
+  const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
 
 
     axios.get(url)
@@ -588,7 +591,7 @@ const UseRecipePrimarySearch = function () {
         let promiseArr = [];
         for (let x of recipeId) {
           console.log("X is ", x)
-          promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=3dcd771c65c04de985eb5465618a4038&includeNutrition=false`))
+          promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`))
         }
         Promise.all(promiseArr)
 
