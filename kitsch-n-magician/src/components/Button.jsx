@@ -2,12 +2,12 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
-export default function SearchButton() {
+export default function SearchButton(props) {
   return (
     <Stack direction="row" spacing={2}>
       <Button 
         variant="contained" 
-        onClick={() => {alert('clicked');}}
+        onClick={props.onClick}
         >
         Search Recipes
       </Button>

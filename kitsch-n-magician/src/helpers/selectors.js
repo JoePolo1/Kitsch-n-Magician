@@ -732,7 +732,7 @@ const exampleRecipeReturned = {
 
 const ingredients = ["olIVE oil", "brEad cruMbs", "caRRots"]
 // (might need to export htis later)
-function findRecipeId (data) {                                                                                                                                                                            
+export function findRecipeId (data) {                                                                                                                                                                            
 
   let result = [];
 
@@ -748,13 +748,11 @@ function findRecipeId (data) {
 // console.log(`Find Recipe By ID Results are: ${findRecipeId(exampleData)}`)
 
 //Function to convert ingredients list to URL for API end point
-const urlconverter = function (array) {
+export function urlconverter (array) {
   const withoutSpaces = [];
   array.map(element => {
     const lowerCase = element.toLowerCase()
     withoutSpaces.push(lowerCase.replace(" ", '%20'))
   })
-  return withoutSpaces.join("+");
+  return withoutSpaces.join(",+");
 }
-
-console.log(urlconverter(ingredients));
