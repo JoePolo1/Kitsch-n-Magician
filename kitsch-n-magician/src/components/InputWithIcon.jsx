@@ -9,9 +9,6 @@ import RecipeCard from './RecipeCard';
 import Sidebarleft from './Sidebarleft';
 
 
-
-
-
 export default function InputWithIcon(props) {
 
 

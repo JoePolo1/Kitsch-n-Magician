@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCube } from '@fortawesome/free-solid-svg-icons';
+import { faCube, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 export default function IngredientListItem(props) {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -17,26 +17,17 @@ export default function IngredientListItem(props) {
     setSelectedIndex(index);
   };
 
-  
-
-
 
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <List component="nav" aria-label="main mailbox folders">
-        <ListItemButton
-          selected={selectedIndex === 0}
-          onClick={(event) => handleListItemClick(event, 0)}
+      <List component="nav" >
+        <ListItemButton 
         >
           <ListItemIcon>
           <FontAwesomeIcon icon={faCube} />
           </ListItemIcon>
-          <ListItemText primary={props.name}/>
-        </ListItemButton>
-        <ListItemButton
-          selected={selectedIndex === 1}
-          onClick={(event) => handleListItemClick(event, 1)}
-        >
+          <ListItemText primary={props.name} />
+          <FontAwesomeIcon icon={faTrashCan} color= "#545B85" opacity="0.4" />
         </ListItemButton>
       </List>
     </Box>
