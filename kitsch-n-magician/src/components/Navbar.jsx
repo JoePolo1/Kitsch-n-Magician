@@ -38,15 +38,19 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="fixed">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <FontAwesomeIcon 
-            icon={faPizzaSlice}
-            color="#ca3a35" 
-            x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-            spin
-          />
+    <AppBar position="fixed" >
+      <Box maxWidth="xl" bgcolor= '#154c79'  >
+        <Toolbar disableGutters >
+          <Box sx={{
+        ml: 2.4
+      }}>
+            <FontAwesomeIcon 
+              icon={faPizzaSlice}
+              color="#ca3a35" 
+              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              spin
+            />
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -66,7 +70,7 @@ function Navbar() {
             Kitsch'n Magician
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} bgcolor= '#154c79'>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -120,7 +124,7 @@ function Navbar() {
           >
             Kitsch'n Magician
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
             {pages.map((page) => (
               <Button
                 key={page}
@@ -132,7 +136,7 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, mr: 2.4 }} bgcolor= '#154c79'>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -162,7 +166,7 @@ function Navbar() {
             </Menu>
           </Box>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 }
