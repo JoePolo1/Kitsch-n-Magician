@@ -656,7 +656,9 @@ const handleSubmit = event => {
 
 //  Sidebar lower rendering
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ 
+      display: 'flex'
+      }}>
       <CssBaseline />
       <AppBar 
         position="fixed"
@@ -664,6 +666,7 @@ const handleSubmit = event => {
       >
 
       </AppBar>
+      
       <Drawer
         sx={{
           width: drawerWidth,
@@ -672,11 +675,29 @@ const handleSubmit = event => {
             mt: '4.3em',
             width: drawerWidth,
             boxSizing: 'border-box',
-          },
+          }
         }}
         variant="permanent"
         anchor="left"
       >
+        {/* THIS BOX DIV CONTAINS BOTH INGREDIENT LIST AND SEARCH BUTTON */}
+        <Box sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: 'space-between',
+        alignItems: "center",
+        height: 903
+      }}>
+
+        {/* THIS BOX DIV CONTAINS ONLY INGREDIENTS LIST AND TEXT INPUT.
+        MaxHeight fixes scroll button pushing */}
+        <Box sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: 'flex-start',
+        alignItems: 'stretch',
+        maxHeight: 0.5
+      }}> 
         
         <InputWithIcon
           onChange={handleChange}
@@ -687,26 +708,39 @@ const handleSubmit = event => {
         
         {ingredientsList}
         </List>
-        <Divider
-
-        />
+        </Box>
+        {/* END OF INGREDIENT LIST */}
+        <Divider />
+        {/* BEGINNING OF SEARCH RECIPES BUTTON */}
         <List           
           sx={{
             display: 'flex',
-            position:'relative',
-            justifyContent: 'center',
-            alignItems: 'flex-end'
+            position:'sticky',
+            justifyContent: 'end',
+            alignItems: 'center',
+            flexDirection: 'column',
+            backgroundColor: 'cornflowerblue'
           }}>
-
-          <SearchButton
-          onClick={UseRecipePrimarySearch}
-          />
+          <Box sx={{
+            display: 'flex',
+            position:'fixed',
+            backgroundColor: 'cornflowerblue',
+            marginBottom: 3
+          }}>
+            <SearchButton
+            onClick={UseRecipePrimarySearch}
+            />
+          </Box> {/* END OF  BOX DIV CONTAINING BOTH INGREDIENT LIST AND SEARCH BUTTON */}
         </List>
+        </Box>
       </Drawer>
+      
       <Box
         component="main"
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
+
+        {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
         
         <Toolbar />
 
