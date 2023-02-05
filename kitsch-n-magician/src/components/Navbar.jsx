@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPizzaSlice} from '@fortawesome/free-solid-svg-icons';
+import {faBurger, faHatWizard, faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
 
 const pages = ['My Recipes', 'Matcher'];
 const settings = ['Register', 'Login', 'Logout'];
@@ -38,15 +38,34 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="fixed">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <FontAwesomeIcon 
-            icon={faPizzaSlice}
-            color="#ca3a35" 
-            x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-            spin
-          />
+    <AppBar position="fixed" >
+      <Box  bgcolor= '#154c79'  >
+        <Toolbar disableGutters >
+          <Box sx={{
+        ml: 2.4
+      }}>
+            <FontAwesomeIcon 
+              icon={faBurger}
+              color='#F09851'
+              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              fontSize= '21'
+              bounce
+            />
+            <FontAwesomeIcon 
+              icon={faHatWizard}
+              color='#59A3D9'
+              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              fontSize= '21'
+              bounce
+            />
+            <FontAwesomeIcon 
+              icon={faWandMagicSparkles}
+              color='#B9C2F9'
+              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              fontSize= '21'
+              bounce
+            />
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -57,7 +76,8 @@ function Navbar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.1rem',
+              fontSize: 22,
+              letterSpacing: '.05rem',
               color: 'inherit',
               textDecoration: 'none',
               marginLeft: '0.5em'
@@ -66,7 +86,7 @@ function Navbar() {
             Kitsch'n Magician
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', xl: 'none' } }} bgcolor= '#154c79'>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -120,7 +140,7 @@ function Navbar() {
           >
             Kitsch'n Magician
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
             {pages.map((page) => (
               <Button
                 key={page}
@@ -132,7 +152,7 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, mr: 2.4 }} bgcolor= '#154c79'>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -162,7 +182,7 @@ function Navbar() {
             </Menu>
           </Box>
         </Toolbar>
-      </Container>
+      </Box>
     </AppBar>
   );
 }
