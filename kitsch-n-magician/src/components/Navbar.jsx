@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPizzaSlice} from '@fortawesome/free-solid-svg-icons';
+import {faBurger, faHatWizard, faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
 
 const pages = ['My Recipes', 'Matcher'];
 const settings = ['Register', 'Login', 'Logout'];
@@ -45,10 +45,25 @@ function Navbar() {
         ml: 2.4
       }}>
             <FontAwesomeIcon 
-              icon={faPizzaSlice}
-              color="#ca3a35" 
+              icon={faBurger}
+              color='#F09851'
               x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-              spin
+              fontSize= '21'
+              bounce
+            />
+            <FontAwesomeIcon 
+              icon={faHatWizard}
+              color='#59A3D9'
+              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              fontSize= '21'
+              bounce
+            />
+            <FontAwesomeIcon 
+              icon={faWandMagicSparkles}
+              color='#B9C2F9'
+              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+              fontSize= '21'
+              bounce
             />
           </Box>
           <Typography
