@@ -604,7 +604,7 @@ const UseRecipePrimarySearch = function () {
               title: food.data.title,
               readyInMinutes: food.data.readyInMinutes,
               image: food.data.image,
-              sourceUrl: food.data.sourceUrl,
+              spoonacularSourceUrl: food.data.spoonacularSourceUrl,
               servings: food.data.servings,
               summary: food.data.summary
             }
@@ -643,7 +643,7 @@ const handleSubmit = event => {
             title={item.title}
             readyInMinutes={item.readyInMinutes}
             image={item.image}
-            sourceUrl={item.sourceUrl}
+            spoonacularSourceUrl={item.spoonacularSourceUrl}
             servings={item.servings}
             summary={item.summary}
         />
