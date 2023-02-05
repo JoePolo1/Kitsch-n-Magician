@@ -41,7 +41,7 @@ export default function RecipeCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 2000, marginBottom: '1em' }}>
+    <Card sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
       
       <CardHeader
           avatar={
@@ -55,6 +55,10 @@ export default function RecipeCard(props) {
             </Button>
           }
           title={props.title}
+          sx={{
+            fontSize: 20,
+            fontWeight: "Medium"
+          }}
         />
         <div sx={{
       display: 'flex', 
@@ -64,7 +68,7 @@ export default function RecipeCard(props) {
     }}>
         <CardMedia
           component="img"
-          height="100"
+          height="110"
           image={props.image}
           alt={props.title}
           sx={{
@@ -80,7 +84,7 @@ export default function RecipeCard(props) {
       </CardContent>
       <CardActions disableSpacing>
       <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <FavoriteIcon />Add to favourites
         </IconButton>
         
         <ExpandMore
@@ -88,7 +92,7 @@ export default function RecipeCard(props) {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-        >
+        >More info
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
