@@ -39,7 +39,7 @@ export default function RecipeCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 2000 }}>
+    <Card sx={{ maxWidth: 2000, marginBottom: '1em' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "#154c79" }} aria-label="recipe">
