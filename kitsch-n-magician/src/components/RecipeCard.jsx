@@ -69,7 +69,7 @@ export default function RecipeCard(props) {
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="View Recipe">
-        <a href={props.spoonacularSourceUrl}>View Recipe</a>
+        <a href={props.spoonacularSourceUrl} target="_blank">View Recipe</a>
         </IconButton>
         <ExpandMore
           expand={expanded}

@@ -32,7 +32,7 @@ export default function InputWithIcon(props) {
       <form onSubmit={props.onSubmit} >
       <TextField  
       id="input-with-sx" 
-      label="Add to kitchen" 
+      label="Add items to your kitchen"
       variant="standard" 
       onChange={props.onChange} 
       value={props.value}

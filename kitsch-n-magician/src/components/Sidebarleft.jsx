@@ -654,9 +654,6 @@ const handleSubmit = event => {
 
 
 
-
-
-
 //  Sidebar lower rendering
   return (
     <Box sx={{ display: 'flex' }}>
