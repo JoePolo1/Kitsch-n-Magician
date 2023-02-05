@@ -44,8 +44,8 @@ function Navbar() {
           <FontAwesomeIcon 
             icon={faPizzaSlice}
             color="#ca3a35" 
-            bounce 
             x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+            spin
           />
           <Typography
             variant="h6"
