@@ -7,6 +7,8 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCube } from '@fortawesome/free-solid-svg-icons';
 
 export default function IngredientListItem(props) {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -27,7 +29,7 @@ export default function IngredientListItem(props) {
           onClick={(event) => handleListItemClick(event, 0)}
         >
           <ListItemIcon>
-            <InboxIcon />
+          <FontAwesomeIcon icon={faCube} />
           </ListItemIcon>
           <ListItemText primary={props.name}/>
         </ListItemButton>

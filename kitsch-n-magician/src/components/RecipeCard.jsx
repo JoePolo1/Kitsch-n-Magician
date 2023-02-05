@@ -16,6 +16,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 
 const ExpandMore = styled((props) => {
@@ -39,44 +41,58 @@ export default function RecipeCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 2000 }}>
+    <Card sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
+      
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: "#154c79" }} aria-label="recipe">
-            <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={props.title}
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={props.image}
-        alt={props.title}
-      />
+          avatar={
+            <Avatar sx={{ bgcolor: "#154c79" }} aria-label="recipe">
+              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
+            </Avatar>
+          }
+          action={
+            <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
+            View Recipe
+            </Button>
+          }
+          title={props.title}
+          sx={{
+            fontSize: 20,
+            fontWeight: "Medium"
+          }}
+        />
+        <div sx={{
+      display: 'flex', 
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    }}>
+        <CardMedia
+          component="img"
+          height="110"
+          image={props.image}
+          alt={props.title}
+          sx={{
+            width: 400
+          }}
+        />
+        
+        </div>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+      <IconButton aria-label="add to favorites">
+          <FavoriteIcon />Add to favourites
         </IconButton>
-        <IconButton aria-label="View Recipe">
-        <a href={props.spoonacularSourceUrl}>View Recipe</a>
-        </IconButton>
+        
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-        >
+        >More info
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>

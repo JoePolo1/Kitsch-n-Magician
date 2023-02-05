@@ -11,29 +11,36 @@ import Sidebarleft from './Sidebarleft';
 
 
 
+
 export default function InputWithIcon(props) {
 
 
   return (
-    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+    
     <Box sx={{
       display: 'flex', 
       alignItems: 'flex-end',
-      justifyContent: 'center'
+      justifyContent: 'space-between'
     }}>
-      <FontAwesomeIcon icon={faCirclePlus} color="#154c79" sx={{ mr: 4, my: 8 }} />
+      <FontAwesomeIcon 
+        icon={faCirclePlus}
+        color="#154c79"
+        sx={{ mr: 4, my: 8}}
+        fontSize= '28'
+        opacity={.9}
+      />
       <form onSubmit={props.onSubmit} >
       <TextField  
       id="input-with-sx" 
-      label="Add to kitchen" 
+      label="Add items to your kitchen"
       variant="standard" 
       onChange={props.onChange} 
       value={props.value}
-      sx={{width: 140}}
+      sx={{width: 206}}
       />
       </form>
     </Box>
-    </Box>
+
   );
 }
 
