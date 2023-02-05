@@ -14,11 +14,3 @@ export default function SearchButton(props) {
     </Stack>
   );
 }
-
-
-{/* <Button variant="contained" disabled>
-        Disabled
-      </Button>
-      <Button variant="contained" href="#contained-buttons">
-        Link
-      </Button> */}
