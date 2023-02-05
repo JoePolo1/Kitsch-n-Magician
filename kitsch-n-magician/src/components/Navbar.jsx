@@ -39,7 +39,7 @@ function Navbar() {
 
   return (
     <AppBar position="fixed" >
-      <Box maxWidth="xl" bgcolor= '#154c79'  >
+      <Box  bgcolor= '#154c79'  >
         <Toolbar disableGutters >
           <Box sx={{
         ml: 2.4
@@ -61,7 +61,8 @@ function Navbar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.1rem',
+              fontSize: 22,
+              letterSpacing: '.05rem',
               color: 'inherit',
               textDecoration: 'none',
               marginLeft: '0.5em'
@@ -70,7 +71,7 @@ function Navbar() {
             Kitsch'n Magician
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} bgcolor= '#154c79'>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', xl: 'none' } }} bgcolor= '#154c79'>
             <IconButton
               size="large"
               aria-label="account of current user"
