@@ -5,7 +5,7 @@
     DROP TABLE IF EXISTS recipes_ingredients CASCADE;
     DROP TABLE IF EXISTS kitchen_items CASCADE;
     DROP TABLE IF EXISTS favourite_recipes CASCADE;
-    DROP TABLE IF EXISTS meal_prep CASCADE;
+    DROP TABLE IF EXISTS meal_preps CASCADE;
     DROP TABLE IF EXISTS matched_recipes CASCADE;
 
     CREATE TABLE household (
@@ -61,7 +61,7 @@
       user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
 
-    CREATE TABLE meal_prep (
+    CREATE TABLE meal_preps (
       id SERIAL PRIMARY KEY NOT NULL,
       day_of_the_week VARCHAR(255) NOT NULL,
       household_id INTEGER REFERENCES household(id) ON DELETE CASCADE,
