@@ -674,6 +674,8 @@ const handleSubmit = event => {
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             mt: '4.3em',
+            mb: '10em',
+            pb: '10em',
             width: drawerWidth,
             boxSizing: 'border-box',
           }
@@ -707,8 +709,18 @@ const handleSubmit = event => {
           value={newIngredient}
         />
         <List>
-        
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            backgroundColor: 'cornflowerblue'
+          }}>
+            <SearchButton
+            onClick={UseRecipePrimarySearch}
+            />
+          </Box>
         {ingredientsList}
+        
         </List>
         </Box>
         {/* END OF INGREDIENT LIST */}
