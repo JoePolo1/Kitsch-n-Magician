@@ -26,9 +26,8 @@
     CREATE TABLE recipes (
       id SERIAL PRIMARY KEY NOT NULL,
       title VARCHAR(255) NOT NULL,
-      cookTime INTEGER,
-      prepTime INTEGER,
-      spoonUrl VARCHAR(255) NOT NULL,
+      ready_in_minutes INTEGER,
+      spoon_url VARCHAR(255) NOT NULL,
       image VARCHAR(255) NOT NULL,
       summary VARCHAR(255) NOT NULL,
       vegetarian BOOLEAN DEFAULT FALSE,
@@ -60,16 +59,16 @@
       recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE, 
       user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
+    
+    CREATE TABLE matched_recipes (
+      id SERIAL PRIMARY KEY NOT NULL,
+      household_id INTEGER REFERENCES household(id) ON DELETE CASCADE,
+      recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE
+    );
 
     CREATE TABLE meal_preps (
       id SERIAL PRIMARY KEY NOT NULL,
       day_of_the_week VARCHAR(255) NOT NULL,
       household_id INTEGER REFERENCES household(id) ON DELETE CASCADE,
-      recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE matched_recipes (
-      id SERIAL PRIMARY KEY NOT NULL,
-      household_id INTEGER REFERENCES household(id) ON DELETE CASCADE,
-      recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE
+      matched_recipe_id INTEGER REFERENCES matched_recipes(id) ON DELETE CASCADE
     );
