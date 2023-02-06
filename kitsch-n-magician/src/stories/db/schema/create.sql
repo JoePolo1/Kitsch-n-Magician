@@ -30,6 +30,7 @@
       prepTime INTEGER,
       spoonUrl VARCHAR(255) NOT NULL,
       image VARCHAR(255) NOT NULL,
+      summary VARCHAR(255) NOT NULL,
       vegetarian BOOLEAN DEFAULT FALSE,
       vegan BOOLEAN DEFAULT FALSE,
       gluten_free BOOLEAN DEFAULT FALSE,
