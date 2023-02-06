@@ -669,6 +669,7 @@ const handleSubmit = event => {
       
       <Drawer
         sx={{
+          display: 'flex',
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
@@ -696,8 +697,9 @@ const handleSubmit = event => {
         flexDirection: "column",
         justifyContent: 'flex-start',
         alignItems: 'stretch',
-        maxHeight: 0.5
-      }}> 
+        maxHeight: 0.5,
+        height: '75%'
+        }}> 
         
         <InputWithIcon
           onChange={handleChange}
@@ -716,16 +718,18 @@ const handleSubmit = event => {
           sx={{
             display: 'flex',
             position:'sticky',
-            justifyContent: 'end',
+            justifyContent: 'flex-end',
             alignItems: 'center',
             flexDirection: 'column',
             backgroundColor: 'cornflowerblue'
           }}>
           <Box sx={{
             display: 'flex',
+            flexDirection: 'column',
             position:'fixed',
+            justifyContent: 'flex-end',
             backgroundColor: 'cornflowerblue',
-            marginBottom: 3
+            marginBottom: 20
           }}>
             <SearchButton
             onClick={UseRecipePrimarySearch}
