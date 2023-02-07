@@ -42,7 +42,8 @@ export default function SignIn() {
       username: username, 
       password: password,
     }).then((response) => {
-      console.log(response);
+      // req.session.userId = response.email
+      console.log('response', response);
     })
   }
 
