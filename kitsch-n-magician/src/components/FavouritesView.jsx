@@ -33,8 +33,6 @@ export default function FavouritesView() {
 
 // let ingredientsArr = ["bread", "eggs", "salt"]; 
 
-
-
 const [ingredients, setIngredients] = useState([]);
 const [newIngredient, setNewIngredient] = useState('');
 const [recipeId, setRecipeId] = useState();
