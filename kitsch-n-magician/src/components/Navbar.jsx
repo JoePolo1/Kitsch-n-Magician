@@ -115,11 +115,16 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">My Recipes</Typography>
+                  
                 </MenuItem>
-              ))}
+                <MenuItem  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Matcher</Typography>
+                  
+                </MenuItem>
+
             </Menu>
           </Box>
           <Typography
@@ -141,15 +146,20 @@ function Navbar() {
             Kitsch'n Magician
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
-            {pages.map((page) => (
+            
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                My Recipes
               </Button>
-            ))}
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Matcher
+              </Button>
+
           </Box>
 
           <Box sx={{ flexGrow: 0, mr: 2.4 }} bgcolor= '#154c79'>
@@ -174,11 +184,17 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Login</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Register</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>
