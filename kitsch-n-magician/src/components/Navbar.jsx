@@ -118,7 +118,6 @@ function Navbar(props) {
 
                 <MenuItem onClick={props.switch} >
                   <Typography textAlign="center"  >My Recipes</Typography>
-                  
                 </MenuItem>
                 <MenuItem  onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Matcher</Typography>
@@ -148,7 +147,7 @@ function Navbar(props) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
             
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={props.switch}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 My Recipes
