@@ -38,6 +38,7 @@ const [ingredients, setIngredients] = useState([]);
 const [newIngredient, setNewIngredient] = useState('');
 const [recipeId, setRecipeId] = useState();
 const [recipes, setRecipes] = useState([]);
+const [favourites, setFavourites] = useState([]);
 
 
 // Function that passes in the ingredient list state to a URL encoded string
@@ -81,10 +82,10 @@ const UseRecipePrimarySearch = function () {
 }
 
 
-const ingredientsList = ingredients.map(ingredient => {
+const favouritesList = favourites.map(recipe => {
   return (
     <FavouritesListItem 
-    name = {ingredient}
+    title = {recipe.title}
     />
   )
 })
@@ -195,7 +196,7 @@ const handleSubmit = event => {
             anchor="left"
           >
                                     
-                              {ingredientsList}
+                              {favouritesList}
         </Drawer>
         
         </List>
@@ -220,7 +221,7 @@ const handleSubmit = event => {
         
         <Toolbar />
 
-        
+        {favouritesList}
         {recipeItemList.length === 1 ? null : recipeItemList}
 
 
