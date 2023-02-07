@@ -8,6 +8,7 @@ import useVisualMode from "./hooks/useVisualMode";
 import FavouritesView from "./components/FavouritesView";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import {Link, Route, Routes} from 'react-router-dom';
 
 const FAVOURITES = "FAVOURITES";
 const RECIPESEARCH = "RECIPESEARCH";
@@ -25,17 +26,17 @@ function App() {
   return (
     <div>
       <Navbar 
-      switchFavourites={() => transition(FAVOURITES)} 
-      switchLogin={() => transition(LOGIN)} 
-      switchLogout={() => transition(LOGOUT)} 
-      switchRegister={() => transition(REGISTER)}
+        transition={transition}
+      // switchFavourites={() => transition(FAVOURITES)} 
+      // switchLogin={() => transition(LOGIN)} 
+      // switchLogout={() => transition(LOGOUT)} 
+      // switchRegister={() => transition(REGISTER)}
       />
       <Fragment>
-      {mode === RECIPESEARCH && <Sidebarleft />}
-      {mode === FAVOURITES && <FavouritesView />}
+      {![LOGIN, REGISTER].includes(mode) && <Sidebarleft />}
+      {/* {mode === FAVOURITES && <FavouritesView />}
       {mode === REGISTER && <Register />}
-      {mode === LOGIN && <Login />}
-      {mode === LOGOUT && <Sidebarleft />}
+      {mode === LOGOUT && <Sidebarleft />}  */}
 
       </Fragment>
     </div>

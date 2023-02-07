@@ -14,6 +14,10 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBurger, faHatWizard, faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
+import Login from "./Login";
+import Register from "./Register";
+import FavouritesView from "./FavouritesView";
+import {Link, Route, Routes} from 'react-router-dom';
 
 const pages = ['My Recipes', 'Matcher'];
 const settings = ['Register', 'Login', 'Logout'];
@@ -38,6 +42,7 @@ function Navbar(props) {
   };
 
   return (
+    <>
     <AppBar position="fixed" >
       <Box  bgcolor= '#154c79'  >
         <Toolbar disableGutters >
@@ -117,7 +122,9 @@ function Navbar(props) {
             >
 
                 <MenuItem onClick={props.switch} >
-                  <Typography textAlign="center"  >My Recipes</Typography>
+                  <Typography textAlign="center">
+                    My Recipes
+                  </Typography>
                 </MenuItem>
                 <MenuItem  onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Matcher</Typography>
@@ -145,13 +152,13 @@ function Navbar(props) {
             Kitsch'n Magician
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
-            
+              <Link to="/favourites">
               <Button
                 onClick={props.switchFavourites}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                My Recipes
+              >My Recipes  
               </Button>
+              </Link>
               <Button
                 onClick={props.switchMatcher}
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -184,21 +191,44 @@ function Navbar(props) {
               onClose={handleCloseUserMenu}
             >
               
-                <MenuItem onClick={props.switchLogin}>
-                  <Typography textAlign="center">Login</Typography>
+                <MenuItem onClick={() => props.transition("LOGIN")}>
+                  <Typography textAlign="center">
+                    <Link to="/login">
+                      Login
+                    </Link>
+                  </Typography>
                 </MenuItem>
-                <MenuItem onClick={props.switchRegister}>
-                  <Typography textAlign="center">Register</Typography>
+                
+                <MenuItem >
+                  <Typography textAlign="center" onClick={() => props.transition("REGISTER")}>
+                    <Link to="/register">
+                      Register
+                    </Link>
+                  </Typography>
                 </MenuItem>
+
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
 
             </Menu>
+
+
+
+
           </Box>
         </Toolbar>
       </Box>
-    </AppBar>
+      </AppBar>
+      <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/favourties" element={<FavouritesView />} />
+      </Routes>
+      </>
+      
+ 
+
   );
 }
 export default Navbar;
