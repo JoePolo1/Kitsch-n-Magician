@@ -74,12 +74,19 @@ app.post('/login', (req, res) => {
       }
       if (result) {
         res.send(result);
+
       } else {
         res.send({ message: "Username or password combination not valid" });
       }
     }
   );
 });
+
+app.use('/login', (req, res) => {
+  res.send({
+    token: "thisIsAUserToken"
+  });
+})
 
 
 app.listen(PORT, () => {
