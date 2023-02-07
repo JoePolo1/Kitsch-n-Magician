@@ -147,13 +147,13 @@ function Navbar(props) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
             
               <Button
-                onClick={props.switch}
+                onClick={props.switchFavourites}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 My Recipes
               </Button>
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={props.switchMatcher}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 Matcher
@@ -184,10 +184,10 @@ function Navbar(props) {
               onClose={handleCloseUserMenu}
             >
               
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={props.switchLogin}>
                   <Typography textAlign="center">Login</Typography>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={props.switchRegister}>
                   <Typography textAlign="center">Register</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>

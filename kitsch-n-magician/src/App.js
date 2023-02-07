@@ -6,11 +6,15 @@ import Sidebarleft from './components/Sidebarleft';
 import ModeSwitcher from './components/modeSwitcher';
 import useVisualMode from "./hooks/useVisualMode";
 import FavouritesView from "./components/FavouritesView";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 const FAVOURITES = "FAVOURITES";
 const RECIPESEARCH = "RECIPESEARCH";
 const LOGIN = "LOGIN";
+const LOGOUT = "LOGOUT";
 const REGISTER = "REGISTER";
+const MATCHER = "MATCHER";
 
 
 
@@ -20,10 +24,19 @@ function App() {
 
   return (
     <div>
-      <Navbar switch={() => transition(FAVOURITES)} />
+      <Navbar 
+      switchFavourites={() => transition(FAVOURITES)} 
+      switchLogin={() => transition(LOGIN)} 
+      switchLogout={() => transition(LOGOUT)} 
+      switchRegister={() => transition(REGISTER)}
+      />
       <Fragment>
       {mode === RECIPESEARCH && <Sidebarleft />}
       {mode === FAVOURITES && <FavouritesView />}
+      {mode === REGISTER && <Register />}
+      {mode === LOGIN && <Login />}
+      {mode === LOGOUT && <Sidebarleft />}
+
       </Fragment>
     </div>
   );
