@@ -35,10 +35,11 @@ export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+
   const [loginStatus, setLoginStatus] = useState("");
 
   const login = () => {
-    Axios.post("http://localhost:8080", {
+    Axios.post("http://localhost:3001/login", {
       username: username, 
       password: password,
     }).then((response) => {
@@ -74,8 +75,8 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+          <Box component="form" noValidate sx={{ mt: 1 }}>
+            {/* <TextField
               margin="normal"
               required
               fullWidth
@@ -85,8 +86,15 @@ export default function SignIn() {
               autoComplete="email"
               autoFocus
               onChange={(event) => setUsername(event.target.value)}
-            />
-            <TextField
+              
+            /> */}
+            <input onChange={(event) => setUsername(event.target.value)}>
+
+</input>
+            <input onChange={(event) => setPassword(event.target.value)}>
+
+            </input>
+            {/* <TextField
               margin="normal"
               required
               fullWidth
@@ -95,21 +103,19 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
-              onChange={(event) => setPassword(event.target.value)}
               
-            />
+              
+            /> */}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
               
             />
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={login}
-              
+              onClick={login}   
             >
               Sign In
             </Button>
