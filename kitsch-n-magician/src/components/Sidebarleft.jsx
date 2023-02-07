@@ -23,12 +23,6 @@ import SearchButton from './Button';
 import { useEffect } from 'react';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
-import { FixedSizeList } from 'react-window';
-
-
-
-
-
 
 
 
@@ -718,7 +712,7 @@ const handleSubmit = event => {
                 mt: '8em',
 
                 boxSizing: 'border-box',
-                maxHeight: '72%'
+                maxHeight: '58%'
               }
             }}
             variant="permanent"
@@ -741,6 +735,7 @@ const handleSubmit = event => {
           }}>
             <SearchButton
             onClick={UseRecipePrimarySearch}
+            sx={{ zIndex: 9000 }}
             />
           </Box>
         {/* END OF INGREDIENT LIST */}
