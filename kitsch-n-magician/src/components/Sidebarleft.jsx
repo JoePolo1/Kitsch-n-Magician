@@ -26,10 +26,6 @@ import axios from 'axios';
 
 
 
-
-
-
-
 const drawerWidth = 240;
 
 
@@ -676,6 +672,7 @@ const handleSubmit = event => {
             mt: '4.3em',
             width: drawerWidth,
             boxSizing: 'border-box',
+            maxHeight: '90%'
           }
         }}
         variant="permanent"
@@ -687,7 +684,7 @@ const handleSubmit = event => {
         flexDirection: "column",
         justifyContent: 'space-between',
         alignItems: "center",
-        height: 903
+        height: 900
       }}>
 
         {/* THIS BOX DIV CONTAINS ONLY INGREDIENTS LIST AND TEXT INPUT.
@@ -697,8 +694,7 @@ const handleSubmit = event => {
         flexDirection: "column",
         justifyContent: 'flex-start',
         alignItems: 'stretch',
-        maxHeight: 0.5,
-        height: '75%'
+        height: '90%'
         }}> 
         
         <InputWithIcon
@@ -707,35 +703,46 @@ const handleSubmit = event => {
           value={newIngredient}
         />
         <List>
+          <Drawer
+            sx={{
+              display: 'flex',
+
+              flexShrink: 0,
+              '& .MuiDrawer-paper': {
+                mt: '8em',
+
+                boxSizing: 'border-box',
+                maxHeight: '58%'
+              }
+            }}
+            variant="permanent"
+            anchor="left"
+          >
+                                    
+                              {ingredientsList}
+        </Drawer>
         
-        {ingredientsList}
         </List>
+        
         </Box>
-        {/* END OF INGREDIENT LIST */}
-        <Divider />
-        {/* BEGINNING OF SEARCH RECIPES BUTTON */}
-        <List           
-          sx={{
+
+        <Box sx={{
             display: 'flex',
-            position:'sticky',
+            flexDirection: 'column',
             justifyContent: 'flex-end',
             alignItems: 'center',
-            flexDirection: 'column',
-            backgroundColor: 'cornflowerblue'
-          }}>
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            position:'fixed',
-            justifyContent: 'flex-end',
-            backgroundColor: 'cornflowerblue',
-            marginBottom: 20
+            zIndex:200
           }}>
             <SearchButton
             onClick={UseRecipePrimarySearch}
+            sx={{ zIndex: 9000 }}
             />
-          </Box> {/* END OF  BOX DIV CONTAINING BOTH INGREDIENT LIST AND SEARCH BUTTON */}
-        </List>
+          </Box>
+        {/* END OF INGREDIENT LIST */}
+        <Divider />
+
+        {/* END OF  BOX DIV CONTAINING BOTH INGREDIENT LIST AND SEARCH BUTTON */}
+        
         </Box>
       </Drawer>
       
