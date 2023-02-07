@@ -10,7 +10,7 @@ const REGISTER = "REGISTER";
 
 
 const ModeSwitcher = (props) => {
-  const { mode, transition, back } = useVisualMode(FAVOURITES)
+  const { mode, transition, back } = useVisualMode(RECIPESEARCH)
 
   function visitfavourites () {
     transition(FAVOURITES);
@@ -18,7 +18,7 @@ const ModeSwitcher = (props) => {
 
   return(
     <Fragment>
-    {mode === RECIPESEARCH && <Sidebarleft onSwitch={() => transition(FAVOURITES)} />}
+    {mode === RECIPESEARCH && <Sidebarleft />}
     {mode === FAVOURITES && <FavouritesView />}
     </Fragment>
   )

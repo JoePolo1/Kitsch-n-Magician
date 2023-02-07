@@ -116,8 +116,8 @@ function Navbar(props) {
               }}
             >
 
-                <MenuItem  onClick={props.onSwitch}>
-                  <Typography textAlign="center">My Recipes</Typography>
+                <MenuItem onClick={props.switch} >
+                  <Typography textAlign="center"  >My Recipes</Typography>
                   
                 </MenuItem>
                 <MenuItem  onClick={handleCloseNavMenu}>
