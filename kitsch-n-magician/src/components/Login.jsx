@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from "react"
+import Axios from "axios"
 
 function Copyright(props) {
   return (
@@ -29,6 +31,21 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loginStatus, setLoginStatus] = useState("");
+
+  const login = () => {
+    Axios.post("http://localhost:8080", {
+      username: username, 
+      password: password,
+    }).then((response) => {
+      console.log(response);
+    })
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -86,6 +103,7 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              
             >
               Sign In
             </Button>
