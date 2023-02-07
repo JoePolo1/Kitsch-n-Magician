@@ -24,7 +24,7 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const [login, setLogin]
+  const [login, setLogin] = useState("");
 
 
   return (
