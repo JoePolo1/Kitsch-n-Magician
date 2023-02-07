@@ -76,7 +76,7 @@ export default function SignIn() {
             Sign in
           </Typography>
           <Box component="form" noValidate sx={{ mt: 1 }}>
-            {/* <TextField
+            <TextField
               margin="normal"
               required
               fullWidth
@@ -87,14 +87,9 @@ export default function SignIn() {
               autoFocus
               onChange={(event) => setUsername(event.target.value)}
               
-            /> */}
-            <input onChange={(event) => setUsername(event.target.value)}>
+            />
 
-</input>
-            <input onChange={(event) => setPassword(event.target.value)}>
-
-            </input>
-            {/* <TextField
+            <TextField
               margin="normal"
               required
               fullWidth
@@ -103,9 +98,10 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(event) => setPassword(event.target.value)}
               
               
-            /> */}
+            />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
