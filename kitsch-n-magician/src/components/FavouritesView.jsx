@@ -25,6 +25,7 @@ import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import FavouritesListItem from './FavouritesListItem'
 
+
 const drawerWidth = 240;
 
 
@@ -165,12 +166,18 @@ const handleSubmit = event => {
         alignItems: 'stretch',
         height: '90%'
         }}> 
-        
-        <InputWithIcon
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          value={newIngredient}
-        />
+
+        <Box sx={{ flexGrow: 0, 
+          width: 239, 
+          height: '3.5em', 
+          color: "#FFFFFF",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '1.2em'}} bgcolor= '#18588c'>
+          <header> My Saved Recipes</header>
+        </Box>
+
         <List>
           <Drawer
             sx={{
@@ -181,7 +188,7 @@ const handleSubmit = event => {
                 mt: '8em',
 
                 boxSizing: 'border-box',
-                maxHeight: '58%'
+                maxHeight: '90%'
               }
             }}
             variant="permanent"
@@ -195,18 +202,7 @@ const handleSubmit = event => {
         
         </Box>
 
-        <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            zIndex:200
-          }}>
-            <SearchButton
-            onClick={UseRecipePrimarySearch}
-            sx={{ zIndex: 9000 }}
-            />
-          </Box>
+
         {/* END OF INGREDIENT LIST */}
         <Divider />
 
