@@ -18,7 +18,7 @@ import {faBurger, faHatWizard, faWandMagicSparkles} from '@fortawesome/free-soli
 const pages = ['My Recipes', 'Matcher'];
 const settings = ['Register', 'Login', 'Logout'];
 
-function Navbar() {
+function Navbar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -116,7 +116,7 @@ function Navbar() {
               }}
             >
 
-                <MenuItem  onClick={handleCloseNavMenu}>
+                <MenuItem  onClick={props.onSwitch}>
                   <Typography textAlign="center">My Recipes</Typography>
                   
                 </MenuItem>
