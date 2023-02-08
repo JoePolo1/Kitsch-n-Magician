@@ -1,10 +1,9 @@
 // load .env data into process.env
 require('dotenv').config();
 const getFavRecipes = require('./db/queries/favouriteRecipes')
-import useToken from '../../kitsch-n-magician/src/hooks/useToken'
-
 const express = require('express');
 const cors = require('cors')
+
 
 // Web server config
 const sassMiddleware = require('./lib/sass-middleware');
@@ -88,6 +87,10 @@ app.use('/login', (req, res) => {
   res.send({
     token: "thisIsAUserToken"
   });
+})
+
+app.post('/myrecipes', async (req, res) => {
+  res.send(await getFavRecipes(req.body.userId))
 })
 
 
