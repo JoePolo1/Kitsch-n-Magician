@@ -756,3 +756,13 @@ export function urlconverter (array) {
   })
   return withoutSpaces.join(",+");
 }
+
+export function getSelectedRecipe (recipeFavs, recipeTitle) {
+  let recipeObj;
+  for (let recipe of recipeFavs) {
+    if (recipeTitle === recipe.title) {
+      return recipe
+    }
+  }
+}
+

@@ -25,14 +25,14 @@ export default function IngredientListItem(props) {
   //   )  })
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}         onClick={props.onClick}>
       <List component="nav" >
         <ListItemButton 
         >
           <ListItemIcon>
           <FontAwesomeIcon icon={faBook} />
           </ListItemIcon>
-          <ListItemText primary={props.title} />
+          <ListItemText primary={props.title}  />
           <FontAwesomeIcon icon={faTrashCan} color= "#545B85" opacity="0.4" />
         </ListItemButton>
       </List>

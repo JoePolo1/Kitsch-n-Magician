@@ -26,6 +26,7 @@ import axios from 'axios';
 import FavouritesListItem from './FavouritesListItem'
 import { faSignalPerfect } from '@fortawesome/free-solid-svg-icons';
 import useToken from '../hooks/useToken'
+import {getSelectedRecipe} from '../helpers/selectors';
 
 
 const drawerWidth = 240;
@@ -35,7 +36,7 @@ const drawerWidth = 240;
 export default function FavouritesView() {
 
   const [recipeFavs, setRecipeFavs] = useState(null);
-
+  const [selectedrecipe, setSelectedrecipe] = useState(null);
 
   const getToken = useToken().getToken()
 
@@ -74,17 +75,38 @@ export default function FavouritesView() {
 
   console.log("data inside fav component is", recipeFavs)
 
+
   let recipeFavsList;
 
   if (recipeFavs !== null) {
+
     recipeFavsList = recipeFavs.map(favs => {
+      const onClick = (event) => {
+        event.preventDefault()
+        setSelectedrecipe(getSelectedRecipe(recipeFavs, favs.title))
+        console.log(selectedrecipe);
+      }
+
       return (
         <FavouritesListItem
           title={favs.title}
+          onClick={onClick}
         />
       )
     })
   }
+
+
+  const favouritesCard = () => {
+    return (
+    <FavouritesCard 
+      
+    />
+  )}
+
+  // const selectedRecipeCard = () => {
+  //   <FavourtiesCard 
+      
   // const recipeFavsList = recipeFavs.map(favs => {
   //   return (
   //     <FavouritesListItem
