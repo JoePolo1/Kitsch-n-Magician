@@ -27,6 +27,7 @@ import FavouritesListItem from './FavouritesListItem'
 import { faSignalPerfect } from '@fortawesome/free-solid-svg-icons';
 import useToken from '../hooks/useToken'
 import {getSelectedRecipe} from '../helpers/selectors';
+import FavouritesCard from './FavouritesCard';
 
 
 const drawerWidth = 240;
@@ -100,7 +101,15 @@ export default function FavouritesView() {
   const favouritesCard = () => {
     return (
     <FavouritesCard 
-      
+      title={selectedrecipe.title}
+      spoonacularSourceUrl={selectedrecipe.spoon_url}
+      image={selectedrecipe.image}
+      ready_in_minutes={selectedrecipe.ready_in_minutes}
+      vegetarian={selectedrecipe.vegetarian}
+      summary={selectedrecipe.summary}
+      dairy_free={selectedrecipe.dairy_free}
+      gluten_free={selectedrecipe.gluten_free}
+      vegan={selectedrecipe.vegan}
     />
   )}
 
@@ -245,7 +254,7 @@ export default function FavouritesView() {
           
           <Toolbar />
   
-          {/* {favouritesList} */}
+          {favouritesCard()}
   
   
         </Box>
