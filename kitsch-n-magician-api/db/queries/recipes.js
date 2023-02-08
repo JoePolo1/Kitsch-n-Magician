@@ -15,4 +15,6 @@ const getRecipeWithIngredients = () => {
   LEFT JOIN ingredients ON ingredients.id = ingredient_id` )
 }
 
+
+
 module.exports = { getRecipes, getRecipeWithIngredients };

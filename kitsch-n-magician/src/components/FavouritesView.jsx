@@ -24,6 +24,7 @@ import { useEffect } from 'react';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import FavouritesListItem from './FavouritesListItem'
+import { faSignalPerfect } from '@fortawesome/free-solid-svg-icons';
 
 
 const drawerWidth = 240;
@@ -32,92 +33,37 @@ const drawerWidth = 240;
 
 export default function FavouritesView() {
 
-// let ingredientsArr = ["bread", "eggs", "salt"]; 
-
-const [ingredients, setIngredients] = useState([]);
-const [newIngredient, setNewIngredient] = useState('');
-const [recipeId, setRecipeId] = useState();
-const [recipes, setRecipes] = useState([]);
-const [favourites, setFavourites] = useState([]);
+const displayFavs = () => {
+  axios.get("http://localhost:3001/myrecipes").then((response) => {
+    // useToken().setToken(response.data.rows[0].id)
+    console.log('myrecipes data ', response.data);
+    // console.log('session id is ', sessionId)
+    // req.session.userId = sessionId
+    
+  })
+}
 
 
 // Function that passes in the ingredient list state to a URL encoded string
-const UseRecipePrimarySearch = function () {
-  
-  const ingredientUrl = urlconverter(ingredients);
-  const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
-
-
-    axios.get(url)
-      .then((all) => {
-        console.log(all)
-        console.log("Find recipe ID is ", findRecipeId(all.data))
-        return findRecipeId(all.data)
-      })
-      .then((recipeId) => {
-        let promiseArr = [];
-        for (let x of recipeId) {
-          console.log("X is ", x)
-          promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`))
-        }
-        Promise.all(promiseArr)
-
-        .then((all) => {
-          console.log("then ALL is ", all);
-          for (let food of all) {
-            setRecipes(recipes => ([
-              ...recipes,
-              {
-              title: food.data.title,
-              readyInMinutes: food.data.readyInMinutes,
-              image: food.data.image,
-              spoonacularSourceUrl: food.data.spoonacularSourceUrl,
-              servings: food.data.servings,
-              summary: food.data.summary
-            }
-            ]))
-          }
-        })
-      })
-}
-
-
-const favouritesList = favourites.map(recipe => {
-  return (
-    <FavouritesListItem 
-    title = {recipe.title}
-    />
-  )
-})
-
-const handleChange = event => {
-  setNewIngredient(event.target.value);
-};
-
-const handleSubmit = event => {
-  event.preventDefault()
-  setIngredients([newIngredient.trim(), ...ingredients])
-  setNewIngredient('')
-}
 
 
 
     // This function maps the details of a recipe and puts them in a recipe card
-    const recipeItemList = recipes.map(item =>  {
+    // const recipeItemList = recipes.map(item =>  {
       
-      return (
-        <RecipeCard 
-            title={item.title}
-            readyInMinutes={item.readyInMinutes}
-            image={item.image}
-            spoonacularSourceUrl={item.spoonacularSourceUrl}
-            servings={item.servings}
-            summary={item.summary}
-        />
-      )
+    //   return (
+    //     <RecipeCard 
+    //         title={item.title}
+    //         readyInMinutes={item.readyInMinutes}
+    //         image={item.image}
+    //         spoonacularSourceUrl={item.spoonacularSourceUrl}
+    //         servings={item.servings}
+    //         summary={item.summary}
+    //     />
+    //   )
       
-    })
-    console.log("recipe item list is ", recipeItemList)
+    // })
+   
 
 
 
@@ -196,7 +142,7 @@ const handleSubmit = event => {
             anchor="left"
           >
                                     
-                              {favouritesList}
+                              {/* {favouritesList} */}
         </Drawer>
         
         </List>
@@ -221,8 +167,7 @@ const handleSubmit = event => {
         
         <Toolbar />
 
-        {favouritesList}
-        {recipeItemList.length === 1 ? null : recipeItemList}
+        {/* {favouritesList} */}
 
 
       </Box>

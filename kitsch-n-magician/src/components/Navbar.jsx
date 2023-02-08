@@ -12,8 +12,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBurger, faHatWizard, faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
+import useToken from '../hooks/useToken'
+
 
 const pages = ['My Recipes', 'Matcher'];
 const settings = ['Register', 'Login', 'Logout'];
@@ -36,6 +39,19 @@ function Navbar(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const getToken = useToken().getToken()
+  const displayFavs = () => {
+    axios.post("/myrecipes", (req, res) => {
+      // useToken().setToken(response.data.rows[0].id)
+      res.send(getToken)
+  
+      // console.log('session id is ', sessionId)
+      // req.session.userId = sessionId
+    })
+  }
+
+
 
   return (
     <AppBar position="fixed" >
@@ -147,7 +163,7 @@ function Navbar(props) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
             
               <Button
-                onClick={props.switchFavourites}
+                onClick={displayFavs}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 My Recipes
