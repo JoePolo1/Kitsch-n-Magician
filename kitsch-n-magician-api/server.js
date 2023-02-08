@@ -1,6 +1,8 @@
 // load .env data into process.env
 require('dotenv').config();
-const getFavRecipes = require('./db/queries/favouriteRecipes')
+const getFavRecipes = require('./db/queries/favouriteRecipes');
+const { addFavouriteRecipes, addFavouriteTable } = require('./db/queries/favouriteRecipes')
+const {addRecipes} = require('./db/queries/recipes')
 const express = require('express');
 const cors = require('cors')
 
@@ -57,6 +59,7 @@ app.use('/users', usersRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/test', (req, res) => {
+  addFavouriteRecipes("Vegan stuffed Zucchini Boats")
   console.log('hello sup')
   res.json({test: 'hello'});
 });
@@ -91,6 +94,10 @@ app.use('/login', (req, res) => {
 
 app.post('/myrecipes', async (req, res) => {
   res.send(await getFavRecipes(req.body.userId))
+})
+
+app.post('/myfavs', async (req, res) => {
+  res.send(await addRecipes())
 })
 
 

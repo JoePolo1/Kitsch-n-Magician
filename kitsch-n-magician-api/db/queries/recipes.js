@@ -16,5 +16,21 @@ const getRecipeWithIngredients = () => {
 }
 
 
+const addRecipes = (state) => {
 
-module.exports = { getRecipes, getRecipeWithIngredients };
+  return db.query(`
+  INSERT INTO recipes (title, ready_in_minutes, spoon_url, image, summary, vegetarian, vegan, gluten_free, dairy_free )
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 ) `,
+[
+state.title,
+state.ready_in_minutes,
+state.spoon_url,
+state.image,
+state.summary,
+state.vegetarian,
+state.vegan,
+state.gluten_free,
+state.dairy_free ])
+}
+
+module.exports = { getRecipes, getRecipeWithIngredients, addRecipes };
