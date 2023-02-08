@@ -17,6 +17,12 @@ export default function IngredientListItem(props) {
     setSelectedIndex(index);
   };
 
+  // const mappedTitles = props.response.map(title => {
+  //   return (
+  //     <FavouritesListItem 
+  //     name
+  //     /> 
+  //   )  })
 
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -26,7 +32,7 @@ export default function IngredientListItem(props) {
           <ListItemIcon>
           <FontAwesomeIcon icon={faTrashCan} />
           </ListItemIcon>
-          <ListItemText primary={props.name} />
+          <ListItemText primary={props.response} />
           <FontAwesomeIcon icon={faCube} color= "#545B85" opacity="0.4" />
         </ListItemButton>
       </List>

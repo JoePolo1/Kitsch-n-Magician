@@ -16,6 +16,9 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBurger, faHatWizard, faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
 import useToken from '../hooks/useToken'
+import FavouritesView from './FavouritesView';
+import FavouritesListItem from './FavouritesListItem';
+
 
 
 const pages = ['My Recipes', 'Matcher'];
@@ -41,14 +44,17 @@ function Navbar(props) {
   };
 
   const getToken = useToken().getToken()
+
+  
   const displayFavs = () => {
-    axios.post("/myrecipes", (req, res) => {
-      // useToken().setToken(response.data.rows[0].id)
-      res.send(getToken)
+    axios.post("/myrecipes", {
+
+      userId : getToken
+      // useToken().setToken(response.data.rows[0].id
   
       // console.log('session id is ', sessionId)
       // req.session.userId = sessionId
-    })
+    }).then ((response) => (response.data[0]))
   }
 
 
