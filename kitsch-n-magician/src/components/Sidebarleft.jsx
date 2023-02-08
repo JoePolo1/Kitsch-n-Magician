@@ -23,6 +23,7 @@ import SearchButton from './Button';
 import { useEffect } from 'react';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
+import useToken from '../hooks/useToken';
 
 
 
@@ -568,12 +569,13 @@ const [ingredients, setIngredients] = useState([]);
 const [newIngredient, setNewIngredient] = useState('');
 const [recipeId, setRecipeId] = useState();
 const [recipes, setRecipes] = useState([]);
-
+const getToken = useToken().getToken()
 
 // Function that passes in the ingredient list state to a URL encoded string
 const UseRecipePrimarySearch = function () {
   
   const ingredientUrl = urlconverter(ingredients);
+  console.log('get token is ', getToken)
   const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
 
 

@@ -12,8 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from "react"
-import Axios from "axios"
+import { useState } from "react";
+import Axios from "axios";
+import PropTypes from 'prop-types';
+import useToken from '../hooks/useToken';
 
 function Copyright(props) {
   return (
@@ -30,21 +32,26 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
 
+
+export default function SignIn(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-
   const [loginStatus, setLoginStatus] = useState("");
+  const setToken = useToken().setToken;
+  const getToken = useToken().getToken()
 
   const login = () => {
     Axios.post("http://localhost:3001/login", {
       username: username, 
       password: password,
     }).then((response) => {
-      // req.session.userId = response.email
-      console.log('response', response);
+      // useToken().setToken(response.data.rows[0].id)
+      setToken(response.data.rows[0].id)
+      console.log('token is ', getToken);
+      // console.log('session id is ', sessionId)
+      // req.session.userId = sessionId
+      
     })
   }
 
@@ -134,3 +141,7 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
+
+// Login.propTypes = {
+//   setToken: PropTypes.func.isRequired
+// }

@@ -1,4 +1,4 @@
-import  React, {Fragment} from "react";
+import  React, {Fragment, useState} from "react";
 import logo from './logo.svg';
 import './App.scss';
 import Navbar from './components/Navbar';
@@ -8,6 +8,7 @@ import useVisualMode from "./hooks/useVisualMode";
 import FavouritesView from "./components/FavouritesView";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import useToken from './hooks/useToken';
 
 const FAVOURITES = "FAVOURITES";
 const RECIPESEARCH = "RECIPESEARCH";
@@ -21,6 +22,9 @@ const MATCHER = "MATCHER";
 function App() {
   const { mode, transition, back } = useVisualMode(RECIPESEARCH)
 
+  // if (!token) {
+    
+  // }
 
   return (
     <div>
