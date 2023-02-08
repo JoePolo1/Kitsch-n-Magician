@@ -569,6 +569,7 @@ const [ingredients, setIngredients] = useState([]);
 const [newIngredient, setNewIngredient] = useState('');
 const [recipeId, setRecipeId] = useState();
 const [recipes, setRecipes] = useState([]);
+const [favouriteTarget, setFavouriteTarget] = useState()
 const getToken = useToken().getToken()
 
 // Function that passes in the ingredient list state to a URL encoded string
@@ -599,6 +600,7 @@ const UseRecipePrimarySearch = function () {
             setRecipes(recipes => ([
               ...recipes,
               {
+
               title: food.data.title,
               readyInMinutes: food.data.readyInMinutes,
               image: food.data.image,
@@ -644,6 +646,7 @@ const handleSubmit = event => {
             spoonacularSourceUrl={item.spoonacularSourceUrl}
             servings={item.servings}
             summary={item.summary}
+            onClick={console.log(item.title)}
         />
       )
       
