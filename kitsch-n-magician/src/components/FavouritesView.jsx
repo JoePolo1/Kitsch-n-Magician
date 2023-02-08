@@ -34,7 +34,7 @@ const drawerWidth = 240;
 
 export default function FavouritesView() {
 
-  const [data, setData] = useState(null);
+  const [recipeFavs, setRecipeFavs] = useState(null);
 
 
   const getToken = useToken().getToken()
@@ -68,11 +68,31 @@ export default function FavouritesView() {
   useEffect(() => {
     (async () => {
       const result = await displayFavs();
-      setData(result);
+      setRecipeFavs(result);
     })();
   }, []);
 
-  console.log("data inside fav component is", data)
+  console.log("data inside fav component is", recipeFavs)
+
+  let recipeFavsList;
+
+  if (recipeFavs !== null) {
+    recipeFavsList = recipeFavs.map(favs => {
+      return (
+        <FavouritesListItem
+          title={favs.title}
+        />
+      )
+    })
+  }
+  // const recipeFavsList = recipeFavs.map(favs => {
+  //   return (
+  //     <FavouritesListItem
+  //       title={favs.title}
+  //     />
+  //   )
+  // })
+
 
 
 
@@ -103,7 +123,7 @@ export default function FavouritesView() {
 //  Sidebar lower rendering
   return (
     <div>
-    {data !== null ? (
+    {recipeFavs!== null ? (
       <Box sx={{ 
         display: 'flex'
         }}>
@@ -176,8 +196,8 @@ export default function FavouritesView() {
               variant="permanent"
               anchor="left"
             >
-            {data[0].title}  
-            {data[1].title}              
+            {recipeFavsList}  
+               
                                 {/* {favouritesList} */}
           </Drawer>
           
