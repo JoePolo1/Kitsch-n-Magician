@@ -11,4 +11,15 @@ VALUES
   TRUE,
   true,
   true,
-  true );
+  true ),
+  (
+    'Roasted butterflied chicken with onions and carrots',
+    45,
+    'https://spoonacular.com/roasted-butterflied-chicken-w-onions-carrots-716427',
+    'https://spoonacular.com/recipeImages/716427-556x370.jpg',
+    'Roasted Butterflied Chicken w. Onions & Carrots might be a good recipe to expand your main course recipe box. Watching your figure? This gluten free, whole 30, and ketogenic recipe has 639 calories, 42g of protein, and 47g of fat per serving. This recipe serves 4. For $2.45 per serving, this recipe covers 26% of your daily requirements of vitamins and minerals. 73 people have made this recipe and would make it again. From preparation to the plate, this recipe takes roughly 45 minutes. This recipe from fullbellysisters.blogspot.com requires carrots, onions, ghee, and ghee. Overall, this recipe earns an excellent spoonacular score of 89%. Similar recipes are Roasted Chicken Breasts With Carrots And Onions, Garlic-Herb Roasted Chicken with Potatoes, Carrots, and Onions, and Garlic-Herb Roasted Chicken with Potatoes, Carrots, and Onions.',
+    false,
+    false,
+    true,
+    false
+  );

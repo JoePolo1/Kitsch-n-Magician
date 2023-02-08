@@ -5,8 +5,10 @@ const axios = require('axios')
 const getFavRecipes = (userId) => {
   console.log('userId', userId)
     return db.query(`
-    SELECT * FROM recipes
-    WHERE recipes.id = (SELECT recipe_id FROM favourite_recipes WHERE user_id = $1)
+    Select recipes.* FROM recipes
+    JOIN favourite_recipes ON recipe_id = recipes.id
+    JOIN USERS ON user_id = users.id
+    WHERE favourite_recipes.user_id = $1
     `, [userId])
     .then(data => {
       console.log("data rows from getFavs", data.rows)
