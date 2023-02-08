@@ -45,22 +45,6 @@ function Navbar(props) {
 
   const getToken = useToken().getToken()
 
-  
-  const displayFavs = () => {
-    axios.post("/myrecipes", {
-
-      userId : getToken
-      // useToken().setToken(response.data.rows[0].id
-  
-      // console.log('session id is ', sessionId)
-      // req.session.userId = sessionId
-    })
-    .then ((response) => {return response.data[0]})
-    .catch((err) => {return err})
-  }
-
-
-
   return (
     <AppBar position="fixed" >
       <Box  bgcolor= '#154c79'  >

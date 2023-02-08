@@ -1,7 +1,7 @@
 INSERT INTO ingredients (name)
 VALUES
-  ('Zucchini'), 
-  ('Bell Pepper'), 
+  ('Zucchini'),
+  ('Bell Pepper'),
   ('Garlic'),
   ('Olive oil'),
   ('Potato'),
@@ -9,6 +9,13 @@ VALUES
   ('salt'),
   ('thyme'),
   ('tomato'),
-  ('vegan cheese');
+  ('vegan cheese'),
+  ('carrots'),
+  ('chicken'),
+  ('ghee'),
+  ('coconut oil'),
+  ('herbes de provence'),
+  ('pepper'),
+  ('sea salt');
 
 
