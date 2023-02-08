@@ -54,7 +54,9 @@ function Navbar(props) {
   
       // console.log('session id is ', sessionId)
       // req.session.userId = sessionId
-    }).then ((response) => (response.data[0]))
+    })
+    .then ((response) => {return response.data[0]})
+    .catch((err) => {return err})
   }
 
 
@@ -169,7 +171,7 @@ function Navbar(props) {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
             
               <Button
-                onClick={displayFavs}
+                onClick={props.switchFavourites}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 My Recipes
