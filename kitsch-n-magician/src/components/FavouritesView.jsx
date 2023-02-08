@@ -254,7 +254,7 @@ export default function FavouritesView() {
           
           <Toolbar />
   
-          {favouritesCard()}
+          {selectedrecipe !== null && favouritesCard()}
   
   
         </Box>
