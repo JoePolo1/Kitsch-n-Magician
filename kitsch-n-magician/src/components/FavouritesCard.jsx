@@ -80,6 +80,10 @@ export default function FavouritesCard(props) {
       flexDirection: 'row',
       justifyContent: 'space-between'
     }}>
+      <Box sx={{
+        display: 'flex',
+        flexDirection: 'column'
+      }}>
         <CardMedia
           component="img"
           image={props.image}
@@ -94,14 +98,23 @@ export default function FavouritesCard(props) {
             pl: "16px"
           }}
         />
-
+        <Divider sx={{pt:'0.5em', mb: '0.5em'}}></Divider>
+        <Box sx={{
+            display:'flex',
+            flexDirection:'row',
+            fontSize: 'small',
+            pl: "16px"
+          }}>
+            {props.vegetarian ? <VegetarianIcon /> : <NotVegetarianIcon /> } 
+            {props.vegan ? <VeganIcon /> : <NotVegan />}
+            {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
+            {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+          </Box>
+        </Box>
         <CardContent sx={{maxWidth:1000}}>
           
           <div dangerouslySetInnerHTML={{ __html: props.summary }} />
-          {props.vegetarian ? <VegetarianIcon /> : <NotVegetarianIcon /> } 
-          {props.vegan ? <VeganIcon /> : <NotVegan />}
-          {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
-          {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+          
           </CardContent>
 
       
