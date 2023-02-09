@@ -228,7 +228,7 @@ export default function FavouritesView() {
               anchor="left"
             >
             {recipeFavsList}  
-               
+
                                 {/* {favouritesList} */}
           </Drawer>
           
@@ -247,7 +247,11 @@ export default function FavouritesView() {
         
         <Box
           component="main"
-          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3,
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column'
+          }}
         >
   
           {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
