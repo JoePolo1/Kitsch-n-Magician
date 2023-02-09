@@ -141,7 +141,6 @@ app.post('/mypantry', (req, res) => {
 
   res.send(result)
  })
-
 })
 
 app.post('/deleteFav', (req, res) => {
