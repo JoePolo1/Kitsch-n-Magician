@@ -152,6 +152,12 @@ function Navbar(props) {
               >
                 Matcher
               </Button>
+              <Button
+                onClick={props.switchPantry}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Pantry
+              </Button>
 
           </Box>
 
