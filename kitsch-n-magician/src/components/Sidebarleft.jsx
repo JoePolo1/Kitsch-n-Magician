@@ -578,8 +578,7 @@ const UseRecipePrimarySearch = function () {
   const ingredientUrl = urlconverter(ingredients);
   console.log('get token is ', getToken)
   const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
-
-
+  
     axios.get(url)
       .then((all) => {
         console.log(all)
@@ -615,6 +614,7 @@ const UseRecipePrimarySearch = function () {
           }
         })
       })
+
 }
 
 
@@ -633,6 +633,16 @@ const handleChange = event => {
 const handleSubmit = event => {
   event.preventDefault()
   setIngredients([newIngredient.trim(), ...ingredients])
+  axios.post('/myingredients', {
+    userId: getToken,
+    ingredient: newIngredient
+  })
+  .then((response) => {
+    return response
+  })
+  .catch((error) => {
+    return error
+  })
   setNewIngredient('')
 }
 
