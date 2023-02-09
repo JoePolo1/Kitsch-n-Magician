@@ -1,6 +1,7 @@
 // load .env data into process.env
 require('dotenv').config();
 const getFavRecipes = require('./db/queries/favouriteRecipes');
+const addIngredientsByUser = require('./db/queries/addFavouriteRecipes')
 const {addRecipes} = require('./db/queries/recipes')
 const addFavouriteRecipes  = require('./db/queries/addFavouriteRecipes')
 const addFavouriteTable  = require('./db/queries/addFavouriteTable')
@@ -119,6 +120,9 @@ app.post('/myfavs', (req, res) => {
   }); // for AddRecepies Code closes here.
 }); //app.post
 
+app.post('/myingredients', (req, res) => {
+  addIngredientsByUser(req.body.userId, req.body.ingredients)
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

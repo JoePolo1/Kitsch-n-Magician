@@ -615,6 +615,13 @@ const UseRecipePrimarySearch = function () {
           }
         })
       })
+      // const response = await axios.post("/myrecipes", {
+      //   userId: getToken
+      // });
+      axios.post('/myingredients', {
+        userId: getToken,
+        ingredients: ingredients
+      })
 }
 
 

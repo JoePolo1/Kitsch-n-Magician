@@ -9,13 +9,14 @@ const addFavouriteRecipes = (title) => {
      [title]
   )
   .then((data) =>{
-    console.log("we are in the",  data.rows[0].id);
+    // console.log("we are in the",  data.rows[0].id);
     return new Promise((resolve, reject)=>{
       resolve(data.rows[0].id);
     })
   })
   // .then(data => {return data.rows[0].id})
 }
+
 
 
   module.exports = addFavouriteRecipes

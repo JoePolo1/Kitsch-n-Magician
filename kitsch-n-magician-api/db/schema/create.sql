@@ -77,3 +77,9 @@
       household_id INTEGER REFERENCES households(id) ON DELETE CASCADE,
       matched_recipe_id INTEGER REFERENCES matched_recipes(id) ON DELETE CASCADE
     );
+
+    CREATE TABLE users_ingredients (
+      id SERIAL PRIMARY KEY NOT NULL,
+      user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+      ingredient_id INTEGER REFERENCES ingredients(id) ON DELETE CASCADE
+    );
