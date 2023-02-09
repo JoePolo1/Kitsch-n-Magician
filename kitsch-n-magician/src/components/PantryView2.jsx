@@ -102,9 +102,30 @@ const handleChange = event => {
 
 const handleSubmit = event => {
   event.preventDefault()
-  setIngredients([newIngredient.trim(), ...ingredients])
+  console.log("new ingredient", newIngredient)
+  // setIngredients([newIngredient.trim(), ...ingredients])
+  axios.post('/myingredients', {
+    userId: getToken,
+    ingredient: newIngredient
+  })
+  
+  .then((response) => {
+    return response
+  })
+  .catch((error) => {
+    return error
+  })
   setNewIngredient('')
+  
 }
+
+
+useEffect(() => {
+  (async () => {
+    const result = await handleSubmit();
+    displayPantry()
+  })()
+}, [ingredients])
 
     // This function maps the details of a recipe and puts them in a recipe card
     

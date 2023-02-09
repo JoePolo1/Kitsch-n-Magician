@@ -131,6 +131,7 @@ app.post('/myingredients', (req, res) => {
   addIngredient(req.body.ingredient)
   .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
   .then(() => res.send("add was successfull"))
+
 })
 
 app.post('/mypantry', (req, res) => {
