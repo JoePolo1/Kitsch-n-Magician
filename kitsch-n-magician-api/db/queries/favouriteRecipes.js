@@ -17,24 +17,8 @@ const getFavRecipes = (userId) => {
   }
 
 
-  const addFavouriteRecipes = (title) => {
-
-    return db.query(
-      `SELECT recipes.id
-       FROM recipes
-       WHERE recipes.title LIKE $1`,
-       [title]
-    ).then(data => {return data.rows[0].id})
-    }
 
 
-    const addFavouriteTable = (user_id, recipe_id) => {
-      return db.query(
-        `INSERT INTO favourite_recipes (user_id, recipe_id)
-        VALUES($1, $2)`,
-        [user_id, recipe_id]
-      )
-    }
 
-module.exports = {getFavRecipes, addFavouriteRecipes, addFavouriteTable} ;
+module.exports = getFavRecipes
 
