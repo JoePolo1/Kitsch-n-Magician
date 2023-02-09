@@ -9,6 +9,7 @@ import FavouritesView from "./components/FavouritesView";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import useToken from './hooks/useToken';
+import MatcherView from "./components/MatcherView";
 
 const FAVOURITES = "FAVOURITES";
 const RECIPESEARCH = "RECIPESEARCH";
@@ -35,6 +36,7 @@ function App() {
       switchLogin={() => transition(LOGIN)} 
       switchLogout={() => transition(LOGOUT)} 
       switchRegister={() => transition(REGISTER)}
+      switchMatcher={() => transition(MATCHER)}
       />
       <Fragment>
       {mode === RECIPESEARCH && <Sidebarleft />}
@@ -42,6 +44,7 @@ function App() {
       {mode === REGISTER && <Register />}
       {mode === LOGIN && <Login />}
       {mode === LOGOUT && <Sidebarleft />}
+      {mode === MATCHER && <MatcherView />}
 
       </Fragment>
     </div>

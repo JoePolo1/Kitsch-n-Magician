@@ -1,6 +1,6 @@
 INSERT INTO households (name)
 VALUES
-  ('Address One'),
+  ('The Kitchen'),
   ('Address Two'),
   ('Hoss Kitchen'),
   ('Tyler Kitchen'),

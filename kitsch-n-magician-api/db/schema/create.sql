@@ -52,7 +52,8 @@
     CREATE TABLE kitchen_items (
       id SERIAL PRIMARY KEY NOT NULL,
       user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-      ingredient_id INTEGER REFERENCES ingredients(id) ON DELETE CASCADE
+      ingredient_id INTEGER REFERENCES ingredients(id) ON DELETE CASCADE,
+      household_id INTEGER REFERENCES households(id) ON DELETE CASCADE
     );
 
     CREATE TABLE favourite_recipes (

@@ -124,10 +124,10 @@ function Navbar(props) {
               }}
             >
 
-                <MenuItem onClick={props.switch} >
+                <MenuItem onClick={props.switchFavourites} >
                   <Typography textAlign="center"  >My Recipes</Typography>
                 </MenuItem>
-                <MenuItem  onClick={handleCloseNavMenu}>
+                <MenuItem  onClick={props.switchMatcher}>
                   <Typography textAlign="center">Matcher</Typography>
                   
                 </MenuItem>
