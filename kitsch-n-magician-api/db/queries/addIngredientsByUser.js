@@ -1,14 +1,11 @@
 const db = require('../connection');
 
-const addIngredientsByUser = (userId, ingredients) => {
-  for (const ingredient of ingredients) {
-    const query = "INSERT INTO users_ingredients (user_id, ingredient_id) VALUES ($1, $2)"
+const addIngredientsByUser = (userId, ingredient) => {
+    const query = `INSERT INTO kitchen_items (user_id, ingredient_id, household_id)
+    VALUES ($1, $2, (SELECT household_id FROM users WHERE users.id = $1))`
     const values = [userId, ingredient]
-    db.query(query, values, (err) => {
-      if (err) {
-        console.error(err);
-      }
-    });
-}}
+    return db.query(query, values)
+    .catch((error) => {console.log(error)})
+}
 
 module.exports = addIngredientsByUser

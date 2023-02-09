@@ -4,7 +4,8 @@ const getFavRecipes = require('./db/queries/favouriteRecipes');
 const {addRecipes} = require('./db/queries/recipes')
 const addFavouriteRecipes  = require('./db/queries/addFavouriteRecipes')
 const addFavouriteTable  = require('./db/queries/addFavouriteTable')
-const addIngredientsByUser = require('./db/queries/addFavouriteRecipes')
+const addIngredientsByUser = require('./db/queries/addIngredientsByUser')
+const addIngredient = require('./db/queries/addIngredient')
 const express = require('express');
 const cors = require('cors')
 
@@ -121,7 +122,10 @@ app.post('/myfavs', (req, res) => {
 }); //app.post
 
 app.post('/myingredients', (req, res) => {
-  addIngredientsByUser(req.body.userId, req.body.ingredients)
+  console.log(req.body);
+  addIngredient(req.body.ingredient)
+  .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
+  .then(() => res.send("add was successfull"))
 })
 
 app.listen(PORT, () => {
