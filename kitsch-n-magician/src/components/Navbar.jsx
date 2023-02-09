@@ -59,20 +59,6 @@ function Navbar(props) {
               fontSize= '21'
               bounce
             />
-            <FontAwesomeIcon 
-              icon={faHatWizard}
-              color='#59A3D9'
-              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-              fontSize= '21'
-              bounce
-            />
-            <FontAwesomeIcon 
-              icon={faWandMagicSparkles}
-              color='#B9C2F9'
-              x={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-              fontSize= '21'
-              bounce
-            />
           </Box>
           <Typography
             variant="h6"
