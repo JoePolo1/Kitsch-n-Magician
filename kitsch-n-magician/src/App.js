@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import useToken from './hooks/useToken';
 import MatcherView from "./components/MatcherView";
+import PantryView from "./components/PantryView";
 
 const FAVOURITES = "FAVOURITES";
 const RECIPESEARCH = "RECIPESEARCH";
@@ -17,6 +18,7 @@ const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const REGISTER = "REGISTER";
 const MATCHER = "MATCHER";
+const PANTRY = "PANTRY"
 
 
 
@@ -37,6 +39,7 @@ function App() {
       switchLogout={() => transition(LOGOUT)} 
       switchRegister={() => transition(REGISTER)}
       switchMatcher={() => transition(MATCHER)}
+      switchPantry={() => transition(PANTRY)}
       />
       <Fragment>
       {mode === RECIPESEARCH && <Sidebarleft />}
@@ -45,6 +48,7 @@ function App() {
       {mode === LOGIN && <Login />}
       {mode === LOGOUT && <Sidebarleft />}
       {mode === MATCHER && <MatcherView />}
+      {mode === PANTRY && <PantryView />}
 
       </Fragment>
     </div>
