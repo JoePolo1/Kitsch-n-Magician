@@ -117,6 +117,10 @@ function Navbar(props) {
                   <Typography textAlign="center">Matcher</Typography>
                   
                 </MenuItem>
+                <MenuItem  onClick={props.switchPantry}>
+                  <Typography textAlign="center">Pantry</Typography>
+                  
+                </MenuItem>
 
             </Menu>
           </Box>
