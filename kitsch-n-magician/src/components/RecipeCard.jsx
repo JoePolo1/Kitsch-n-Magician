@@ -40,7 +40,7 @@ export default function RecipeCard(props) {
     setExpanded(!expanded);
   };
 
-  
+
   return (
     <Card sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
       
