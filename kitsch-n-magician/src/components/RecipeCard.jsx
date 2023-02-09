@@ -40,9 +40,6 @@ export default function RecipeCard(props) {
     setExpanded(!expanded);
   };
 
-  // const onClick = () => {
-  //   prevent
-  // }
 
   return (
     <Card sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
@@ -87,7 +84,7 @@ export default function RecipeCard(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-      <IconButton aria-label="add to favorites">
+      <IconButton aria-label="add to favorites" onClick={props.onClick}>
           <FavoriteIcon />Add to favourites
         </IconButton>
         

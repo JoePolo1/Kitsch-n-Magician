@@ -600,13 +600,16 @@ const UseRecipePrimarySearch = function () {
             setRecipes(recipes => ([
               ...recipes,
               {
-
               title: food.data.title,
-              readyInMinutes: food.data.readyInMinutes,
+              ready_in_minutes: food.data.readyInMinutes,
               image: food.data.image,
-              spoonacularSourceUrl: food.data.spoonacularSourceUrl,
+              spoon_url: food.data.spoonacularSourceUrl,
               servings: food.data.servings,
-              summary: food.data.summary
+              summary: food.data.summary,
+              vegetarian: food.data.vegetarian,
+              vegan: food.data.vegan,
+              gluten_free: food.data.glutenFree,
+              dairy_free: food.data.dairyFree
             }
             ]))
           }
@@ -635,18 +638,40 @@ const handleSubmit = event => {
 
 
 
+
+
     // This function maps the details of a recipe and puts them in a recipe card
     const recipeItemList = recipes.map(item =>  {
+      const onClick = (event) => {
+        event.preventDefault()
+        console.log(item)
+          try {
+            const response = axios.post("/myfavs", 
+              {items: {item},
+              userId: getToken}
+            );
+            console.log('response data is ', response)
+            return response.data;
+          } catch (err) {
+            return err;
+          }
+          
+
+      }
       
       return (
         <RecipeCard 
             title={item.title}
-            readyInMinutes={item.readyInMinutes}
+            ready_in_minutes={item.ready_in_minutes}
             image={item.image}
-            spoonacularSourceUrl={item.spoonacularSourceUrl}
+            spoon_url={item.spoon_url}
             servings={item.servings}
             summary={item.summary}
-            onClick={console.log(item.title)}
+            vegetarian={item.vegetarian}
+            vegan={item.vegan}
+            gluten_free={item.gluten_free}
+            dairy_free={item.dairy_free}
+            onClick={onClick}
         />
       )
       
