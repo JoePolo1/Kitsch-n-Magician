@@ -19,6 +19,14 @@ import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Box, Divider, Paper } from '@mui/material';
+import VegetarianIcon from './Icons/Vegetarian';
+import NotVegetarianIcon from './Icons/NotVegetarian';
+import VeganIcon from './Icons/Vegan';
+import GlutenFreeIcon from './Icons/GlutenFree';
+import NotGlutenFreeIcon from './Icons/NotGlutenFree';
+import DairyFreeIcon from './Icons/DairyFree';
+import NotDairyFreeIcon from './Icons/NotDairyFree';
+import NotVegan from './Icons/NotVegan';
 
 
 const ExpandMore = styled((props) => {
@@ -40,6 +48,8 @@ export default function FavouritesCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  console.log('props.vegetarian is: ', props.vegetarian)
 
   return (
     <>
@@ -88,11 +98,10 @@ export default function FavouritesCard(props) {
         <CardContent sx={{maxWidth:1000}}>
           
           <div dangerouslySetInnerHTML={{ __html: props.summary }} />
-          <div>Vegeterian: {props.vegeterian}</div>
-          <div>Vegan: {props.vegan}</div>
-          <div>Gluten Free: {props.gluten_free}</div>
-          <div>Dairy Free: {props.dairy_free}</div>
-            
+          {props.vegetarian ? <VegetarianIcon /> : <NotVegetarianIcon /> } 
+          {props.vegan ? <VeganIcon /> : <NotVegan />}
+          {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
+          {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
           </CardContent>
 
       
