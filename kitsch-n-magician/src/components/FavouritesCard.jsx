@@ -88,7 +88,7 @@ Ready in {props.ready_in_minutes} minutes
         </div>
       
 
-        <CardContent>
+        <CardContent sx={{maxWidth:1000}}>
           
         <div dangerouslySetInnerHTML={{ __html: props.summary }} />
         <div>Vegeterian: {props.vegeterian}</div>
