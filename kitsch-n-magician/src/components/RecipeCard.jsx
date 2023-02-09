@@ -42,7 +42,7 @@ export default function RecipeCard(props) {
 
 
   return (
-    <Card sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
+    <Card elevation='8' sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
       
       <CardHeader
           avatar={
