@@ -4,6 +4,7 @@ const getFavRecipes = require('./db/queries/favouriteRecipes');
 const {addRecipes} = require('./db/queries/recipes')
 const addFavouriteRecipes  = require('./db/queries/addFavouriteRecipes')
 const addFavouriteTable  = require('./db/queries/addFavouriteTable')
+const displayPantry = require('./db/queries/displayKitchenItems')
 const express = require('express');
 const cors = require('cors')
 
@@ -119,6 +120,14 @@ app.post('/myfavs', (req, res) => {
   }); // for AddRecepies Code closes here.
 }); //app.post
 
+app.post('/mypantry', (req, res) => {
+
+  displayPantry(req.body.userId)
+ .then((result) =>{
+  
+  res.send(result)
+ })
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
