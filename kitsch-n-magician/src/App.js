@@ -10,24 +10,20 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import useToken from './hooks/useToken';
 import MatcherView from "./components/MatcherView";
-import PantryView from "./components/PantryView";
+import PantryView2 from "./components/PantryView2";
 
 const FAVOURITES = "FAVOURITES";
 const RECIPESEARCH = "RECIPESEARCH";
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const REGISTER = "REGISTER";
-const MATCHER = "MATCHER";
 const PANTRY = "PANTRY"
+const MATCHER = "MATCHER";
 
 
 
 function App() {
   const { mode, transition, back } = useVisualMode(RECIPESEARCH)
-
-  // if (!token) {
-    
-  // }
 
 
 
@@ -48,7 +44,7 @@ function App() {
       {mode === LOGIN && <Login />}
       {mode === LOGOUT && <Sidebarleft />}
       {mode === MATCHER && <MatcherView />}
-      {mode === PANTRY && <PantryView />}
+      {mode === PANTRY && <PantryView2 />}
 
       </Fragment>
     </div>
