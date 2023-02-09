@@ -48,63 +48,57 @@ export default function FavouritesCard(props) {
     
       <Box sx={{
         display: 'flex',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         flexDirection: 'row',
-        pb: '0.5em'
+        pt: '.5em'
       }}>
 
-            <IconButton aria-label="title">
-          {props.title}
-        </IconButton>
+      <IconButton aria-label="title">
+        {props.title}
+      </IconButton>
         
 
-        
-
-
-
+      <IconButton aria-label="title">
+        Ready in {props.ready_in_minutes} minutes!
+      </IconButton>
           
-          
-        </Box>
+      </Box>
         
 
-        <div sx={{
+        <Box sx={{
       display: 'flex', 
       flexDirection: 'row',
-      alignItems: 'center',
       justifyContent: 'space-between'
     }}>
         <CardMedia
           component="img"
           image={props.image}
           alt={props.title}
-          sx={{maxWidth:1000,
-          maxHeight: 290,
-        display:"flex",
-        flexDirection: "row",
-        alignItems: 'center',
-      alignContent: 'center',
-      pb: '0.5em'}}
+          sx={{maxWidth:900,
+            maxHeight: 300,
+            display:"flex",
+            flexDirection: "row",
+            alignItems: 'center',
+            alignContent: 'center',
+            pt: "16px",
+            pl: "16px"
+          }}
         />
-
-<IconButton aria-label="title">
-
-Ready in {props.ready_in_minutes} minutes!
-        </IconButton>
-
-        
-        </div>
-      
 
         <CardContent sx={{maxWidth:1000}}>
           
-        <div dangerouslySetInnerHTML={{ __html: props.summary }} />
-        <div>Vegeterian: {props.vegeterian}</div>
-        <div>Vegan: {props.vegan}</div>
-        <div>Gluten Free: {props.gluten_free}</div>
-        <div>Dairy Free: {props.dairy_free}</div>
-          
-  
-        </CardContent>
+          <div dangerouslySetInnerHTML={{ __html: props.summary }} />
+          <div>Vegeterian: {props.vegeterian}</div>
+          <div>Vegan: {props.vegan}</div>
+          <div>Gluten Free: {props.gluten_free}</div>
+          <div>Dairy Free: {props.dairy_free}</div>
+            
+          </CardContent>
+
+      
+
+        
+        </Box>
 
 
     </Paper>
