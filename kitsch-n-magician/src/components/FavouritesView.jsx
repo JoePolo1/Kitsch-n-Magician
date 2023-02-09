@@ -40,6 +40,7 @@ export default function FavouritesView() {
   const [recipeFavs, setRecipeFavs] = useState(null);
   const [selectedrecipe, setSelectedrecipe] = useState(null);
 
+
   const getToken = useToken().getToken()
 
   const displayFavs = async () => {
@@ -73,11 +74,13 @@ export default function FavouritesView() {
         event.preventDefault()
         setSelectedrecipe(getSelectedRecipe(recipeFavs, favs.title))
         console.log(selectedrecipe);
+        console.log('Favs is ', favs)
       }
 
       return (
         <FavouritesListItem
           title={favs.title}
+          recipeId={favs.id}
           onClick={onClick}
         />
       )

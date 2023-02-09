@@ -4,7 +4,7 @@ const getFavRecipes = require('./db/queries/favouriteRecipes');
 const {addRecipes} = require('./db/queries/recipes')
 const addFavouriteRecipes  = require('./db/queries/addFavouriteRecipes')
 const addFavouriteTable  = require('./db/queries/addFavouriteTable')
-
+const deleteFavById = require('./db/queries/deleteFavById')
 const addIngredientsByUser = require('./db/queries/addIngredientsByUser')
 const addIngredient = require('./db/queries/addIngredient')
 
@@ -144,7 +144,14 @@ app.post('/mypantry', (req, res) => {
 
 })
 
+app.post('/deleteFav', (req, res) => {
+  deleteFavById(req.body.recipeId, req.body.userId)
+})
+
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
 
