@@ -145,6 +145,7 @@ app.post('/mypantry', (req, res) => {
 
 app.post('/deleteFav', (req, res) => {
   deleteFavById(req.body.recipeId, req.body.userId)
+  res.send("successful deletion.")
 })
 
 

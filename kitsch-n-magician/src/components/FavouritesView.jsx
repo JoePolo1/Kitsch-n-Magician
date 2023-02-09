@@ -74,7 +74,7 @@ export default function FavouritesView() {
         event.preventDefault()
         setSelectedrecipe(getSelectedRecipe(recipeFavs, favs.title))
         console.log(selectedrecipe);
-        console.log('Favs is ', favs)
+        console.log('recipeFavs state is ', recipeFavs)
       }
 
       return (
@@ -82,6 +82,8 @@ export default function FavouritesView() {
           title={favs.title}
           recipeId={favs.id}
           onClick={onClick}
+          setRecipeFavs={setRecipeFavs}
+          setSelectedrecipe={setSelectedrecipe}
         />
       )
     })

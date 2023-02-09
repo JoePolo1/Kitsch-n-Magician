@@ -107,8 +107,17 @@ export default function FavouritesCard(props) {
             pb:"7px"
           }}>
             {props.vegetarian ? <VegetarianIcon /> : <NotVegetarianIcon /> } 
+            <Box sx={{
+            pr: "5px"
+          }}></Box>
             {props.vegan ? <VeganIcon /> : <NotVegan />}
+            <Box sx={{
+            pr: "5px"
+          }}></Box>
             {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
+            <Box sx={{
+            pr: "5px"
+          }}></Box>
             {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
           </Box>
         </Box>
