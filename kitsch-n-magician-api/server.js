@@ -4,8 +4,12 @@ const getFavRecipes = require('./db/queries/favouriteRecipes');
 const {addRecipes} = require('./db/queries/recipes')
 const addFavouriteRecipes  = require('./db/queries/addFavouriteRecipes')
 const addFavouriteTable  = require('./db/queries/addFavouriteTable')
+
 const addIngredientsByUser = require('./db/queries/addIngredientsByUser')
 const addIngredient = require('./db/queries/addIngredient')
+
+const displayPantry = require('./db/queries/displayKitchenItems')
+
 const express = require('express');
 const cors = require('cors')
 
@@ -121,11 +125,21 @@ app.post('/myfavs', (req, res) => {
   }); // for AddRecepies Code closes here.
 }); //app.post
 
+
 app.post('/myingredients', (req, res) => {
   console.log(req.body);
   addIngredient(req.body.ingredient)
   .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
   .then(() => res.send("add was successfull"))
+
+app.post('/mypantry', (req, res) => {
+
+  displayPantry(req.body.userId)
+ .then((result) =>{
+  
+  res.send(result)
+ })
+
 })
 
 app.listen(PORT, () => {

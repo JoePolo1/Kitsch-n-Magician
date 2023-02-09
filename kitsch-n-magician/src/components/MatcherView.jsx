@@ -91,7 +91,7 @@ const UseRecipePrimarySearch = function () {
 const ingredientsList = ingredients.map(ingredient => {
   return (
     <IngredientListItem 
-    name = {ingredient}
+    name = {ingredient.name}
     />
   )
 })
@@ -106,47 +106,46 @@ const handleSubmit = event => {
   setNewIngredient('')
 }
 
-
-
-
-
     // This function maps the details of a recipe and puts them in a recipe card
-    const recipeItemList = recipes.map(item =>  {
-      const onClick = (event) => {
-        event.preventDefault()
-        console.log(item)
+    
+      const displayPantry = async () => {
+        
           try {
-            const response = axios.post("/myfavs", 
-              {items: {item},
-              userId: getToken}
+            const response = await axios.post("/mypantry", 
+              {userId: getToken}
             );
-            console.log('response data is ', response)
+            console.log('response is ', response)
             return response.data;
           } catch (err) {
             return err;
           }
-          
-
       }
+
+      useEffect(() => {
+        (async () => {
+          const result = await displayPantry();
+          setIngredients(result)
+        })()
+      }, [])
       
-      return (
-        <RecipeCard 
-            title={item.title}
-            ready_in_minutes={item.ready_in_minutes}
-            image={item.image}
-            spoon_url={item.spoon_url}
-            servings={item.servings}
-            summary={item.summary}
-            vegetarian={item.vegetarian}
-            vegan={item.vegan}
-            gluten_free={item.gluten_free}
-            dairy_free={item.dairy_free}
-            onClick={onClick}
-        />
-      )
+      // return (
+      //   <RecipeCard 
+      //       title={item.title}
+      //       ready_in_minutes={item.ready_in_minutes}
+      //       image={item.image}
+      //       spoon_url={item.spoon_url}
+      //       servings={item.servings}
+      //       summary={item.summary}
+      //       vegetarian={item.vegetarian}
+      //       vegan={item.vegan}
+      //       gluten_free={item.gluten_free}
+      //       dairy_free={item.dairy_free}
+      //       onClick={onClick}
+      //   />
+      // )
       
-    })
-    console.log("recipe item list is ", recipeItemList)
+
+   
 
 
 
@@ -256,7 +255,7 @@ const handleSubmit = event => {
         <Toolbar />
 
         
-        {recipeItemList.length === 1 ? null : recipeItemList}
+        {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
 
 
       </Box>

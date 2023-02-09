@@ -19,6 +19,14 @@ import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Box, Divider, Paper } from '@mui/material';
+import VegetarianIcon from './Icons/Vegetarian';
+import NotVegetarianIcon from './Icons/NotVegetarian';
+import VeganIcon from './Icons/Vegan';
+import GlutenFreeIcon from './Icons/GlutenFree';
+import NotGlutenFreeIcon from './Icons/NotGlutenFree';
+import DairyFreeIcon from './Icons/DairyFree';
+import NotDairyFreeIcon from './Icons/NotDairyFree';
+import NotVegan from './Icons/NotVegan';
 
 
 const ExpandMore = styled((props) => {
@@ -41,64 +49,65 @@ export default function FavouritesCard(props) {
     setExpanded(!expanded);
   };
 
+  console.log('props.vegetarian is: ', props.vegetarian)
+
   return (
     <>
+    <Box>
     <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
     
       <Box sx={{
         display: 'flex',
-        justifyContent: 'flex-start',
-        flexDirection: 'row'
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        pt: '.5em'
       }}>
 
-            <IconButton aria-label="title">
-          {props.title}
-        </IconButton>
-
+      <IconButton aria-label="title">
+        {props.title}
+      </IconButton>
         
 
-
-
+      <IconButton aria-label="title">
+        Ready in {props.ready_in_minutes} minutes!
+      </IconButton>
           
-          
-        </Box>
+      </Box>
+        
 
-        <div sx={{
+        <Box sx={{
       display: 'flex', 
       flexDirection: 'row',
-      alignItems: 'center',
       justifyContent: 'space-between'
     }}>
         <CardMedia
           component="img"
           image={props.image}
           alt={props.title}
-          sx={{maxWidth:1000,
-          maxHeight: 290,
-        display:"flex",
-        flexDirection: "row",
-        alignItems: 'center',
-      alignContent: 'center'}}
+          sx={{maxWidth:900,
+            maxHeight: 300,
+            display:"flex",
+            flexDirection: "row",
+            alignItems: 'center',
+            alignContent: 'center',
+            pt: "16px",
+            pl: "16px"
+          }}
         />
-
-<IconButton aria-label="title">
-Ready in {props.ready_in_minutes} minutes
-        </IconButton>
-
-        
-        </div>
-      
 
         <CardContent sx={{maxWidth:1000}}>
           
-        <div dangerouslySetInnerHTML={{ __html: props.summary }} />
-        <div>Vegeterian: {props.vegeterian}</div>
-        <div>Vegan: {props.vegan}</div>
-        <div>Gluten Free: {props.gluten_free}</div>
-        <div>Dairy Free: {props.dairy_free}</div>
-          
-  
-        </CardContent>
+          <div dangerouslySetInnerHTML={{ __html: props.summary }} />
+          {props.vegetarian ? <VegetarianIcon /> : <NotVegetarianIcon /> } 
+          {props.vegan ? <VeganIcon /> : <NotVegan />}
+          {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
+          {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+          </CardContent>
+
+      
+
+        
+        </Box>
 
 
     </Paper>
@@ -106,7 +115,7 @@ Ready in {props.ready_in_minutes} minutes
     <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
     View Recipe
     </Button>
-    
+    </Box>
     </>
   );
 }

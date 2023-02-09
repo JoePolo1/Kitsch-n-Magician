@@ -9,6 +9,8 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCube, faTrashCan, faBook } from '@fortawesome/free-solid-svg-icons';
+import { Button } from '@mui/material';
+import DeleteFavRecipeButton from './DeleteFavRecipeButton';
 
 export default function IngredientListItem(props) {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -32,8 +34,8 @@ export default function IngredientListItem(props) {
           <ListItemIcon sx={{ minWidth: 30}} >
           <FontAwesomeIcon icon={faBook} />
           </ListItemIcon>
-          <ListItemText primary={props.title}  />
-          <FontAwesomeIcon icon={faTrashCan} color= "#545B85" opacity="0.4" />
+            <ListItemText primary={props.title}  />
+              <DeleteFavRecipeButton />
         </ListItemButton>
       </List>
     </Box>
