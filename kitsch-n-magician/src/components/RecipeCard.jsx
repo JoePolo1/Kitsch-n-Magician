@@ -51,7 +51,7 @@ export default function RecipeCard(props) {
             </Avatar>
           }
           action={
-            <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
+            <Button variant="contained" href={props.spoon_url} target="_blank" >
             View Recipe
             </Button>
           }
