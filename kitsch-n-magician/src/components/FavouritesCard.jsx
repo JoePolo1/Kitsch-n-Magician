@@ -43,6 +43,7 @@ export default function FavouritesCard(props) {
 
   return (
     <>
+    <Box>
     <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
     
       <Box sx={{
@@ -87,7 +88,7 @@ export default function FavouritesCard(props) {
 
 <IconButton aria-label="title">
 
-Ready in {props.ready_in_minutes} minutes
+Ready in {props.ready_in_minutes} minutes!
         </IconButton>
 
         
@@ -111,7 +112,7 @@ Ready in {props.ready_in_minutes} minutes
     <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
     View Recipe
     </Button>
-    
+    </Box>
     </>
   );
 }
