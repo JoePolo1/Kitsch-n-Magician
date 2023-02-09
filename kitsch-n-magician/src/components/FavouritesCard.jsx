@@ -48,12 +48,14 @@ export default function FavouritesCard(props) {
       <Box sx={{
         display: 'flex',
         justifyContent: 'flex-start',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        pb: '0.5em'
       }}>
 
             <IconButton aria-label="title">
           {props.title}
         </IconButton>
+        
 
         
 
@@ -62,6 +64,7 @@ export default function FavouritesCard(props) {
           
           
         </Box>
+        
 
         <div sx={{
       display: 'flex', 
@@ -78,10 +81,12 @@ export default function FavouritesCard(props) {
         display:"flex",
         flexDirection: "row",
         alignItems: 'center',
-      alignContent: 'center'}}
+      alignContent: 'center',
+      pb: '0.5em'}}
         />
 
 <IconButton aria-label="title">
+
 Ready in {props.ready_in_minutes} minutes
         </IconButton>
 
