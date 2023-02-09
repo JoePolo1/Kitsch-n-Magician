@@ -36,6 +36,7 @@
       dairy_free BOOLEAN NOT NULL DEFAULT FALSE
     );
 
+
     CREATE TABLE ingredients (
       id SERIAL PRIMARY KEY NOT NULL,
       name VARCHAR(255) NOT NULL
@@ -59,6 +60,9 @@
       recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE,
       user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
+
+    -- ALTER TABLE favourite_recipes
+    -- ADD CONSTRAINT no_repitions UNIQUE (recipe_id, user_id);
 
     CREATE TABLE matched_recipes (
       id SERIAL PRIMARY KEY NOT NULL,

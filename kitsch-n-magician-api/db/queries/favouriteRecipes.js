@@ -5,7 +5,7 @@ const axios = require('axios')
 const getFavRecipes = (userId) => {
   console.log('userId', userId)
     return db.query(`
-    Select recipes.* FROM recipes
+    Select DISTINCT recipes.* FROM recipes
     JOIN favourite_recipes ON recipe_id = recipes.id
     JOIN USERS ON user_id = users.id
     WHERE favourite_recipes.user_id = $1
