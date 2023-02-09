@@ -18,7 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { Box, Divider } from '@mui/material';
+import { Box, Divider, Paper } from '@mui/material';
 
 
 const ExpandMore = styled((props) => {
@@ -43,7 +43,8 @@ export default function FavouritesCard(props) {
 
   return (
     <>
-    <Card sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
+    <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
+    
       <Box sx={{
         display: 'flex',
         justifyContent: 'flex-start',
@@ -73,7 +74,7 @@ export default function FavouritesCard(props) {
           image={props.image}
           alt={props.title}
           sx={{maxWidth:1000,
-          maxHeight: 700,
+          maxHeight: 290,
         display:"flex",
         flexDirection: "row",
         alignItems: 'center',
@@ -88,7 +89,7 @@ Ready in {props.ready_in_minutes} minutes
         </div>
       
 
-        <CardContent>
+        <CardContent sx={{maxWidth:1000}}>
           
         <div dangerouslySetInnerHTML={{ __html: props.summary }} />
         <div>Vegeterian: {props.vegeterian}</div>
@@ -99,11 +100,13 @@ Ready in {props.ready_in_minutes} minutes
   
         </CardContent>
 
-    </Card>
+
+    </Paper>
       
     <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
     View Recipe
     </Button>
+    
     </>
   );
 }
