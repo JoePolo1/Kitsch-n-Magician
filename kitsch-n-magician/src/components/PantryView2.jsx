@@ -32,7 +32,7 @@ import MatcherButton from './MatcherButton';
 const drawerWidth = 240;
 
 
-export default function PantryView() {
+export default function PantryView(props) {
 
 
 const [ingredients, setIngredients] = useState([]);
@@ -102,30 +102,29 @@ const handleChange = event => {
 
 const handleSubmit = event => {
   event.preventDefault()
-  console.log("new ingredient", newIngredient)
+  // console.log("new ingredient", newIngredient)
   // setIngredients([newIngredient.trim(), ...ingredients])
   axios.post('/myingredients', {
     userId: getToken,
     ingredient: newIngredient
-  })
-  
-  .then((response) => {
-    return response
+  }).then(() => {
+    console.log('newingredient', newIngredient)
+   setIngredients((prev) =>[{name : newIngredient}, ...prev])
+   setNewIngredient('')
   })
   .catch((error) => {
     return error
   })
-  setNewIngredient('')
-  
 }
 
 
-useEffect(() => {
-  (async () => {
-    const result = await handleSubmit();
-    displayPantry()
-  })()
-}, [ingredients])
+// useEffect(() => {
+//   (async () => {
+//     const result = await handleSubmit();
+//     displayPantry()
+    
+//   })()
+// }, [])
 
     // This function maps the details of a recipe and puts them in a recipe card
     

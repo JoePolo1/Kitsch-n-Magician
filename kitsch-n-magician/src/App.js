@@ -12,6 +12,7 @@ import useToken from './hooks/useToken';
 import MatcherView from "./components/MatcherView";
 import PantryView2 from "./components/PantryView2";
 
+
 const FAVOURITES = "FAVOURITES";
 const RECIPESEARCH = "RECIPESEARCH";
 const LOGIN = "LOGIN";
@@ -19,6 +20,8 @@ const LOGOUT = "LOGOUT";
 const REGISTER = "REGISTER";
 const PANTRY = "PANTRY"
 const MATCHER = "MATCHER";
+const DELETE = "DELETE";
+const ADD = "ADD";
 
 
 
