@@ -35,7 +35,12 @@ export default function IngredientListItem(props) {
           <FontAwesomeIcon icon={faBook} />
           </ListItemIcon>
             <ListItemText primary={props.title}  />
-              <DeleteFavRecipeButton favTitle={props.title} recipeId={props.recipeId} />
+              <DeleteFavRecipeButton 
+              favTitle={props.title} 
+              recipeId={props.recipeId} 
+              setRecipeFavs={props.setRecipeFavs}
+              setSelectedrecipe={props.setSelectedrecipe}
+              />
         </ListItemButton>
       </List>
     </Box>

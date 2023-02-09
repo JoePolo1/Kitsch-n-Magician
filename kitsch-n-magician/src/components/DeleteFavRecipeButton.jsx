@@ -14,8 +14,18 @@ export default function DeleteFavRecipeButton(props) {
     axios.post('/deleteFav', {
       userId: getToken,
       recipeId: props.recipeId
+    }) .then(() => {
+      console.log('hello world')
+      props.setRecipeFavs((prev) => {
+      return [...prev.filter((item) => {
+        console.log('item.id is ', item.id)
+        console.log('props.recipeId is ', props.recipeId)
+        return (props.recipeId !== item.id)
+      })]})
+      props.setSelectedrecipe(null)
     })
   }  
+
 
   return(
     <Button sx={{ minWidth: 0}}  onClick={deleteFunc} >
