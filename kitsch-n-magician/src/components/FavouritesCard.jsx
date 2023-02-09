@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { Box, Divider } from '@mui/material';
 
 
 const ExpandMore = styled((props) => {
@@ -41,25 +42,26 @@ export default function FavouritesCard(props) {
   };
 
   return (
+    <>
     <Card sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
-      
-      <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: "#154c79" }} aria-label="recipe">
-              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
-            </Avatar>
-          }
-          action={
-            <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
-            View Recipe
-            </Button>
-          }
-          title={props.title}
-          sx={{
-            fontSize: 20,
-            fontWeight: "Medium"
-          }}
-        />
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+      }}>
+
+            <IconButton aria-label="title">
+          {props.title}
+        </IconButton>
+
+        
+
+
+
+          
+          
+        </Box>
+
         <div sx={{
       display: 'flex', 
       flexDirection: 'row',
@@ -68,39 +70,27 @@ export default function FavouritesCard(props) {
     }}>
         <CardMedia
           component="img"
-          height="110"
           image={props.image}
           alt={props.title}
-          sx={{
-            width: 400
-          }}
+          sx={{maxWidth:1000,
+          maxHeight: 700,
+        display:"flex",
+        flexDirection: "row",
+        alignItems: 'center',
+      alignContent: 'center'}}
         />
+
+<IconButton aria-label="title">
+Ready in {props.ready_in_minutes} minutes
+        </IconButton>
+
         
         </div>
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-      <IconButton aria-label="add to favorites">
-          <FavoriteIcon />Add to favourites
-        </IconButton>
-        
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >More info
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      
+
         <CardContent>
           
         <div dangerouslySetInnerHTML={{ __html: props.summary }} />
-        <div>Ready in {props.ready_in_minutes} minutes</div>
         <div>Vegeterian: {props.vegeterian}</div>
         <div>Vegan: {props.vegan}</div>
         <div>Gluten Free: {props.gluten_free}</div>
@@ -108,7 +98,12 @@ export default function FavouritesCard(props) {
           
   
         </CardContent>
-      </Collapse>
+
     </Card>
+      
+    <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
+    View Recipe
+    </Button>
+    </>
   );
 }

@@ -29,7 +29,7 @@ export default function IngredientListItem(props) {
       <List component="nav" >
         <ListItemButton 
         >
-          <ListItemIcon>
+          <ListItemIcon sx={{ minWidth: 30}} >
           <FontAwesomeIcon icon={faBook} />
           </ListItemIcon>
           <ListItemText primary={props.title}  />

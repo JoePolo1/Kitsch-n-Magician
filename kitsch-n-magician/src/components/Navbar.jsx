@@ -47,7 +47,7 @@ function Navbar(props) {
 
   return (
     <AppBar position="fixed" >
-      <Box  bgcolor= '#154c79'  >
+      <Box bgcolor= '#154c79' >
         <Toolbar disableGutters >
           <Box sx={{
         ml: 2.4
