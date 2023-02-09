@@ -103,7 +103,8 @@ export default function FavouritesCard(props) {
             display:'flex',
             flexDirection:'row',
             fontSize: 'small',
-            pl: "16px"
+            pl: "16px",
+            pb:"7px"
           }}>
             {props.vegetarian ? <VegetarianIcon /> : <NotVegetarianIcon /> } 
             {props.vegan ? <VeganIcon /> : <NotVegan />}
