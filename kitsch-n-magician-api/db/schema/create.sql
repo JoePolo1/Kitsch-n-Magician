@@ -7,6 +7,8 @@
     DROP TABLE IF EXISTS favourite_recipes CASCADE;
     DROP TABLE IF EXISTS meal_preps CASCADE;
     DROP TABLE IF EXISTS matched_recipes CASCADE;
+    DROP TABLE IF EXISTS users_ingredients CASCADE;
+
 
     CREATE TABLE households (
       id SERIAL PRIMARY KEY NOT NULL,

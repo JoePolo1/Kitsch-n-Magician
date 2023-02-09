@@ -1,10 +1,10 @@
 // load .env data into process.env
 require('dotenv').config();
 const getFavRecipes = require('./db/queries/favouriteRecipes');
-const addIngredientsByUser = require('./db/queries/addFavouriteRecipes')
 const {addRecipes} = require('./db/queries/recipes')
 const addFavouriteRecipes  = require('./db/queries/addFavouriteRecipes')
 const addFavouriteTable  = require('./db/queries/addFavouriteTable')
+const addIngredientsByUser = require('./db/queries/addFavouriteRecipes')
 const express = require('express');
 const cors = require('cors')
 
