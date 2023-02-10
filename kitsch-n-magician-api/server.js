@@ -197,6 +197,9 @@ app.post('/load-game', (req, res) => {
       console.log("found game that exists")
     }
   })
+  .then((data) => {
+    res.send("Success");
+  });
 })
 
 
