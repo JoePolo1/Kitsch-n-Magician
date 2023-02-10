@@ -106,22 +106,24 @@ export default function FavouritesCard(props) {
             pl: "16px",
             pb:"7px"
           }}>
-            {props.vegetarian ? <VegetarianIcon /> : <NotVegetarianIcon /> } 
+            
+            {props.vegan 
+            ? <VeganIcon /> 
+            : props.vegetarian
+            ? <VegetarianIcon />
+            : null
+            }
             <Box sx={{
             pr: "5px"
           }}></Box>
-            {props.vegan ? <VeganIcon /> : <NotVegan />}
+            {props.gluten_free ? null : <NotGlutenFreeIcon />}
             <Box sx={{
             pr: "5px"
           }}></Box>
-            {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
-            <Box sx={{
-            pr: "5px"
-          }}></Box>
-            {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+            {props.dairy_free ? null : <NotDairyFreeIcon />}
           </Box>
         </Box>
-        <CardContent sx={{maxWidth:1000}}>
+        <CardContent sx={{maxWidth:650}}>
           
           <div dangerouslySetInnerHTML={{ __html: props.summary }} />
           
