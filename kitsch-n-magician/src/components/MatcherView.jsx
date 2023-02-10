@@ -65,9 +65,15 @@ const getToken = useToken().getToken()
 
 // Function that passes in the ingredient list state to a URL encoded string
 const UseRecipePrimarySearch = function () {
+  const ingredientArray = ingredients.map(ingredient => {
+
+    return(
+      ingredient.name
+    )
+  })
   
-  const ingredientUrl = urlconverter(ingredients);
-  console.log('get token is ', getToken)
+  const ingredientUrl = urlconverter(ingredientArray);
+  console.log('ingredients are ', ingredients.name)
   const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
 
 
@@ -127,20 +133,57 @@ const handleSubmit = event => {
   setNewIngredient('')
 }
 
+
     // This function maps the details of a recipe and puts them in a recipe card
     
-      const displayPantry = async () => {
-        
+    const gameCards = recipes.map(item =>  {
+      const onClick = (event) => {
+        event.preventDefault()
+        console.log(item)
           try {
-            const response = await axios.post("/mypantry", 
-              {userId: getToken}
+            const response = axios.post("/myfavs", 
+              {items: {item},
+               userId: getToken}
             );
-            console.log('response is ', response)
+            console.log('response data is ', response.data)
             return response.data;
           } catch (err) {
             return err;
           }
+          
+
       }
+      
+      return (
+        <MatcherCard 
+            title={item.title}
+            ready_in_minutes={item.ready_in_minutes}
+            image={item.image}
+            spoon_url={item.spoon_url}
+            servings={item.servings}
+            summary={item.summary}
+            vegetarian={item.vegetarian}
+            vegan={item.vegan}
+            gluten_free={item.gluten_free}
+            dairy_free={item.dairy_free}
+            onClick={onClick}
+        />
+      )
+      
+    })
+
+    const displayPantry = async () => {
+        
+      try {
+        const response = await axios.post("/mypantry", 
+          {userId: getToken}
+        );
+        console.log('response is ', response.data)
+        return response.data;
+      } catch (err) {
+        return err;
+      }
+    }
 
       useEffect(() => {
         (async () => {
@@ -215,11 +258,12 @@ const handleSubmit = event => {
         height: '90%'
         }}> 
         
-        <MatcherInput
+        {/* <MatcherInput
           onChange={handleChange}
           onSubmit={handleSubmit}
           value={newIngredient}
-        />
+        /> */}
+        <Typography>Your Pantry Items</Typography>
         <List>
           <Drawer
             sx={{
@@ -253,6 +297,7 @@ const handleSubmit = event => {
           }}>
             <MatcherButton
             onClick={UseRecipePrimarySearch}
+            // onClick={console.log("ingredients name", ingredients.name)}
             sx={{ zIndex: 9000 }}
             />
           </Box>
@@ -282,7 +327,7 @@ const handleSubmit = event => {
           </Box>
           {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
           {/* BEGINNING OF TEST CODE  */}
-          <MatcherCard />
+          {gameCards}
           {/* END OF TEST CODE */}
         </Box>
         </Box>
