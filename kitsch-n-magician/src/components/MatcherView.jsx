@@ -145,7 +145,7 @@ const handleSubmit = event => {
         event.preventDefault()
         console.log(item)
           try {
-            const response = axios.post("/myfavs", 
+            const response = axios.post("/matchgame", 
               {items: {item},
                userId: getToken}
             );

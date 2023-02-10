@@ -15,7 +15,6 @@ const deletePantryItem = require('./db/queries/deletePantryItem');
 const checkingGameExists = require('./db/queries/checkingGameExists');
 
 
-const displayPantry = require('./db/queries/displayKitchenItems');
 const deletePantryItem = require('./db/queries/deletePantryItem');
 
 
