@@ -1,20 +1,26 @@
 // load .env data into process.env
 require('dotenv').config();
 const getFavRecipes = require('./db/queries/favouriteRecipes');
-const {addRecipes} = require('./db/queries/recipes')
-const addFavouriteRecipes  = require('./db/queries/addFavouriteRecipes')
-const addFavouriteTable  = require('./db/queries/addFavouriteTable')
-const deleteFavById = require('./db/queries/deleteFavById')
-const addIngredientsByUser = require('./db/queries/addIngredientsByUser')
-const addIngredient = require('./db/queries/addIngredient')
-const deleteIngredient = require('./db/queries/deleteIngredient')
+const { addRecipes, addRecipesWithReturn } = require('./db/queries/recipes');
+const addFavouriteRecipes = require('./db/queries/addFavouriteRecipes');
+const addFavouriteTable = require('./db/queries/addFavouriteTable');
+const deleteFavById = require('./db/queries/deleteFavById');
+const addIngredientsByUser = require('./db/queries/addIngredientsByUser');
+const addIngredient = require('./db/queries/addIngredient');
+const deleteIngredient = require('./db/queries/deleteIngredient');
+
 
 const displayPantry = require('./db/queries/displayKitchenItems');
 const deletePantryItem = require('./db/queries/deletePantryItem');
 const checkingGameExists = require('./db/queries/checkingGameExists');
 
+
+const displayPantry = require('./db/queries/displayKitchenItems');
+const deletePantryItem = require('./db/queries/deletePantryItem');
+
+
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 
 
 // Web server config
@@ -43,7 +49,7 @@ const app = express();
 //   })
 // );
 // app.use(express.static('public'));
-app.use(cors())
+app.use(cors());
 app.use(bodyparser.json());
 
 
@@ -54,6 +60,7 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const db = require('./db/connection');
+const addGameRecipes = require('./db/queries/addGameRecipes');
 
 
 // Mount all resource routes
@@ -69,9 +76,9 @@ app.use('/users', usersRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/test', (req, res) => {
-  addFavouriteRecipes("Vegan stuffed Zucchini Boats")
-  console.log('hello sup')
-  res.json({test: 'hello'});
+  addFavouriteRecipes("Vegan stuffed Zucchini Boats");
+  console.log('hello sup');
+  res.json({ test: 'hello' });
 });
 
 app.post('/login', (req, res) => {
@@ -100,11 +107,11 @@ app.use('/login', (req, res) => {
   res.send({
     token: "thisIsAUserToken"
   });
-})
+});
 
 app.post('/myrecipes', async (req, res) => {
-  res.send(await getFavRecipes(req.body.userId))
-})
+  res.send(await getFavRecipes(req.body.userId));
+});
 
 app.post('/myfavs', (req, res) => {
   // res.send(await addRecipes(req.body.items.item)
@@ -115,51 +122,69 @@ app.post('/myfavs', (req, res) => {
   //   });
   // .then(addFavouriteTable(req.body.userId, addFavouriteRecipes(req.body.items.item.title))))
   addRecipes(req.body.items.item)
-  .then((result)=>{
-    console.log("We are afterward in ADd REceipies promise closed");
-    addFavouriteRecipes(req.body.items.item.title)
-    .then((recipeId)=>{
+    .then((result) => {
+      console.log("We are afterward in ADd REceipies promise closed");
+      return addFavouriteRecipes(req.body.items.item.title);
+    })
+    .then((recipeId) => {
       // console.log("we are getting from promise", recipeId);
-      addFavouriteTable(recipeId, req.body.userId)
-      .then((data)=>{
-        res.send({result: "Successful"});
-      });//addFavoriteTable code closes here.
-    });//addfavourite code closes here.
-  }); // for AddRecepies Code closes here.
-}); //app.post
+      return addFavouriteTable(recipeId, req.body.userId);
+    })
+    .then((data) => {
+      res.send({ result: "Successful" });
+    });//addFavoriteTable code closes here.
+});//addfavourite code closes here.
+
+
+app.post('/matchgame', (req, res) => {
+  console.log('sent to the back end', req.body)
+  addRecipesWithReturn(req.body.items.item)
+    .then((recipeId) => {
+      console.log("we are getting from promise", recipeId);
+      return addGameRecipes(recipeId, req.body.userId);
+    })
+    .then((data) => {
+      res.send({ result: "Successful" });
+    });
+});
+
+
 
 
 app.post('/myingredients', (req, res) => {
   console.log(req.body);
   addIngredient(req.body.ingredient)
-  .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
-  .then(() => res.send("add was successfull"))
+    .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
+    .then(() => res.send("add was successfull"));
 
-})
+});
 
 app.post('/mypantry', (req, res) => {
 
   displayPantry(req.body.userId)
- .then((result) =>{
+    .then((result) => {
 
-  res.send(result)
- })
-})
+      res.send(result);
+    });
+});
 
 app.post('/deleteFav', (req, res) => {
-  deleteFavById(req.body.recipeId, req.body.userId)
-  res.send("successful deletion.")
-})
+  deleteFavById(req.body.recipeId, req.body.userId);
+  res.send("successful deletion.");
+});
 
 
 app.post('/deleteIngredForUser', (req, res) => {
+
   deleteIngredient(req.body.ingredientName, req.body.userId)
   res.send("successful deletion.")
 })
 
+
 app.post('/deletePantryItems', (req, res) => {
-  deletePantryItem(req.body.ingredientId, req.body.userId)
+  deletePantryItem(req.body.ingredientId, req.body.userId);
   // console.log(req.body.ingredientId, req.body.userId)
+
   res.send("successful deletion")
 })
 
@@ -176,6 +201,8 @@ app.post('/load-game', (req, res) => {
     }
   })
 })
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
