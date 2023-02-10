@@ -65,47 +65,7 @@ const getToken = useToken().getToken()
 
 // Function that passes in the ingredient list state to a URL encoded string
 const UseRecipePrimarySearch = function () {
-  
-  const ingredientUrl = urlconverter(ingredients);
-  console.log('get token is ', getToken)
-  const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
-
-
-    axios.get(url)
-      .then((all) => {
-        console.log(all)
-        console.log("Find recipe ID is ", findRecipeId(all.data))
-        return findRecipeId(all.data)
-      })
-      .then((recipeId) => {
-        let promiseArr = [];
-        for (let x of recipeId) {
-          console.log("X is ", x)
-          promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`))
-        }
-        Promise.all(promiseArr)
-
-        .then((all) => {
-          console.log("then ALL is ", all);
-          for (let food of all) {
-            setRecipes(recipes => ([
-              ...recipes,
-              {
-              title: food.data.title,
-              ready_in_minutes: food.data.readyInMinutes,
-              image: food.data.image,
-              spoon_url: food.data.spoonacularSourceUrl,
-              servings: food.data.servings,
-              summary: food.data.summary,
-              vegetarian: food.data.vegetarian,
-              vegan: food.data.vegan,
-              gluten_free: food.data.glutenFree,
-              dairy_free: food.data.dairyFree
-            }
-            ]))
-          }
-        })
-      })
+    axios.post('/load-game', {userId: getToken})
 }
 
 
