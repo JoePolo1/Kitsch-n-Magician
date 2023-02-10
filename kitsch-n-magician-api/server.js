@@ -7,6 +7,7 @@ const addFavouriteTable  = require('./db/queries/addFavouriteTable')
 const deleteFavById = require('./db/queries/deleteFavById')
 const addIngredientsByUser = require('./db/queries/addIngredientsByUser')
 const addIngredient = require('./db/queries/addIngredient')
+const deleteIngredient = require('./db/queries/deleteIngredient')
 
 const displayPantry = require('./db/queries/displayKitchenItems')
 
@@ -148,6 +149,10 @@ app.post('/deleteFav', (req, res) => {
   res.send("successful deletion.")
 })
 
+app.post('/deleteIngredForUser', (req, res) => {
+  deleteIngredient(req.body.ingredientName, req.body.userId)
+  res.send("successful deletion.")
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -20,6 +20,8 @@ export default function IngredientListItem(props) {
   };
 
 
+
+
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <List component="nav" >
@@ -29,7 +31,7 @@ export default function IngredientListItem(props) {
           <FontAwesomeIcon icon={faCube} />
           </ListItemIcon>
           <ListItemText primary={props.name} />
-            <DeleteIngredientButton />
+            <DeleteIngredientButton name={props.name} ingredients={props.ingredients} setIngredients={props.setIngredients}/>
           </ListItemButton>
       </List>
     </Box>

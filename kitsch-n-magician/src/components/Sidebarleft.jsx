@@ -621,7 +621,9 @@ const UseRecipePrimarySearch = function () {
 const ingredientsList = ingredients.map(ingredient => {
   return (
     <IngredientListItem 
-    name = {ingredient}
+    name={ingredient}
+    ingredients={ingredients}
+    setIngredients={setIngredients}
     />
   )
 })
