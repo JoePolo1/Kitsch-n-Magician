@@ -9,16 +9,18 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { green, red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-
+import { Box } from '@mui/system';
+import VeganIcon from './Icons/Vegan';
+import VegetarianIcon from './Icons/Vegetarian';
+import GlutenFreeIcon from './Icons/GlutenFree';
+import NotGlutenFreeIcon from './Icons/NotGlutenFree';
+import DairyFreeIcon from './Icons/DairyFree';
+import NotDairyFreeIcon from './Icons/NotDairyFree';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -51,7 +53,7 @@ export default function RecipeCard(props) {
             </Avatar>
           }
           action={
-            <Button variant="contained" href={props.spoon_url} target="_blank" >
+            <Button variant="contained" href={props.spoon_url} target="_blank" sx={{bgcolor: "#154c79"}} >
             View Recipe
             </Button>
           }
@@ -61,7 +63,7 @@ export default function RecipeCard(props) {
             fontWeight: "Medium"
           }}
         />
-        <div sx={{
+        <Box sx={{
       display: 'flex', 
       flexDirection: 'row',
       alignItems: 'center',
@@ -76,8 +78,44 @@ export default function RecipeCard(props) {
             width: 400
           }}
         />
+      
+        <Box sx={{
+            display:'flex',
+            flexDirection:'column',
+            fontSize: 'small',
+            pl: "16px",
+            pb:"7px",
+            alignItems: 'end'
+          }}>
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'row',
+            pr: "5px"
+          }}>
+          {props.vegan 
+            ? <VeganIcon /> 
+            : props.vegetarian
+            ? <VegetarianIcon />
+            : null
+            }</Box>
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'row',
+            pr: "5px"
+          }}>
+          {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            pr: "5px"
+          }}>
+          {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+          </Box>
+            </Box>
         
-        </div>
+        </Box>
+        
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           

@@ -272,19 +272,22 @@ const handleSubmit = event => {
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
         
         <Toolbar />
-        <Box sx ={{ mb: '1em', maxWidth: 1000}}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Item>Match on meal ideas with your household by selecting below:</Item>
+        <Box sx={{ display: 'flex', alignItems:'center', flexDirection: 'column'}}>
+          <Box sx ={{ mb: '1em', maxWidth: 1000}}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Item>Match on meal ideas with your household by selecting below:</Item>
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
+          {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
+          {/* BEGINNING OF TEST CODE  */}
+          <MatcherCard />
+          {/* END OF TEST CODE */}
         </Box>
-        {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
-        {/* BEGINNING OF TEST CODE  */}
-        <MatcherCard />
-        {/* END OF TEST CODE */}
-      </Box>
-      <MatchedColumn />
+        </Box>
+        <MatchedColumn />
+      
     </Box>
   );
 }

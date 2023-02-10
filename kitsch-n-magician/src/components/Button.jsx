@@ -8,6 +8,7 @@ export default function SearchButton(props) {
       <Button 
         variant="contained" 
         onClick={props.onClick}
+        sx={{bgcolor: "#154c79"}}
         >
         Search Recipes
       </Button>
