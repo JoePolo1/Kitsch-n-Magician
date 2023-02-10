@@ -6,7 +6,7 @@
     DROP TABLE IF EXISTS kitchen_items CASCADE;
     DROP TABLE IF EXISTS favourite_recipes CASCADE;
     DROP TABLE IF EXISTS meal_preps CASCADE;
-    DROP TABLE IF EXISTS matched_recipes CASCADE;
+    DROP TABLE IF EXISTS game_recipes CASCADE;
 
 
     CREATE TABLE households (
