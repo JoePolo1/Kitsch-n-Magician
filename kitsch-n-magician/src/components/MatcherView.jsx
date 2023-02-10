@@ -26,6 +26,7 @@ import axios from 'axios';
 import useToken from '../hooks/useToken';
 import MatcherInput from './MatcherInput';
 import MatcherButton from './MatcherButton';
+import MatchedColumn from './MatchedColumn';
 
 
 
@@ -145,8 +146,6 @@ const handleSubmit = event => {
       // )
       
 
-   
-
 
 
 //  Sidebar lower rendering
@@ -259,6 +258,7 @@ const handleSubmit = event => {
 
 
       </Box>
+      <MatchedColumn />
     </Box>
   );
 }
