@@ -8,6 +8,7 @@ export default function MatcherButton(props) {
       <Button 
         variant="contained" 
         onClick={props.onClick}
+        sx={{bgcolor: "#154c79"}}
         >
         Find a Match
       </Button>

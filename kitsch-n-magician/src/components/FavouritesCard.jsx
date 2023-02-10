@@ -137,7 +137,7 @@ export default function FavouritesCard(props) {
 
     </Paper>
       
-    <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
+    <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" sx={{bgcolor: "#154c79"}} >
     View Recipe
     </Button>
     </Box>

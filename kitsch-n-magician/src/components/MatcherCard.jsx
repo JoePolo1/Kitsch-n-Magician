@@ -115,10 +115,10 @@ export default function MatcherCard() {
 
     </Paper>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: 1000}}  >
-    <Button variant="contained" href="www.google.ca"target="_blank" >
+    <Button variant="contained" href="www.google.ca"target="_blank" sx={{color:"#EB5A47", fontWeight:900, bgcolor: "#154c79"}} >
     NOPE
     </Button>
-    <Button variant="contained" href="www.google.ca"target="_blank" >
+    <Button variant="contained" href="www.google.ca"target="_blank" sx={{color:"#96EB78", fontWeight:900, bgcolor: "#154c79"}} >
     YES!
     </Button>
     </Box>
