@@ -149,6 +149,7 @@ export default function MatcherView() {
 };
 
 
+
   const ingredientsList = ingredients.map(ingredient => {
     return (
       <IngredientListItem
@@ -222,6 +223,7 @@ export default function MatcherView() {
       return response.data;
     } catch (err) {
       return err;
+
     }
   };
 
