@@ -133,8 +133,8 @@ app.post('/myfavs', (req, res) => {
 
 
 app.post('/matchgame', (req, res) => {
-  console.log('sent to the back end', req.body.items.item)
-  addRecipesWithReturn(req.body.items.item)
+  console.log('sent to the back end', req.body)
+  addRecipesWithReturn(req.body.items.recipe)
     .then((recipeId) => {
       console.log("we are getting from promise", recipeId);
       return addGameRecipes(recipeId, req.body.userId);
