@@ -30,7 +30,7 @@ import NotVegan from './Icons/NotVegan';
 
 // You'll need to replace some of the fake code here and replace the vegetarian code with other card's code
 
-export default function MatcherCard() {
+export default function MatcherCard(props) {
 
   return(
 
@@ -44,12 +44,12 @@ export default function MatcherCard() {
       }}>
 
       <IconButton aria-label="title">
-        Joe's Potato Chips
+        {props.title}
       </IconButton>
         
 
       <IconButton aria-label="title">
-        Ready in 2 minutes!
+        Ready in {props.ready_in_minutes} minutes!
       </IconButton>
           
       </Box>
@@ -66,8 +66,8 @@ export default function MatcherCard() {
       }}>
         <CardMedia
           component="img"
-          image="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTiUcnsoYYl0Ru6LMgUxDeiV1O4u0hgpDLyAl6hVlWQxSLfm79OEILX-DbNgEHsUkvf"
-          alt="Joe's Chips"
+          image={props.image}
+          alt={props.title}
           sx={{maxWidth:900,
             maxHeight: 300,
             display:"flex",
@@ -86,26 +86,28 @@ export default function MatcherCard() {
             pl: "16px",
             pb:"7px"
           }}>
+            
+            {props.vegan 
+            ? <VeganIcon /> 
+            : props.vegetarian
+            ? <VegetarianIcon />
+            : null
+            }
             <Box sx={{
-              display:'flex',
-              flexDirection:'row',
-              pr: "5px"
-            }}>
-              <VeganIcon /> 
-            </Box>
-            
-            <NotGlutenFreeIcon />
-            
+            pr: "5px"
+          }}></Box>
+            {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
+            <Box sx={{
+            pr: "5px"
+          }}></Box>
+            {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
           </Box>
         </Box>
         <CardContent sx={{maxWidth:500}}>
           
-          <p> Joe's Chips are the best chips. Try them today!
-
-          Bushwick aesthetic air plant, affogato celiac ethical taiyaki enamel pin swag cornhole typewriter. Whatever sartorial health goth lyft cred forage green juice mumblecore iPhone leggings. Pork belly DIY humblebrag, tonx ramps single-origin coffee taiyaki disrupt JOMO pinterest mlkshk mustache copper mug messenger bag live-edge. 
-          </p>
+          <div dangerouslySetInnerHTML={{ __html: props.summary }} />
           
-          </CardContent>
+        </CardContent>
 
       
 
