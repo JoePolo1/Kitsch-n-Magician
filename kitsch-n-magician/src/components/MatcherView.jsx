@@ -65,7 +65,57 @@ const getToken = useToken().getToken()
 
 // Function that passes in the ingredient list state to a URL encoded string
 const UseRecipePrimarySearch = function () {
+
+  const ingredientArray = ingredients.map(ingredient => {
+
+    return(
+      ingredient.name
+    )
+  })
+  
+  const ingredientUrl = urlconverter(ingredientArray);
+  console.log('ingredients are ', ingredients.name)
+  const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
+
+
+    axios.get(url)
+      .then((all) => {
+        console.log(all)
+        console.log("Find recipe ID is ", findRecipeId(all.data))
+        return findRecipeId(all.data)
+      })
+      .then((recipeId) => {
+        let promiseArr = [];
+        for (let x of recipeId) {
+          console.log("X is ", x)
+          promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`))
+        }
+        Promise.all(promiseArr)
+
+        .then((all) => {
+          console.log("then ALL is ", all);
+          for (let food of all) {
+            setRecipes(recipes => ([
+              ...recipes,
+              {
+              title: food.data.title,
+              ready_in_minutes: food.data.readyInMinutes,
+              image: food.data.image,
+              spoon_url: food.data.spoonacularSourceUrl,
+              servings: food.data.servings,
+              summary: food.data.summary,
+              vegetarian: food.data.vegetarian,
+              vegan: food.data.vegan,
+              gluten_free: food.data.glutenFree,
+              dairy_free: food.data.dairyFree
+            }
+            ]))
+          }
+        })
+      })
+
     axios.post('/load-game', {userId: getToken})
+
 }
 
 
@@ -87,20 +137,57 @@ const handleSubmit = event => {
   setNewIngredient('')
 }
 
+
     // This function maps the details of a recipe and puts them in a recipe card
     
-      const displayPantry = async () => {
-        
+    const gameCards = recipes.map(item =>  {
+      const onClick = (event) => {
+        event.preventDefault()
+        console.log(item)
           try {
-            const response = await axios.post("/mypantry", 
-              {userId: getToken}
+            const response = axios.post("/myfavs", 
+              {items: {item},
+               userId: getToken}
             );
-            console.log('response is ', response)
+            console.log('response data is ', response.data)
             return response.data;
           } catch (err) {
             return err;
           }
+          
+
       }
+      
+      return (
+        <MatcherCard 
+            title={item.title}
+            ready_in_minutes={item.ready_in_minutes}
+            image={item.image}
+            spoon_url={item.spoon_url}
+            servings={item.servings}
+            summary={item.summary}
+            vegetarian={item.vegetarian}
+            vegan={item.vegan}
+            gluten_free={item.gluten_free}
+            dairy_free={item.dairy_free}
+            onClick={onClick}
+        />
+      )
+      
+    })
+
+    const displayPantry = async () => {
+        
+      try {
+        const response = await axios.post("/mypantry", 
+          {userId: getToken}
+        );
+        console.log('response is ', response.data)
+        return response.data;
+      } catch (err) {
+        return err;
+      }
+    }
 
       useEffect(() => {
         (async () => {
@@ -175,11 +262,12 @@ const handleSubmit = event => {
         height: '90%'
         }}> 
         
-        <MatcherInput
+        {/* <MatcherInput
           onChange={handleChange}
           onSubmit={handleSubmit}
           value={newIngredient}
-        />
+        /> */}
+        <Typography>Your Pantry Items</Typography>
         <List>
           <Drawer
             sx={{
@@ -213,6 +301,7 @@ const handleSubmit = event => {
           }}>
             <MatcherButton
             onClick={UseRecipePrimarySearch}
+            // onClick={console.log("ingredients name", ingredients.name)}
             sx={{ zIndex: 9000 }}
             />
           </Box>
@@ -242,7 +331,7 @@ const handleSubmit = event => {
           </Box>
           {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
           {/* BEGINNING OF TEST CODE  */}
-          <MatcherCard />
+          {gameCards}
           {/* END OF TEST CODE */}
         </Box>
         </Box>
