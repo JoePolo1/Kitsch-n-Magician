@@ -66,10 +66,12 @@
     -- ALTER TABLE favourite_recipes
     -- ADD CONSTRAINT no_repitions UNIQUE (recipe_id, user_id);
 
-    CREATE TABLE matched_recipes (
+    CREATE TABLE game_recipes (
       id SERIAL PRIMARY KEY NOT NULL,
       household_id INTEGER REFERENCES households(id) ON DELETE CASCADE,
-      recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE
+      recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE,
+      matcher_decision INTEGER NOT NULL DEFAULT 0,
+      time_played INTEGER NOT NULL DEFAULT 0
     );
 
     CREATE TABLE meal_preps (
