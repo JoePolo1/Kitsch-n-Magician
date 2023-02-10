@@ -39,6 +39,11 @@ import MatcherCard from './MatcherCard';
 import CardHeader from '@mui/material/CardHeader';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Slide from '@mui/material/Slide';
+import Switch from "@mui/material/Switch";
+import NoButton from './Buttons/NoButton';
+import YesButton from './Buttons/YesButton';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -148,8 +153,6 @@ export default function MatcherView() {
   })
 };
 
-
-
   const ingredientsList = ingredients.map(ingredient => {
     return (
       <IngredientListItem
@@ -253,7 +256,13 @@ export default function MatcherView() {
 
 
 
-  //  Sidebar lower rendering
+      // State to hide the card on clicking Yes or No
+  const [checked, setChecked] = useState(true)
+
+  const handleToggle = () => {
+    setChecked((prev) => !prev);
+  }
+
   return (
     <Box sx={{
       display: 'flex'
@@ -369,8 +378,15 @@ export default function MatcherView() {
           </Box>
           {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
           {/* BEGINNING OF TEST CODE  */}
-          {gameCards}
-          {/* END OF TEST CODE */}
+          {/* <FormControlLabel
+          control={<Switch checked={checked} onChange={handleToggle} />}
+          label="Show"
+          /> */}
+            <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
+              <Box>
+              {gameCards}
+              </Box>
+            </Slide>
         </Box>
       </Box>
       <MatchedColumn />
