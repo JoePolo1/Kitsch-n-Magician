@@ -63,6 +63,10 @@ const [recipes, setRecipes] = useState([]);
 const [favouriteTarget, setFavouriteTarget] = useState()
 const getToken = useToken().getToken()
 
+console.log("ingredients", ingredients)
+
+
+
 // Function that passes in the ingredient list state to a URL encoded string
 const UseRecipePrimarySearch = function () {
 
@@ -110,7 +114,7 @@ const UseRecipePrimarySearch = function () {
               dairy_free: food.data.dairyFree
             }
             ]))
-          }
+          }console.log('recipes', recipes)
         })
       })
 
@@ -141,23 +145,17 @@ const handleSubmit = event => {
     // This function maps the details of a recipe and puts them in a recipe card
     
     const gameCards = recipes.map(item =>  {
-      const onClick = (event) => {
-        event.preventDefault()
-        console.log(item)
-          try {
-            const response = axios.post("/matchgame", 
+      
+        
+        console.log('items', recipes)
+          
+            const response = axios.post('/matchgame', 
               {items: {item},
                userId: getToken}
-            );
-            console.log('response data is ', response.data)
-            return response.data;
-          } catch (err) {
-            return err;
-          }
-          
+            ).then(() => {
+            console.log('response data is *', response.data)
+            return response.data})
 
-      }
-      
       return (
         <MatcherCard 
             title={item.title}
@@ -170,11 +168,13 @@ const handleSubmit = event => {
             vegan={item.vegan}
             gluten_free={item.gluten_free}
             dairy_free={item.dairy_free}
-            onClick={onClick}
+          
         />
       )
       
     })
+
+    
 
     const displayPantry = async () => {
         
@@ -182,7 +182,7 @@ const handleSubmit = event => {
         const response = await axios.post("/mypantry", 
           {userId: getToken}
         );
-        console.log('response is ', response.data)
+        // console.log('response is ', response.data)
         return response.data;
       } catch (err) {
         return err;

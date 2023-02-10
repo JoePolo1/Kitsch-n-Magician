@@ -15,9 +15,6 @@ const deletePantryItem = require('./db/queries/deletePantryItem');
 const checkingGameExists = require('./db/queries/checkingGameExists');
 
 
-const deletePantryItem = require('./db/queries/deletePantryItem');
-
-
 const express = require('express');
 const cors = require('cors');
 
@@ -136,7 +133,7 @@ app.post('/myfavs', (req, res) => {
 
 
 app.post('/matchgame', (req, res) => {
-  console.log('sent to the back end', req.body)
+  console.log('sent to the back end', req.body.items.item)
   addRecipesWithReturn(req.body.items.item)
     .then((recipeId) => {
       console.log("we are getting from promise", recipeId);
@@ -146,8 +143,6 @@ app.post('/matchgame', (req, res) => {
       res.send({ result: "Successful" });
     });
 });
-
-
 
 
 app.post('/myingredients', (req, res) => {
