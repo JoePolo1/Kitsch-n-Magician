@@ -28,34 +28,14 @@ import DairyFreeIcon from './Icons/DairyFree';
 import NotDairyFreeIcon from './Icons/NotDairyFree';
 import NotVegan from './Icons/NotVegan';
 
+// You'll need to replace some of the fake code here and replace the vegetarian code with other card's code
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+export default function MatcherCard() {
 
+  return(
 
-
-export default function FavouritesCard(props) {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
-  console.log('props.vegetarian is: ', props.vegetarian)
-
-  return (
-    <>
     <Box>
-    <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
-    
+      <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
       <Box sx={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -64,12 +44,12 @@ export default function FavouritesCard(props) {
       }}>
 
       <IconButton aria-label="title">
-        {props.title}
+        Joe's Potato Chips
       </IconButton>
         
 
       <IconButton aria-label="title">
-        Ready in {props.ready_in_minutes} minutes!
+        Ready in 2 minutes!
       </IconButton>
           
       </Box>
@@ -86,8 +66,8 @@ export default function FavouritesCard(props) {
       }}>
         <CardMedia
           component="img"
-          image={props.image}
-          alt={props.title}
+          image="http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcTiUcnsoYYl0Ru6LMgUxDeiV1O4u0hgpDLyAl6hVlWQxSLfm79OEILX-DbNgEHsUkvf"
+          alt="Joe's Chips"
           sx={{maxWidth:900,
             maxHeight: 300,
             display:"flex",
@@ -106,26 +86,24 @@ export default function FavouritesCard(props) {
             pl: "16px",
             pb:"7px"
           }}>
+            <Box sx={{
+              display:'flex',
+              flexDirection:'row',
+              pr: "5px"
+            }}>
+              <VeganIcon /> 
+            </Box>
             
-            {props.vegan 
-            ? <VeganIcon /> 
-            : props.vegetarian
-            ? <VegetarianIcon />
-            : null
-            }
-            <Box sx={{
-            pr: "5px"
-          }}></Box>
-            {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
-            <Box sx={{
-            pr: "5px"
-          }}></Box>
-            {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+            <NotGlutenFreeIcon />
+            
           </Box>
         </Box>
-        <CardContent sx={{maxWidth:650}}>
+        <CardContent sx={{maxWidth:500}}>
           
-          <div dangerouslySetInnerHTML={{ __html: props.summary }} />
+          <p> Joe's Chips are the best chips. Try them today!
+
+          Bushwick aesthetic air plant, affogato celiac ethical taiyaki enamel pin swag cornhole typewriter. Whatever sartorial health goth lyft cred forage green juice mumblecore iPhone leggings. Pork belly DIY humblebrag, tonx ramps single-origin coffee taiyaki disrupt JOMO pinterest mlkshk mustache copper mug messenger bag live-edge. 
+          </p>
           
           </CardContent>
 
@@ -136,11 +114,14 @@ export default function FavouritesCard(props) {
 
 
     </Paper>
-      
-    <Button variant="contained" href={props.spoonacularSourceUrl} target="_blank" >
-    View Recipe
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: 1000}}  >
+    <Button variant="contained" href="www.google.ca"target="_blank" >
+    NOPE
+    </Button>
+    <Button variant="contained" href="www.google.ca"target="_blank" >
+    YES!
     </Button>
     </Box>
-    </>
-  );
+    </Box>
+  )
 }

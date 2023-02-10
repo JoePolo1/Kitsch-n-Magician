@@ -26,6 +26,7 @@ import axios from 'axios';
 import useToken from '../hooks/useToken';
 import PantryInput from './PantryInput';
 import MatcherButton from './MatcherButton';
+import PantryListItem from './PantryListItem';
 
 
 
@@ -88,10 +89,14 @@ const UseRecipePrimarySearch = function () {
 }
 
 
+
 const ingredientsList = ingredients.map(ingredient => {
   return (
-    <IngredientListItem 
+    <PantryListItem 
     name = {ingredient.name}
+    id = {ingredient.id}
+    userId = {getToken}
+    setIngredients={setIngredients}
     />
   )
 })
