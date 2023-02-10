@@ -12,6 +12,12 @@ const deleteIngredient = require('./db/queries/deleteIngredient');
 
 const displayPantry = require('./db/queries/displayKitchenItems');
 const deletePantryItem = require('./db/queries/deletePantryItem');
+const checkingGameExists = require('./db/queries/checkingGameExists');
+
+
+const displayPantry = require('./db/queries/displayKitchenItems');
+const deletePantryItem = require('./db/queries/deletePantryItem');
+
 
 const express = require('express');
 const cors = require('cors');
@@ -169,16 +175,34 @@ app.post('/deleteFav', (req, res) => {
 
 
 app.post('/deleteIngredForUser', (req, res) => {
-  deleteIngredient(req.body.ingredientName, req.body.userId);
-  res.send("successful deletion.");
-});
+
+  deleteIngredient(req.body.ingredientName, req.body.userId)
+  res.send("successful deletion.")
+})
+
+
 app.post('/deletePantryItems', (req, res) => {
   deletePantryItem(req.body.ingredientId, req.body.userId);
   // console.log(req.body.ingredientId, req.body.userId)
-  res.send("successful deletion");
+
+  res.send("successful deletion")
+})
+
+app.post('/load-game', (req, res) => {
+  checkingGameExists(req.body.userId)
+  .then((response) => {
+    if (response.rows.length === 0) {
+      // write code if game does not exist
+      console.log("did not find game")
+    }
+    else {
+      //write code if game exists
+      console.log("found game that exists")
+    }
+  })
+})
 
 
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
