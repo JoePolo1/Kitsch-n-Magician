@@ -47,6 +47,9 @@ state.vegetarian,
 state.vegan,
 state.gluten_free,
 state.dairy_free ])
+.then(data => {
+  return data.rows[0].id;
+});
 }
 
 
