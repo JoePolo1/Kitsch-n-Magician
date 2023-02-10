@@ -39,6 +39,11 @@ import MatcherCard from './MatcherCard';
 import CardHeader from '@mui/material/CardHeader';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Slide from '@mui/material/Slide';
+import Switch from "@mui/material/Switch";
+import NoButton from './Buttons/NoButton';
+import YesButton from './Buttons/YesButton';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -146,8 +151,10 @@ const handleSubmit = event => {
         console.log(item)
           try {
             const response = axios.post("/matchgame", 
-              {items: {item},
-               userId: getToken}
+              {
+                items: {item},
+                userId: getToken
+              }
             );
             console.log('response data is ', response.data)
             return response.data;
@@ -210,6 +217,13 @@ const handleSubmit = event => {
       //   />
       // )
       
+
+      // State to hide the card on clicking Yes or No
+  const [checked, setChecked] = useState(true)
+
+  const handleToggle = () => {
+    setChecked((prev) => !prev);
+  }
 
 
 
@@ -329,8 +343,15 @@ const handleSubmit = event => {
           </Box>
           {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
           {/* BEGINNING OF TEST CODE  */}
-          {gameCards}
-          {/* END OF TEST CODE */}
+          {/* <FormControlLabel
+          control={<Switch checked={checked} onChange={handleToggle} />}
+          label="Show"
+          /> */}
+            <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
+              <Box>
+              {gameCards}
+              </Box>
+            </Slide>
         </Box>
         </Box>
         <MatchedColumn />

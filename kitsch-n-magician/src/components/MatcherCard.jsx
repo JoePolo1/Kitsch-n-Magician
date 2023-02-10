@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -27,15 +28,27 @@ import NotGlutenFreeIcon from './Icons/NotGlutenFree';
 import DairyFreeIcon from './Icons/DairyFree';
 import NotDairyFreeIcon from './Icons/NotDairyFree';
 import NotVegan from './Icons/NotVegan';
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Slide from '@mui/material/Slide';
+import Switch from "@mui/material/Switch";
 
 // You'll need to replace some of the fake code here and replace the vegetarian code with other card's code
 
 export default function MatcherCard(props) {
 
-  return(
+  // State to hide the card on clicking Yes or No
+  const [checked, setChecked] = useState(true)
 
+  const handleChange = () => {
+    setChecked((prev) => !prev);
+  }
+
+  return(
+<Slide direction="up" timeout={500} in={checked} mountOnEnter unmountOnExit>
     <Box>
-      <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
+      
+      <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
+      
       <Box sx={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -44,7 +57,10 @@ export default function MatcherCard(props) {
       }}>
 
       <IconButton aria-label="title">
-        {props.title}
+      <Box>
+          {props.title}
+          </Box>
+          
       </IconButton>
         
 
@@ -113,17 +129,21 @@ export default function MatcherCard(props) {
 
         
         </Box>
-
-
+        
+      
     </Paper>
+
       <Box sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: 1000}}  >
-    <Button variant="contained" href="www.google.ca"target="_blank" sx={{color:"#EB5A47", fontWeight:900, bgcolor: "#154c79"}} >
+    <Button variant="contained" sx={{color:"#EB5A47", fontWeight:900, bgcolor: "#154c79"}} onClick={handleChange} checked={checked} >
     NOPE
     </Button>
-    <Button variant="contained" href="www.google.ca"target="_blank" sx={{color:"#96EB78", fontWeight:900, bgcolor: "#154c79"}} >
+    <Button variant="contained" sx={{color:"#96EB78", fontWeight:900, bgcolor: "#154c79"}} onClick={handleChange} checked={checked} >
     YES!
     </Button>
+    
     </Box>
+    
     </Box>
+    </Slide>
   )
 }
