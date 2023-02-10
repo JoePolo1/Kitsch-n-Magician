@@ -116,11 +116,11 @@ export default function FavouritesCard(props) {
             <Box sx={{
             pr: "5px"
           }}></Box>
-            {props.gluten_free ? null : <NotGlutenFreeIcon />}
+            {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
             <Box sx={{
             pr: "5px"
           }}></Box>
-            {props.dairy_free ? null : <NotDairyFreeIcon />}
+            {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
           </Box>
         </Box>
         <CardContent sx={{maxWidth:650}}>
