@@ -27,7 +27,27 @@ import useToken from '../hooks/useToken';
 import MatcherInput from './MatcherInput';
 import MatcherButton from './MatcherButton';
 import MatchedColumn from './MatchedColumn';
+// TEST IMPORTS
+import { Paper } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import CardMedia from '@mui/material/CardMedia';
+import NotGlutenFreeIcon from './Icons/NotGlutenFree';
+import CardContent from '@mui/material/CardContent';
+import VeganIcon from './Icons/Vegan';
+import Button from '@mui/material/Button';
+import MatcherCard from './MatcherCard';
+import CardHeader from '@mui/material/CardHeader';
+import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
 
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 
 const drawerWidth = 240;
@@ -252,11 +272,17 @@ const handleSubmit = event => {
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
         
         <Toolbar />
-
-        
+        <Box sx ={{ mb: '1em', maxWidth: 1000}}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Item>Match on meal ideas with your household by selecting below:</Item>
+            </Grid>
+          </Grid>
+        </Box>
         {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
-
-
+        {/* BEGINNING OF TEST CODE  */}
+        <MatcherCard />
+        {/* END OF TEST CODE */}
       </Box>
       <MatchedColumn />
     </Box>
