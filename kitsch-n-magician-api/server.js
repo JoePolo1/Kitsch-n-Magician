@@ -9,6 +9,7 @@ const addIngredientsByUser = require('./db/queries/addIngredientsByUser')
 const addIngredient = require('./db/queries/addIngredient')
 
 const displayPantry = require('./db/queries/displayKitchenItems')
+const deletePantryItem = require('./db/queries/deletePantryItem')
 
 const express = require('express');
 const cors = require('cors')
@@ -148,6 +149,12 @@ app.post('/deleteFav', (req, res) => {
   res.send("successful deletion.")
 })
 
+app.post('/deletePantryItems', (req, res) => {
+  deletePantryItem(req.body.ingredientId, req.body.userId)
+  // console.log(req.body.ingredientId, req.body.userId)
+  res.send("successful deletion")
+
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
