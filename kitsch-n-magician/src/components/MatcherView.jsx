@@ -65,6 +65,7 @@ const getToken = useToken().getToken()
 
 // Function that passes in the ingredient list state to a URL encoded string
 const UseRecipePrimarySearch = function () {
+
   const ingredientArray = ingredients.map(ingredient => {
 
     return(
@@ -112,6 +113,9 @@ const UseRecipePrimarySearch = function () {
           }
         })
       })
+
+    axios.post('/load-game', {userId: getToken})
+
 }
 
 
