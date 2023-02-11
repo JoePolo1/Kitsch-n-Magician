@@ -45,7 +45,7 @@ export default function MatcherCard(props) {
 
   return(
 <Slide direction="up" timeout={500} in={checked} mountOnEnter unmountOnExit>
-    <Box>
+    <Box sx={{ pb: 150 }}>
       
       <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
       
