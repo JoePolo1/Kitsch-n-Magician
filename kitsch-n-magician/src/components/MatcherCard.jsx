@@ -54,7 +54,7 @@ export default function MatcherCard(props) {
       recipeId: props.recipeId
     })
     .then((response) => {
-      
+      console.log(response);
     })
   }
 

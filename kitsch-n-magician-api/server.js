@@ -227,7 +227,7 @@ app.post('/voteYes', (req, res) => {
   .then((response) => {
     if (response.matcher_decision === 2) {
       matchedRecipes(req.body.userId, response.recipe_id)
-      .then(response => res.send(response.rows[0].recipe_id))
+      .then(response => console.log(response.rows))
     }
   })
   res.send("successful YES vote")
