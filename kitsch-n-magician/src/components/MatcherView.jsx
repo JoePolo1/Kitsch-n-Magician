@@ -187,13 +187,6 @@ export default function MatcherView() {
   const gameCards = gameRecipes.map(item => {
 
 
-    console.log('items', item);
-
-    axios.post('/matchgame', 
-    
-    ).then((response) => {
-    console.log('response data is *', response.data)
-    })
 
     return (
       <MatcherCard
