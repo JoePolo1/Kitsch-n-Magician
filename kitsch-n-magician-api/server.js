@@ -141,10 +141,10 @@ app.post('/matchgame', (req, res) => {
       // console.log("we are getting from promise", recipeId);
       return addGameRecipes(recipeId, req.body.userId);
     })
-    .then( selectExistingGame(req.body.userId))
+    .then(() =>
+      {return selectExistingGame(req.body.userId)})
     .then((result) => {
-      console.log("result", result.rows)
-      res.send(result.rows)
+      return res.send(result)
     })
     } )
     // .then((data) => {
