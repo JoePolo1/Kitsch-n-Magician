@@ -67,6 +67,7 @@ export default function MatcherView() {
   const [recipes, setRecipes] = useState([]);
   const [favouriteTarget, setFavouriteTarget] = useState();
   const getToken = useToken().getToken();
+  const [gameRecipes, setgameRecipes] = useState([])
 
   console.log("ingredients", ingredients);
 
@@ -89,8 +90,8 @@ export default function MatcherView() {
 
     axios.get(url)
       .then((all) => {
-        console.log(all);
-        console.log("Find recipe ID is ", findRecipeId(all.data));
+        // console.log(all);
+        // console.log("Find recipe ID is ", findRecipeId(all.data));
         return findRecipeId(all.data);
       })
       .then((recipeId) => {
@@ -105,7 +106,7 @@ export default function MatcherView() {
         Promise.all(promiseArr)
 
           .then((all) => {
-            console.log("then ALL is ", all);
+            // console.log("then ALL is ", all);
             for (let food of all) {
               tempRecipes.push({
                 title: food.data.title,
@@ -144,7 +145,7 @@ export default function MatcherView() {
                   items: { recipe },
                   userId: getToken
                 }
-              );
+              ).then((response) => {console.log('new response', response)})
           }
       });
 
@@ -184,17 +185,16 @@ export default function MatcherView() {
   //   });
   // }
 
-  const gameCards = recipes.map(item => {
+  const gameCards = gameRecipes.map(item => {
 
 
     console.log('items', item);
 
-    // axios.post('/matchgame', 
-    //   {items: {item},
-    //    userId: getToken}
-    // ).then((response) => {
-    // console.log('response data is *', response.data)
-    // })
+    axios.post('/matchgame', 
+    
+    ).then((response) => {
+    console.log('response data is *', response.data)
+    })
 
     return (
       <MatcherCard

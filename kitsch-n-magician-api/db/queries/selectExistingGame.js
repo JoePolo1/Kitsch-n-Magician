@@ -7,8 +7,12 @@ const selectExistingGame = (userId) => {
     JOIN game_recipes ON recipe_id = recipes.id
     WHERE household_id = (SELECT household_id FROM users WHERE users.id = $1)
     `,
-    [userId]
-  )
+    [userId])
+    .then(data => {
+      console.log("backend data", data.result.rows)
+      return data.rows
+    }).catch(err => {return err})
+
 }
 
 module.exports = selectExistingGame
