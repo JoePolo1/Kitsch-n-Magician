@@ -42,6 +42,7 @@ import Grid from '@mui/material/Grid';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Slide from '@mui/material/Slide';
 import Switch from "@mui/material/Switch";
+import DayofTheWeek from "./DayofTheWeek";
 
 
 
@@ -67,6 +68,7 @@ export default function MatcherView() {
   const [favouriteTarget, setFavouriteTarget] = useState();
   const getToken = useToken().getToken();
   const [gameRecipes, setgameRecipes] = useState([])
+  const [mealPrep, setMealPrep] = useState([])
 
   console.log("ingredients", ingredients);
 
@@ -220,11 +222,61 @@ const UseExistingGameSearch = function() {
         gluten_free={item.gluten_free}
         dairy_free={item.dairy_free}
         recipeId={item.recipe_id}
+        setMeal={setMealPrep}
       />
     );
 
   });
 
+  const displayMatched = async () => {
+    try{
+      const response = await axios.post("/matchedcolumn",
+      { userId: getToken }
+      )
+      return response.data
+      console.log("response data", response.data)
+    }catch (err){
+      return err;
+    }
+  }
+ 
+  useEffect(() => {
+    (async () => {
+      const result = await displayMatched();
+      console.log("results are in!", result)
+      setMealPrep(result);
+      
+    })()
+  }, []);
+
+
+
+  const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+  console.log("items in meal prep", mealPrep)
+
+  const mapMeal = mealPrep.map((item, index) => {
+    console.log("items in mealmap", item )
+
+    return (
+    
+      <DayofTheWeek
+        title={item.title}
+        ready_in_minutes={item.ready_in_minutes}
+        image={item.image}
+        spoon_url={item.spoon_url}
+        servings={item.servings}
+        summary={item.summary}
+        vegetarian={item.vegetarian}
+        vegan={item.vegan}
+        gluten_free={item.gluten_free}
+        dairy_free={item.dairy_free}
+        recipeId={item.recipe_id}
+        day={dayOfWeek[index]}
+
+      />
+    );
+  })
 
   const displayPantry = async () => {
 
@@ -408,7 +460,91 @@ const UseExistingGameSearch = function() {
             </Slide>
         </Box>
       </Box>
-      <MatchedColumn />
+     {/* where right column exists */}
+    <Divider orientation="vertical" flexItem />
+    <AppBar 
+        position="fixed"
+        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+      >
+
+      </AppBar>
+
+      <Drawer
+        sx={{
+          display: 'flex',
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            mt: '4.3em',
+            width: drawerWidth,
+            boxSizing: 'border-box',
+            maxHeight: '100%'
+          }
+        }}
+        variant="permanent"
+        anchor="right"
+      >
+
+
+    <Box
+      sx={{ 
+        width: '100%', 
+        height: '100%', 
+        maxWidth: 250, 
+        bgcolor: 'background.paper' 
+      }}
+    >
+      
+        <Box sx={{ flexGrow: 0, 
+            width: 239, 
+            height: '3.5em', 
+            color: "#FFFFFF",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.2em'}} bgcolor= '#18588c'>
+            <header> Household Matches</header></Box>
+        <Divider></Divider>
+
+        <List>
+          <Drawer
+            sx={{
+              display: 'flex',
+
+              flexShrink: 0,
+              '& .MuiDrawer-paper': {
+                mt: '8em',
+
+                boxSizing: 'border-box',
+                maxHeight: '80%'
+              }
+            }}
+            variant="permanent"
+            anchor="right"
+          >
+          <Box sx={{ flexGrow: 0, 
+            width: 239, 
+            display: 'flex',
+            alignItems: 'left',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            fontSize: '1.2em'}} >
+              
+              {/* <DayofTheWeek 
+              /> */}
+              {mapMeal}
+
+              
+
+            </Box>
+          </Drawer>
+
+        </List>
+      
+    </Box>
+    </Drawer>
+   
+
 
     </Box>
   );

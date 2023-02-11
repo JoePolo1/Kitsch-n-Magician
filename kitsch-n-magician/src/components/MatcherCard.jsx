@@ -52,10 +52,17 @@ export default function MatcherCard(props) {
     axios.post('/voteYes', {
       userId: getToken,
       recipeId: props.recipeId
+    }).then((response) => {
+      console.log("vote yes response", response.data[0])
+      props.setMeal((prev) => {
+       return [...prev, response.data[0] ]
+      })
+     
     })
-    .then((response) => {
-      console.log(response);
-    })
+    // .then((response) => {
+
+    //   console.log(response);
+    // })
   }
 
   const voteNo = () => {

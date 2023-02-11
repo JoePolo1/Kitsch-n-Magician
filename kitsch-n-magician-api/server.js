@@ -13,9 +13,9 @@ const deleteIngredient = require('./db/queries/deleteIngredient');
 const displayPantry = require('./db/queries/displayKitchenItems');
 const deletePantryItem = require('./db/queries/deletePantryItem');
 const checkingGameExists = require('./db/queries/checkingGameExists');
-const yesButton = require('./db/queries/yesButton')
-const noButton = require('./db/queries/noButton')
-const selectMealPrepRecipes = require('./db/queries/selectMatchedRecipes')
+const yesButton = require('./db/queries/yesButton');
+const noButton = require('./db/queries/noButton');
+const selectMealPrepRecipes = require('./db/queries/selectMatchedRecipes');
 
 
 
@@ -63,6 +63,7 @@ const db = require('./db/connection');
 const addGameRecipes = require('./db/queries/addGameRecipes');
 const selectExistingGame = require('./db/queries/selectExistingGame');
 const matchedRecipes = require('./db/queries/matchedRecipes');
+const selectRecipeById = require('./db/queries/selectRecipebyId');
 // const { default: YesButton } = require('../kitsch-n-magician/src/components/Buttons/YesButton');
 
 
@@ -146,29 +147,29 @@ app.post('/matchgame', (req, res) => {
       // console.log("we are getting from promise", recipeId);
       return addGameRecipes(recipeId, req.body.userId);
     })
-    .then(() =>
-      {return selectExistingGame(req.body.userId)})
+    .then(() => { return selectExistingGame(req.body.userId); })
     .then((result) => {
-      return res.send(result)
-    })
-    } )
-    // .then((data) => {
-    //   res.send({ result: "Successful" });
-    // });
+      return res.send(result);
+    });
+});
+// .then((data) => {
+//   res.send({ result: "Successful" });
+// });
 app.post('/matchedcolumn', (req, res) => {
   selectMealPrepRecipes(req.body.userId)
-  .then((result) => {
-    console.log("return from matched column", result)
-  })
-})
+    .then((result) => {
+      return res.send(result);
+      console.log("return from matched column", result);
+    });
+});
 
 app.post('/getmygame', (req, res) => {
   selectExistingGame(req.body.userId)
-  .then((result) => {
-    // console.log("RESULT IS ", result)
-    return res.send(result)
-  })
-})
+    .then((result) => {
+      // console.log("RESULT IS ", result)
+      return res.send(result);
+    });
+});
 
 
 
@@ -197,53 +198,54 @@ app.post('/deleteFav', (req, res) => {
 
 app.post('/deleteIngredForUser', (req, res) => {
 
-  deleteIngredient(req.body.ingredientName, req.body.userId)
-  res.send("successful deletion.")
-})
+  deleteIngredient(req.body.ingredientName, req.body.userId);
+  res.send("successful deletion.");
+});
 
 
 app.post('/deletePantryItems', (req, res) => {
   deletePantryItem(req.body.ingredientId, req.body.userId);
   // console.log(req.body.ingredientId, req.body.userId)
 
-  res.send("successful deletion")
-})
+  res.send("successful deletion");
+});
 
 app.post('/renderGame', (req, res) => {
 
-})
+});
 
 app.post('/load-game', (req, res) => {
   checkingGameExists(req.body.userId)
-  .then((response) => {
-    if (response.rows.length === 0) {
-      // write code if game does not exist
-      console.log("did not find game")
-      res.send(false)
-    }
-    else {
-      //write code if game exists
-      console.log("found game that exists")
-      res.send(true)
-    }
-  })
-})
+    .then((response) => {
+      if (response.rows.length === 0) {
+        // write code if game does not exist
+        console.log("did not find game");
+        res.send(false);
+      }
+      else {
+        //write code if game exists
+        console.log("found game that exists");
+        res.send(true);
+      }
+    });
+});
 
 app.post('/voteYes', (req, res) => {
   yesButton(req.body.userId, req.body.recipeId)
-  .then((response) => {
-    if (response.matcher_decision === 2) {
-      matchedRecipes(req.body.userId, response.recipe_id)
-      .then(response => console.log(response.rows))
-    }
-  })
-  res.send("successful YES vote")
-})
+    .then((response) => {
+      if (response.matcher_decision === 2) {
+        return matchedRecipes(req.body.userId, response.recipe_id)
+        .then(() => selectRecipeById(req.body.recipeId))
+        .then((result) => res.send(result));
+      }
+    });
+  // res.send("successful YES vote");
+});
 
 app.post('/voteNo', (req, res) => {
-  noButton(req.body.userId, req.body.recipeId)
-  res.send("successful NO vote")
-})
+  noButton(req.body.userId, req.body.recipeId);
+  res.send("successful NO vote");
+});
 
 
 app.listen(PORT, () => {

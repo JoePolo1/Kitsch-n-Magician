@@ -40,7 +40,7 @@ function renderRow(props) {
   );
 }
 
-export default function MatchedColumn() {
+export default function MatchedColumn(props) {
   return (
     <>
     <Divider orientation="vertical" flexItem />
@@ -112,7 +112,8 @@ export default function MatchedColumn() {
             flexDirection: 'column',
             fontSize: '1.2em'}} >
               
-              <DayofTheWeek />
+              <DayofTheWeek 
+              day={props.day}/>
 
               
 
