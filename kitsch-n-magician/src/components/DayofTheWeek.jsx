@@ -24,7 +24,7 @@ export default function DayofTheWeek(props) {
         </Box>
 
         {matchFound ? 
-          <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'center', minHeight: '3.5em', justifyContent: 'center', flexDirection: 'column'}}>
+          <Box sx={{ flexGrow: 0, width: 239, pt: '0.2em', pb: '0.2em', pl: '0.5em', display: 'flex', alignItems: 'center', minHeight: '3.5em', justifyContent: 'center', flexDirection: 'column'}}>
             <a href={props.spoon_url} target="_blank">{props.title}</a>
           </Box>
         :
