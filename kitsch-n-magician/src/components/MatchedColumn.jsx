@@ -120,39 +120,39 @@ export default function MatchedColumn() {
               <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
                 <p>Tuesday:</p>
               </Box>
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-                <p>Matched Recipe 2</p>
-              </Box>
+              
+              <DayofTheWeek />
+
               <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
                 <p>Wednesday:</p>
               </Box>
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-                <p>Matched Recipe 3</p>
-              </Box>
+              
+              <DayofTheWeek />
+
               <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
                 <p>Thursday:</p>
               </Box>
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-                <p>Keep matching to fill!</p>
-              </Box>
+              
+              <DayofTheWeek />
+
               <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
                 <p>Friday:</p>
               </Box>
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-                <p>Keep matching to fill!</p>
-              </Box>
+              
+              <DayofTheWeek />
+
               <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
                 <p>Saturday:</p>
               </Box>
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-                <p>Keep matching to fill!</p>
-              </Box>
+              
+              <DayofTheWeek />
+
               <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
                 <p>Sunday:</p>
               </Box>
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-                <p>Keep matching to fill!</p>
-              </Box>
+              
+              <DayofTheWeek />
+
             </Box>
           </Drawer>
 
