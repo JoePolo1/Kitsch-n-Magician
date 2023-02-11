@@ -145,7 +145,7 @@ export default function MatcherView() {
                   items: { recipe },
                   userId: getToken
                 }
-              ).then((response) => {console.log('new response', response)})
+              ).then((response) => {setgameRecipes(response.data)})
           }
       });
 

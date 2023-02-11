@@ -9,7 +9,7 @@ const selectExistingGame = (userId) => {
     `,
     [userId])
     .then(data => {
-      console.log("backend data", data.result.rows)
+      // console.log("backend data", data.rows)
       return data.rows
     }).catch(err => {return err})
 
