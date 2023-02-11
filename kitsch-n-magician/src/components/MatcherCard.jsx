@@ -47,6 +47,8 @@ export default function MatcherCard(props) {
   const voteYes = () => {
     setChecked((prev) => !prev);
 
+    console.log('You just clicked Yes on props.recipeId: ', props)
+
     axios.post('/voteYes', {
       userId: getToken,
       recipeId: props.recipeId
@@ -55,6 +57,8 @@ export default function MatcherCard(props) {
 
   const voteNo = () => {
     setChecked((prev) => !prev);
+
+    console.log('You just clicked No on props.recipeId: ', props)
 
     axios.post('/voteNo', {
       userId: getToken,

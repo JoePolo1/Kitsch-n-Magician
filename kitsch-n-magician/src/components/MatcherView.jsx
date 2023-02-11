@@ -207,8 +207,6 @@ const UseExistingGameSearch = function() {
 
   const gameCards = gameRecipes.map(item => {
 
-
-
     return (
       <MatcherCard
         title={item.title}
@@ -221,12 +219,11 @@ const UseExistingGameSearch = function() {
         vegan={item.vegan}
         gluten_free={item.gluten_free}
         dairy_free={item.dairy_free}
-        recipeId={item.id}
+        recipeId={item.recipe_id}
       />
     );
 
   });
-
 
 
   const displayPantry = async () => {
