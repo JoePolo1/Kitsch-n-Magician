@@ -58,6 +58,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const db = require('./db/connection');
 const addGameRecipes = require('./db/queries/addGameRecipes');
+const selectExistingGame = require('./db/queries/selectExistingGame');
 
 
 // Mount all resource routes
@@ -120,7 +121,7 @@ app.post('/myfavs', (req, res) => {
   // .then(addFavouriteTable(req.body.userId, addFavouriteRecipes(req.body.items.item.title))))
   addRecipes(req.body.items.item)
     .then((result) => {
-      console.log("We are afterward in ADd REceipies promise closed");
+      console.log("We tryare afterward in ADd REceipies promise closed");
       return addFavouriteRecipes(req.body.items.item.title);
     })
     .then((recipeId) => {
@@ -134,20 +135,26 @@ app.post('/myfavs', (req, res) => {
 
 
 app.post('/matchgame', (req, res) => {
-  console.log('sent to the back end', req.body)
+  // console.log('sent to the back end', req.body)
   addRecipesWithReturn(req.body.items.recipe)
     .then((recipeId) => {
-      console.log("we are getting from promise", recipeId);
+      // console.log("we are getting from promise", recipeId);
       return addGameRecipes(recipeId, req.body.userId);
     })
-    .then((data) => {
-      res.send({ result: "Successful" });
-    });
-});
+    .then( selectExistingGame(req.body.userId))
+    .then((result) => {
+      console.log("result", result.rows)
+      res.send(result.rows)
+    })
+    } )
+    // .then((data) => {
+    //   res.send({ result: "Successful" });
+    // });
+
 
 
 app.post('/myingredients', (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   addIngredient(req.body.ingredient)
     .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
     .then(() => res.send("add was successfull"));
@@ -181,6 +188,10 @@ app.post('/deletePantryItems', (req, res) => {
   // console.log(req.body.ingredientId, req.body.userId)
 
   res.send("successful deletion")
+})
+
+app.post('/renderGame', (req, res) => {
+
 })
 
 app.post('/load-game', (req, res) => {

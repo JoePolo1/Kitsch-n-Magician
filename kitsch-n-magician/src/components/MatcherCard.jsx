@@ -42,6 +42,7 @@ export default function MatcherCard(props) {
   const handleChange = () => {
     setChecked((prev) => !prev);
   }
+  // setChecked(props.checked)
 
   return(
 <Slide direction="up" timeout={500} in={checked} mountOnEnter unmountOnExit>
