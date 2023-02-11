@@ -71,6 +71,18 @@ export default function MatcherView() {
   console.log("ingredients", ingredients);
 
 
+  const findGameExists = function () {
+    axios.post('/load-game', { userId: getToken })
+      .then((response) =>  {
+        console.log("FINDGAMEEXISTS response is ", response.data);
+        if (response.data === false) {
+          UseRecipePrimarySearch()
+        } else {
+          UseExistingGameSearch()
+        }
+      })
+  }
+
 
   // Function that passes in the ingredient list state to a URL encoded string
   const UseRecipePrimarySearch = function() {
@@ -85,7 +97,7 @@ export default function MatcherView() {
     const ingredientUrl = urlconverter(ingredientArray);
     console.log('ingredients are ', ingredients.name);
     const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`;
-
+    
 
     axios.get(url)
       .then((all) => {
@@ -148,10 +160,19 @@ export default function MatcherView() {
           }
       });
 
-    axios.post('/load-game', { userId: getToken });
+    
 
   })
 };
+
+const UseExistingGameSearch = function() {
+
+  axios.post('/getmygame', {
+    userId: getToken
+  }
+  ).then((response) => {setgameRecipes(response.data)})
+
+}
 
   const ingredientsList = ingredients.map(ingredient => {
     return (
@@ -339,7 +360,7 @@ export default function MatcherView() {
             zIndex: 200
           }}>
             <MatcherButton
-              onClick={UseRecipePrimarySearch}
+              onClick={findGameExists}
               // onClick={console.log("ingredients name", ingredients.name)}
               sx={{ zIndex: 9000 }}
             />

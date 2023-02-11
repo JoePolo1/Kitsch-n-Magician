@@ -154,6 +154,14 @@ app.post('/matchgame', (req, res) => {
     //   res.send({ result: "Successful" });
     // });
 
+app.post('/getmygame', (req, res) => {
+  selectExistingGame(req.body.userId)
+  .then((result) => {
+    console.log("RESULT IS ", result)
+    return res.send(result)
+  })
+})
+
 
 
 app.post('/myingredients', (req, res) => {
@@ -203,15 +211,14 @@ app.post('/load-game', (req, res) => {
     if (response.rows.length === 0) {
       // write code if game does not exist
       console.log("did not find game")
+      res.send(false)
     }
     else {
       //write code if game exists
       console.log("found game that exists")
+      res.send(true)
     }
   })
-  .then((data) => {
-    res.send("Success");
-  });
 })
 
 app.post('/voteYes', (req, res) => {
