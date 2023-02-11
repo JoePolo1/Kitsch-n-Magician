@@ -41,13 +41,16 @@ export default function MatchedColumn() {
         bgcolor: 'background.paper' 
       }}
     >
-      <Box sx={{
-        pl: '2.8em',
-        pt: '.8em',
-        pb: '0.6em',
-        fontWeight: 800        
-      }}>
-        Household Matches</Box>
+      
+        <Box sx={{ flexGrow: 0, 
+            width: 239, 
+            height: '3.5em', 
+            color: "#FFFFFF",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.2em'}} bgcolor= '#18588c'>
+            <header> Household Matches</header></Box>
         <Divider></Divider>
       <FixedSizeList
         height={1020}

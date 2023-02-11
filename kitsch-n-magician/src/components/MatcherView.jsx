@@ -324,7 +324,16 @@ const UseExistingGameSearch = function() {
           onSubmit={handleSubmit}
           value={newIngredient}
         /> */}
-            <Typography>Your Pantry Items</Typography>
+            <Box sx={{ flexGrow: 0, 
+            width: 239, 
+            height: '3.5em', 
+            color: "#FFFFFF",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '1.2em'}} bgcolor= '#18588c'>
+            <header> My Pantry Items</header>
+          </Box>
             <List>
               <Drawer
                 sx={{
