@@ -53,6 +53,9 @@ export default function MatcherCard(props) {
       userId: getToken,
       recipeId: props.recipeId
     })
+    .then((response) => {
+      
+    })
   }
 
   const voteNo = () => {
