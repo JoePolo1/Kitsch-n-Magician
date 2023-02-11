@@ -15,6 +15,7 @@ const deletePantryItem = require('./db/queries/deletePantryItem');
 const checkingGameExists = require('./db/queries/checkingGameExists');
 const yesButton = require('./db/queries/yesButton')
 const noButton = require('./db/queries/noButton')
+const selectMealPrepRecipes = require('./db/queries/selectMatchedRecipes')
 
 
 
@@ -154,11 +155,17 @@ app.post('/matchgame', (req, res) => {
     // .then((data) => {
     //   res.send({ result: "Successful" });
     // });
+app.post('/matchedcolumn', (req, res) => {
+  selectMealPrepRecipes(req.body.userId)
+  .then((result) => {
+    console.log("return from matched column", result)
+  })
+})
 
 app.post('/getmygame', (req, res) => {
   selectExistingGame(req.body.userId)
   .then((result) => {
-    console.log("RESULT IS ", result)
+    // console.log("RESULT IS ", result)
     return res.send(result)
   })
 })
