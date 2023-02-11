@@ -111,47 +111,10 @@ export default function MatchedColumn() {
             justifyContent: 'center',
             flexDirection: 'column',
             fontSize: '1.2em'}} >
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
-                <p>Monday:</p>
-              </Box>
               
               <DayofTheWeek />
 
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
-                <p>Tuesday:</p>
-              </Box>
               
-              <DayofTheWeek />
-
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
-                <p>Wednesday:</p>
-              </Box>
-              
-              <DayofTheWeek />
-
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
-                <p>Thursday:</p>
-              </Box>
-              
-              <DayofTheWeek />
-
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
-                <p>Friday:</p>
-              </Box>
-              
-              <DayofTheWeek />
-
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
-                <p>Saturday:</p>
-              </Box>
-              
-              <DayofTheWeek />
-
-              <Box sx={{ flexGrow: 0, width: 239, display: 'flex', alignItems: 'left', justifyContent: 'center', flexDirection: 'column', pl: '1em', bgcolor:'#D2E4F7'}}>
-                <p>Sunday:</p>
-              </Box>
-              
-              <DayofTheWeek />
 
             </Box>
           </Drawer>
