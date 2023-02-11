@@ -76,7 +76,6 @@
 
     CREATE TABLE meal_preps (
       id SERIAL PRIMARY KEY NOT NULL,
-      day_of_the_week VARCHAR(255) NOT NULL,
       household_id INTEGER REFERENCES households(id) ON DELETE CASCADE,
-      matched_recipe_id INTEGER REFERENCES matched_recipes(id) ON DELETE CASCADE
+      recipe_id INTEGER REFERENCES recipes(id) ON DELETE CASCADE
     );

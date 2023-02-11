@@ -61,6 +61,7 @@ const usersRoutes = require('./routes/users');
 const db = require('./db/connection');
 const addGameRecipes = require('./db/queries/addGameRecipes');
 const selectExistingGame = require('./db/queries/selectExistingGame');
+const matchedRecipes = require('./db/queries/matchedRecipes');
 // const { default: YesButton } = require('../kitsch-n-magician/src/components/Buttons/YesButton');
 
 
@@ -223,6 +224,12 @@ app.post('/load-game', (req, res) => {
 
 app.post('/voteYes', (req, res) => {
   yesButton(req.body.userId, req.body.recipeId)
+  .then((response) => {
+    if (response.matcher_decision === 2) {
+      matchedRecipes(req.body.userId, response.recipe_id)
+      .then(response => res.send(response.rows[0].recipe_id))
+    }
+  })
   res.send("successful YES vote")
 })
 
