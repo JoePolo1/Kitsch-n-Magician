@@ -31,18 +31,37 @@ import NotVegan from './Icons/NotVegan';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Slide from '@mui/material/Slide';
 import Switch from "@mui/material/Switch";
+import useToken from '../hooks/useToken';
+import axios from 'axios';
 
 // You'll need to replace some of the fake code here and replace the vegetarian code with other card's code
 
 export default function MatcherCard(props) {
 
   // State to hide the card on clicking Yes or No
-  const [checked, setChecked] = useState(true)
+  const [checked, setChecked] = useState(true);
+  const getToken = useToken().getToken();
 
-  const handleChange = () => {
+  console.log('PROPS IS ', props);
+
+  const voteYes = () => {
     setChecked((prev) => !prev);
+
+    axios.post('/voteYes', {
+      userId: getToken,
+      recipeId: props.recipeId
+    })
   }
-  // setChecked(props.checked)
+
+  const voteNo = () => {
+    setChecked((prev) => !prev);
+
+    axios.post('/voteNo', {
+      userId: getToken,
+      recipeId: props.recipeId
+    })
+  }
+  
 
   return(
 <Slide direction="up" timeout={500} in={checked} mountOnEnter unmountOnExit>
@@ -135,14 +154,15 @@ export default function MatcherCard(props) {
       
     </Paper>
 
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: 1000}}  >
-    <Button variant="contained" sx={{color:"#EB5A47", fontWeight:900, bgcolor: "#154c79"}} onClick={handleChange} checked={checked} >
-    NOPE
-    </Button>
-    <Button variant="contained" sx={{color:"#96EB78", fontWeight:900, bgcolor: "#154c79"}} onClick={handleChange} checked={checked} >
-    YES!
-    </Button>
-    
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: 1000}}  >
+      <Button variant="contained" sx={{color:"#EB5A47", fontWeight:900, bgcolor: "#154c79"}} onClick={voteNo} checked={checked} >
+        NOPE
+      </Button>
+
+      <Button variant="contained" sx={{color:"#96EB78", fontWeight:900, bgcolor: "#154c79"}} onClick={voteYes} checked={checked} >
+        YES!
+      </Button>
+      
     </Box>
     
     </Box>

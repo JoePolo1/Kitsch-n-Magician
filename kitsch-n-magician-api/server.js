@@ -13,6 +13,8 @@ const deleteIngredient = require('./db/queries/deleteIngredient');
 const displayPantry = require('./db/queries/displayKitchenItems');
 const deletePantryItem = require('./db/queries/deletePantryItem');
 const checkingGameExists = require('./db/queries/checkingGameExists');
+const yesButton = require('./db/queries/yesButton')
+const noButton = require('./db/queries/noButton')
 
 
 
@@ -59,6 +61,7 @@ const usersRoutes = require('./routes/users');
 const db = require('./db/connection');
 const addGameRecipes = require('./db/queries/addGameRecipes');
 const selectExistingGame = require('./db/queries/selectExistingGame');
+// const { default: YesButton } = require('../kitsch-n-magician/src/components/Buttons/YesButton');
 
 
 // Mount all resource routes
@@ -211,6 +214,15 @@ app.post('/load-game', (req, res) => {
   });
 })
 
+app.post('/voteYes', (req, res) => {
+  yesButton(req.body.userId, req.body.recipeId)
+  res.send("successful YES vote")
+})
+
+app.post('/voteNo', (req, res) => {
+  noButton(req.body.userId, req.body.recipeId)
+  res.send("successful NO vote")
+})
 
 
 app.listen(PORT, () => {

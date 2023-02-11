@@ -42,8 +42,7 @@ import Grid from '@mui/material/Grid';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Slide from '@mui/material/Slide';
 import Switch from "@mui/material/Switch";
-import NoButton from './Buttons/NoButton';
-import YesButton from './Buttons/YesButton';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -208,7 +207,7 @@ export default function MatcherView() {
         vegan={item.vegan}
         gluten_free={item.gluten_free}
         dairy_free={item.dairy_free}
-
+        recipeId={item.id}
       />
     );
 
