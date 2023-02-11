@@ -100,6 +100,7 @@ export default function MatcherCard(props) {
             display:'flex',
             flexDirection:'row',
             fontSize: 'small',
+            justifyContent: 'space-evenly',
             pl: "16px",
             pb:"7px"
           }}>
