@@ -71,7 +71,7 @@ export default function RecipeCard(props) {
     }}>
         <CardMedia
           component="img"
-          height="110"
+          height="170"
           image={props.image}
           alt={props.title}
           sx={{
