@@ -69,18 +69,23 @@ export default function MatcherView() {
   const getToken = useToken().getToken();
   const [gameRecipes, setgameRecipes] = useState([])
   const [mealPrep, setMealPrep] = useState([])
+  const [gameCount, setGameCount] = useState(1)
+  const [useExisting, setUseExisting] = useState(false)
 
-  console.log("ingredients", ingredients);
+  // console.log("ingredients", ingredients);
+
+  console.log("number of game recipes", gameRecipes.length)
 
 
   const findGameExists = function () {
     axios.post('/load-game', { userId: getToken })
       .then((response) =>  {
-        console.log("FINDGAMEEXISTS response is ", response.data);
+        // console.log("FINDGAMEEXISTS response is ", response.data);
         if (response.data === false) {
           UseRecipePrimarySearch()
         } else {
           UseExistingGameSearch()
+          setUseExisting(true)
         }
       })
   }
@@ -223,6 +228,10 @@ const UseExistingGameSearch = function() {
         dairy_free={item.dairy_free}
         recipeId={item.recipe_id}
         setMeal={setMealPrep}
+        gameCount={gameCount}
+        setGameCount={setGameCount}
+        gameRecipesCount={gameRecipes.length}
+        useExisting={useExisting}
       />
     );
 
