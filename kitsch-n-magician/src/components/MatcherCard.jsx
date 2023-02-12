@@ -42,144 +42,163 @@ export default function MatcherCard(props) {
   const [checked, setChecked] = useState(true);
   const getToken = useToken().getToken();
 
-  console.log('PROPS IS ', props);
+
+  const removeGame = () => {
+    axios.post('/removeGame', {
+      userId: getToken
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
   const voteYes = () => {
     setChecked((prev) => !prev);
-
-    console.log('You just clicked Yes on props.recipeId: ', props)
-
+    // props.setGameCount((prev) => prev + 1)
+    
+    if (props.gameCount !== props.gameRecipesCount && props.useExisting) {
+       props.setGameCount((prev) => prev + 1);
+       console.log("Clicked yes, gamerecipes is", props.gameRecipesCount, "gamecount", props.gameCount)
+     
+     }else if(props.gameCount === props.gameRecipesCount && props.useExisting){
+      removeGame()
+     }
     axios.post('/voteYes', {
       userId: getToken,
       recipeId: props.recipeId
     }).then((response) => {
-      console.log("vote yes response", response.data[0])
       props.setMeal((prev) => {
-       return [...prev, response.data[0] ]
+        return [...prev, response.data[0]];
       })
-     
-    })
+        // return console.log("clicked yes", props.gameRecipes);
+        
+
+    });
     // .then((response) => {
 
     //   console.log(response);
     // })
-  }
+  };
 
   const voteNo = () => {
     setChecked((prev) => !prev);
 
-    console.log('You just clicked No on props.recipeId: ', props)
+    if (props.gameCount !== props.gameRecipesCount * 2) {
+      props.setGameCount((prev) => prev + 1);
+      console.log("Clicked yes, gamecount is", props.gameCount)
+    }else if(props.gameCount === props.gameRecipesCount && props.useExisting){removeGame()}
+    console.log('You just clicked No on props.recipeId: ', props);
 
     axios.post('/voteNo', {
       userId: getToken,
       recipeId: props.recipeId
-    })
-  }
-  
+    });
+  };
 
-  return(
-<Slide direction="up" timeout={500} in={checked} mountOnEnter unmountOnExit>
-    <Box sx={{ pb: 150 }}>
-      
-      <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
-      
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        pt: '.5em'
-      }}>
 
-      <IconButton aria-label="title">
-      <Box>
-          {props.title}
-          </Box>
-          
-      </IconButton>
-        
+  return (
+    <Slide direction="up" timeout={500} in={checked} mountOnEnter unmountOnExit>
+      <Box sx={{ pb: 150 }}>
 
-      <IconButton aria-label="title">
-        Ready in {props.ready_in_minutes} minutes!
-      </IconButton>
-          
-      </Box>
-        
+        <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
 
-        <Box sx={{
-      display: 'flex', 
-      flexDirection: 'row',
-      justifyContent: 'space-between'
-    }}>
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'column'
-      }}>
-        <CardMedia
-          component="img"
-          image={props.image}
-          alt={props.title}
-          sx={{maxWidth:900,
-            maxHeight: 300,
-            display:"flex",
-            flexDirection: "row",
-            alignItems: 'center',
-            alignContent: 'center',
-            pt: "16px",
-            pl: "16px"
-          }}
-        />
-        <Divider sx={{pt:'0.5em', mb: '0.5em'}}></Divider>
-        <Box sx={{
-            display:'flex',
-            flexDirection:'row',
-            fontSize: 'small',
-            justifyContent: 'space-evenly',
-            pl: "16px",
-            pb:"7px"
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            pt: '.5em'
           }}>
-            
-            {props.vegan 
-            ? <VeganIcon /> 
-            : props.vegetarian
-            ? <VegetarianIcon />
-            : null
-            }
-            <Box sx={{
-            pr: "5px"
-          }}></Box>
-            {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
-            <Box sx={{
-            pr: "5px"
-          }}></Box>
-            {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+
+            <IconButton aria-label="title">
+              <Box>
+                {props.title}
+              </Box>
+
+            </IconButton>
+
+
+            <IconButton aria-label="title">
+              Ready in {props.ready_in_minutes} minutes!
+            </IconButton>
+
           </Box>
+
+
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          }}>
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <CardMedia
+                component="img"
+                image={props.image}
+                alt={props.title}
+                sx={{
+                  maxWidth: 900,
+                  maxHeight: 300,
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: 'center',
+                  alignContent: 'center',
+                  pt: "16px",
+                  pl: "16px"
+                }}
+              />
+              <Divider sx={{ pt: '0.5em', mb: '0.5em' }}></Divider>
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                fontSize: 'small',
+                justifyContent: 'space-evenly',
+                pl: "16px",
+                pb: "7px"
+              }}>
+
+                {props.vegan
+                  ? <VeganIcon />
+                  : props.vegetarian
+                    ? <VegetarianIcon />
+                    : null
+                }
+                <Box sx={{
+                  pr: "5px"
+                }}></Box>
+                {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
+                <Box sx={{
+                  pr: "5px"
+                }}></Box>
+                {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
+              </Box>
+            </Box>
+            <CardContent sx={{ maxWidth: 500 }}>
+
+              <div dangerouslySetInnerHTML={{ __html: props.summary }} />
+
+            </CardContent>
+
+
+
+
+          </Box>
+
+
+        </Paper>
+
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: 1000 }}  >
+          <Button variant="contained" sx={{ color: "#EB5A47", fontWeight: 900, bgcolor: "#154c79" }} onClick={voteNo} checked={checked} >
+            NOPE
+          </Button>
+
+          <Button variant="contained" sx={{ color: "#96EB78", fontWeight: 900, bgcolor: "#154c79" }} onClick={voteYes} checked={checked} >
+            YES!
+          </Button>
+
         </Box>
-        <CardContent sx={{maxWidth:500}}>
-          
-          <div dangerouslySetInnerHTML={{ __html: props.summary }} />
-          
-        </CardContent>
 
-      
-
-        
-        </Box>
-        
-      
-    </Paper>
-
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', maxWidth: 1000}}  >
-      <Button variant="contained" sx={{color:"#EB5A47", fontWeight:900, bgcolor: "#154c79"}} onClick={voteNo} checked={checked} >
-        NOPE
-      </Button>
-
-      <Button variant="contained" sx={{color:"#96EB78", fontWeight:900, bgcolor: "#154c79"}} onClick={voteYes} checked={checked} >
-        YES!
-      </Button>
-      
-    </Box>
-    
-    </Box>
+      </Box>
     </Slide>
-  )
+  );
 }

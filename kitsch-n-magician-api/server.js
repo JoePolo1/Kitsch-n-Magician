@@ -8,7 +8,7 @@ const deleteFavById = require('./db/queries/deleteFavById');
 const addIngredientsByUser = require('./db/queries/addIngredientsByUser');
 const addIngredient = require('./db/queries/addIngredient');
 const deleteIngredient = require('./db/queries/deleteIngredient');
-
+const deleteGameRecipes = require('./db/queries/deleteGameRecipes');
 
 const displayPantry = require('./db/queries/displayKitchenItems');
 const deletePantryItem = require('./db/queries/deletePantryItem');
@@ -235,8 +235,8 @@ app.post('/voteYes', (req, res) => {
     .then((response) => {
       if (response.matcher_decision === 2) {
         return matchedRecipes(req.body.userId, response.recipe_id)
-        .then(() => selectRecipeById(req.body.recipeId))
-        .then((result) => res.send(result));
+          .then(() => selectRecipeById(req.body.recipeId))
+          .then((result) => res.send(result));
       }
     });
   // res.send("successful YES vote");
@@ -246,6 +246,15 @@ app.post('/voteNo', (req, res) => {
   noButton(req.body.userId, req.body.recipeId);
   res.send("successful NO vote");
 });
+
+app.post('/removeGame', (req, res) => {
+  console.log("it made it!", req.body);
+  deleteGameRecipes(req.body.userId)
+    .then((response) => {
+    res.send("game deleted");
+  })
+}
+);
 
 
 app.listen(PORT, () => {
