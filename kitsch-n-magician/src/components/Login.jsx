@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import Axios from "axios";
 import useToken from '../hooks/useToken';
+import Paper from '@mui/material/Paper';
 
 function Copyright(props) {
   return (
@@ -61,17 +62,18 @@ export default function SignIn(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container sx={{height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center'}}component="main" maxWidth="xs">
         <CssBaseline />
+        <Paper elevation={12} sx={{mt: '10vh', borderRadius: '25px'}} >
         <Box
           sx={{
-            marginTop: 8,
+            m: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -131,7 +133,8 @@ export default function SignIn(props) {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Paper>
+
       </Container>
     </ThemeProvider>
   );
