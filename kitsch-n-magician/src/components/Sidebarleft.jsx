@@ -706,7 +706,7 @@ const handleSubmit = event => {
         flexDirection: "column",
         justifyContent: 'space-between',
         alignItems: "center",
-        height: '90vh'
+        height: '95vh'
       }}>
 
         {/* THIS BOX DIV CONTAINS ONLY INGREDIENTS LIST AND TEXT INPUT.
