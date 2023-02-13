@@ -7,7 +7,6 @@ export default function DeletePantry(props){
 
   const onClick = (event) => {
     event.preventDefault()
-    console.log('clicked')
   }
 
   return(

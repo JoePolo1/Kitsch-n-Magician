@@ -118,20 +118,11 @@ app.post('/myrecipes', async (req, res) => {
 });
 
 app.post('/myfavs', (req, res) => {
-  // res.send(await addRecipes(req.body.items.item)
-  // .then((result)=>{
-  //   addFavouriteRecipes(req.body.items.item.title)
-  //   .then((data)=>{
-  //     console.log("we are getting from promise", data);
-  //   });
-  // .then(addFavouriteTable(req.body.userId, addFavouriteRecipes(req.body.items.item.title))))
   addRecipes(req.body.items.item)
     .then((result) => {
-      console.log("We tryare afterward in ADd REceipies promise closed");
       return addFavouriteRecipes(req.body.items.item.title);
     })
     .then((recipeId) => {
-      // console.log("we are getting from promise", recipeId);
       return addFavouriteTable(recipeId, req.body.userId);
     })
     .then((data) => {

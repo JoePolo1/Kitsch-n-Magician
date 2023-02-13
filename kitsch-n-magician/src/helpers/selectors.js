@@ -741,11 +741,7 @@ export function findRecipeId (data) {
   }
   return result;
 
-}                               
-
-// function findRecipeInfo()
-
-// console.log(`Find Recipe By ID Results are: ${findRecipeId(exampleData)}`)
+}
 
 //Function to convert ingredients list to URL for API end point
 export function urlconverter (array) {

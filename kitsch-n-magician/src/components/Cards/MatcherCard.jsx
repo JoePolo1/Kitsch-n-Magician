@@ -44,6 +44,7 @@ export default function MatcherCard(props) {
   const [gameOver, setGameOver] = useState(false)
 
 
+
   const removeGame = () => {
     axios.post('/removeGame', {
       userId: getToken
@@ -57,16 +58,19 @@ export default function MatcherCard(props) {
     // props.setGameCount((prev) => prev + 1)
     
     if (props.gameCount !== props.gameRecipesCount && props.useExisting) {
+
        props.setGameCount((prev) => prev + 1);
        console.log("Clicked yes, gamerecipes is", props.gameRecipesCount, "gamecount", props.gameCount)
      
      }else if(props.gameCount === props.gameRecipesCount && props.useExisting){
       setGameOver(true)
      }
+     
     axios.post('/voteYes', {
       userId: getToken,
       recipeId: props.recipeId
     }).then((response) => {
+
       if(props.useExisting){
       props.setMeal((prev) => {
         return [...prev, response.data[0]];
@@ -84,6 +88,7 @@ export default function MatcherCard(props) {
 
     //   console.log(response);
     // })
+
   };
 
   const voteNo = () => {
@@ -91,9 +96,11 @@ export default function MatcherCard(props) {
 
     if (props.gameCount !== props.gameRecipesCount * 2) {
       props.setGameCount((prev) => prev + 1);
+
       console.log("Clicked yes, gamecount is", props.gameCount)
     }else if(props.gameCount === props.gameRecipesCount && props.useExisting){setGameOver(true)}
     console.log('You just clicked No on props.recipeId: ', props);
+
 
     axios.post('/voteNo', {
       userId: getToken,

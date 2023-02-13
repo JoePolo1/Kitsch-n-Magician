@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import useToken from '../hooks/useToken';
+import useToken from '../../hooks/useToken';
 
 
 export default function DeleteFavRecipeButton(props) {
@@ -15,11 +15,8 @@ export default function DeleteFavRecipeButton(props) {
       userId: getToken,
       recipeId: props.recipeId
     }) .then(() => {
-      console.log('hello world')
       props.setRecipeFavs((prev) => {
       return [...prev.filter((item) => {
-        console.log('item.id is ', item.id)
-        console.log('props.recipeId is ', props.recipeId)
         return (props.recipeId !== item.id)
       })]})
       props.setSelectedrecipe(null)

@@ -33,7 +33,6 @@ export default function FavouritesCard(props) {
     setExpanded(!expanded);
   };
 
-  console.log('props.vegetarian is: ', props.vegetarian)
 
   return (
     <>

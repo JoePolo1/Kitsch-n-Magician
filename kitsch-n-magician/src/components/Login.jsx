@@ -14,7 +14,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import Axios from "axios";
-import PropTypes from 'prop-types';
 import useToken from '../hooks/useToken';
 
 function Copyright(props) {
@@ -48,9 +47,6 @@ export default function SignIn(props) {
     }).then((response) => {
       // useToken().setToken(response.data.rows[0].id)
       setToken(response.data.rows[0].id)
-      console.log('token is ', getToken);
-      // console.log('session id is ', sessionId)
-      // req.session.userId = sessionId
       
     })
   }
@@ -58,10 +54,6 @@ export default function SignIn(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
   };
 
   return (

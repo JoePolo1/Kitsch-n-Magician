@@ -1,12 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Icon from '@mui/material/Icon';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
-import RecipeCard from './RecipeCard';
-import Sidebarleft from './Sidebarleft';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function InputWithIcon(props) {
