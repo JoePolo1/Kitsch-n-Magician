@@ -695,7 +695,6 @@ const handleSubmit = event => {
             width: drawerWidth,
             boxSizing: 'border-box',
             height: '100vh'
-
           }
         }}
         variant="permanent"
@@ -707,7 +706,7 @@ const handleSubmit = event => {
         flexDirection: "column",
         justifyContent: 'space-between',
         alignItems: "center",
-        height: 900
+        height: '90vh'
       }}>
 
         {/* THIS BOX DIV CONTAINS ONLY INGREDIENTS LIST AND TEXT INPUT.
@@ -717,8 +716,8 @@ const handleSubmit = event => {
         flexDirection: "column",
         justifyContent: 'flex-start',
         alignItems: 'stretch',
-        height: '90%',
-        mb:'4.3em'
+        height: '25vh'
+
         }}> 
         
         <InputWithIcon
@@ -755,7 +754,8 @@ const handleSubmit = event => {
             flexDirection: 'column',
             justifyContent: 'flex-end',
             alignItems: 'center',
-            zIndex:200
+            zIndex:200,
+            height: '90vh'
           }}>
             <SearchButton
             onClick={UseRecipePrimarySearch}
