@@ -717,6 +717,7 @@ const handleSubmit = event => {
         justifyContent: 'flex-start',
         alignItems: 'stretch',
         height: '25vh'
+
         }}> 
         
         <InputWithIcon
@@ -760,10 +761,12 @@ const handleSubmit = event => {
             onClick={UseRecipePrimarySearch}
             sx={{ zIndex: 9000 }}
             />
+            
+            
           </Box>
         {/* END OF INGREDIENT LIST */}
         <Divider />
-
+        <Box sx={{mb: '4em', bgcolor: '#FFFFFF'}}></Box>
         {/* END OF  BOX DIV CONTAINING BOTH INGREDIENT LIST AND SEARCH BUTTON */}
         
         </Box>
