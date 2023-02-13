@@ -6,29 +6,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { green } from '@mui/material/colors';
-import Icon from '@mui/material/Icon';
-import InputWithIcon from './InputWithIcon';
-import IngredientListItem from './IngredientListItem';
-import SearchButton from './Button';
 import { useEffect } from 'react';
-import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import FavouritesListItem from './FavouritesListItem'
-import { faSignalPerfect } from '@fortawesome/free-solid-svg-icons';
 import useToken from '../hooks/useToken'
 import {getSelectedRecipe} from '../helpers/selectors';
 import FavouritesCard from './FavouritesCard';
-import RecipeCard from './Cards/RecipeCard';
-
 
 
 const drawerWidth = 240;

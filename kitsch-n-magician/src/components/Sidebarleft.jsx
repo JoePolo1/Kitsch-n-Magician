@@ -10,7 +10,7 @@ import Divider from '@mui/material/Divider';
 import RecipeCard from './Cards/RecipeCard';
 import InputWithIcon from './InputWithIcon';
 import IngredientListItem from './IngredientListItem';
-import SearchButton from './Button';
+import SearchButton from './Buttons/Button';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import useToken from '../hooks/useToken';
