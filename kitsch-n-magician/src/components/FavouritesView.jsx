@@ -62,7 +62,6 @@ export default function FavouritesView() {
     })();
   }, []);
 
-  console.log("data inside fav component is", recipeFavs)
 
 
   let recipeFavsList;
@@ -73,8 +72,6 @@ export default function FavouritesView() {
       const onClick = (event) => {
         event.preventDefault()
         setSelectedrecipe(getSelectedRecipe(recipeFavs, favs.title))
-        console.log(selectedrecipe);
-        console.log('recipeFavs state is ', recipeFavs)
       }
 
       return (

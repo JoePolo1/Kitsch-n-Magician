@@ -48,15 +48,10 @@ export default function MatcherView() {
   const [gameCount, setGameCount] = useState(1)
   const [useExisting, setUseExisting] = useState(false)
 
-  // console.log("ingredients", ingredients);
-
-  console.log("number of game recipes", gameRecipes.length)
-
 
   const findGameExists = function () {
     axios.post('/load-game', { userId: getToken })
       .then((response) =>  {
-        // console.log("FINDGAMEEXISTS response is ", response.data);
         if (response.data === false) {
           UseRecipePrimarySearch()
         } else {
@@ -78,7 +73,6 @@ export default function MatcherView() {
     });
 
     const ingredientUrl = urlconverter(ingredientArray);
-    console.log('ingredients are ', ingredients.name);
     const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`;
     
 
@@ -89,7 +83,6 @@ export default function MatcherView() {
       .then((recipeId) => {
         let promiseArr = [];
         for (let x of recipeId) {
-          console.log("X is ", x);
           promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`));
         }
         const tempRecipes = []
@@ -97,7 +90,6 @@ export default function MatcherView() {
         Promise.all(promiseArr)
 
           .then((all) => {
-            // console.log("then ALL is ", all);
             for (let food of all) {
               tempRecipes.push({
                 title: food.data.title,
@@ -113,7 +105,6 @@ export default function MatcherView() {
               })
             } 
             setRecipes(...recipes, tempRecipes)
-            console.log('recipes', tempRecipes);
             for (let recipe of tempRecipes) {
 
               axios.post('/matchgame',
@@ -186,7 +177,6 @@ const UseExistingGameSearch = function() {
       { userId: getToken }
       )
       return response.data
-      console.log("response data", response.data)
     }catch (err){
       return err;
     }
@@ -195,7 +185,6 @@ const UseExistingGameSearch = function() {
   useEffect(() => {
     (async () => {
       const result = await displayMatched();
-      console.log("results are in!", result)
       setMealPrep(result);
       
     })()
@@ -205,10 +194,8 @@ const UseExistingGameSearch = function() {
 
   const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-  console.log("items in meal prep", mealPrep)
 
   const mapMeal = mealPrep.map((item, index) => {
-    console.log("items in mealmap", item )
 
     return (
     
@@ -236,7 +223,6 @@ const UseExistingGameSearch = function() {
       const response = await axios.post("/mypantry",
         { userId: getToken }
       );
-      // console.log('response is ', response.data)
       return response.data;
     } catch (err) {
       return err;

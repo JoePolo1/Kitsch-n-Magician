@@ -47,26 +47,21 @@ const getToken = useToken().getToken()
 const UseRecipePrimarySearch = function () {
   
   const ingredientUrl = urlconverter(ingredients);
-  console.log('get token is ', getToken)
   const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
 
 
     axios.get(url)
       .then((all) => {
-        console.log(all)
-        console.log("Find recipe ID is ", findRecipeId(all.data))
         return findRecipeId(all.data)
       })
       .then((recipeId) => {
         let promiseArr = [];
         for (let x of recipeId) {
-          console.log("X is ", x)
           promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`))
         }
         Promise.all(promiseArr)
 
         .then((all) => {
-          console.log("then ALL is ", all);
           for (let food of all) {
             setRecipes(recipes => ([
               ...recipes,
@@ -107,15 +102,12 @@ const handleChange = event => {
 
 const handleSubmit = event => {
   event.preventDefault()
-  // console.log("new ingredient", newIngredient)
-  // setIngredients([newIngredient.trim(), ...ingredients])
   axios.post('/myingredients', {
     userId: getToken,
     ingredient: newIngredient
   }).then(() => {
-    console.log('newingredient', newIngredient)
-   setIngredients((prev) =>[{name : newIngredient}, ...prev])
-   setNewIngredient('')
+    setIngredients((prev) =>[{name : newIngredient}, ...prev])
+    setNewIngredient('')
   })
   .catch((error) => {
     return error
@@ -123,13 +115,6 @@ const handleSubmit = event => {
 }
 
 
-// useEffect(() => {
-//   (async () => {
-//     const result = await handleSubmit();
-//     displayPantry()
-    
-//   })()
-// }, [])
 
     // This function maps the details of a recipe and puts them in a recipe card
     
@@ -139,7 +124,6 @@ const handleSubmit = event => {
             const response = await axios.post("/mypantry", 
               {userId: getToken}
             );
-            console.log('response is ', response)
             return response.data;
           } catch (err) {
             return err;
@@ -152,25 +136,7 @@ const handleSubmit = event => {
           setIngredients(result)
         })()
       }, [])
-      
-      // return (
-      //   <RecipeCard 
-      //       title={item.title}
-      //       ready_in_minutes={item.ready_in_minutes}
-      //       image={item.image}
-      //       spoon_url={item.spoon_url}
-      //       servings={item.servings}
-      //       summary={item.summary}
-      //       vegetarian={item.vegetarian}
-      //       vegan={item.vegan}
-      //       gluten_free={item.gluten_free}
-      //       dairy_free={item.dairy_free}
-      //       onClick={onClick}
-      //   />
-      // )
-      
 
-   
 
 
 
