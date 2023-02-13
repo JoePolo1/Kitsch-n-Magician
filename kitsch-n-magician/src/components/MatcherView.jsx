@@ -488,7 +488,7 @@ const UseExistingGameSearch = function() {
                 mt: '8em',
 
                 boxSizing: 'border-box',
-                maxHeight: '80%'
+                maxHeight: '83%'
               }
             }}
             variant="permanent"
@@ -502,7 +502,9 @@ const UseExistingGameSearch = function() {
             flexDirection: 'column',
             fontSize: '1.2em',
             bgcolor: '#CBF5EF',
-            opacity: '1'}} >
+            opacity: '1',
+            height: '100vh'
+            }} >
               
               {mapMeal}
 
