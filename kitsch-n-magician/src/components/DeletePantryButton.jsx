@@ -9,8 +9,6 @@ export default function DeletePantryButton(props) {
   const handleDelete = function(event){
     event.preventDefault()
   
-    console.log('value is', props.name)
-  
     axios.post('/deletePantryItems', {
       userId: props.userId,
       ingredientId: props.name
@@ -20,7 +18,7 @@ export default function DeletePantryButton(props) {
           return (props.name !== item.name)
         })]
       })
-     
+
     }).catch((error) => {
       return error
     })

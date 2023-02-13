@@ -18,7 +18,6 @@ export default function DeleteIngredientButton(props) {
     .then(() => {
       props.setIngredients((prev) => {
         return [...prev.filter((item) => {
-          console.log('item in filter', item)
           return (props.name !== item)
         }
       )]
