@@ -14,7 +14,7 @@ import axios from 'axios';
 import useToken from '../hooks/useToken';
 import MatcherButton from './MatcherButton';
 import { Paper } from '@mui/material';
-import MatcherCard from './Cards/MatcherCard';
+import MatcherCard from './MatcherCard';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Slide from '@mui/material/Slide';

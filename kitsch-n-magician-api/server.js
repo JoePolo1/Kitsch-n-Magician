@@ -81,7 +81,6 @@ app.use('/users', usersRoutes);
 
 app.get('/test', (req, res) => {
   addFavouriteRecipes("Vegan stuffed Zucchini Boats");
-  console.log('hello sup');
   res.json({ test: 'hello' });
 });
 
@@ -118,20 +117,12 @@ app.post('/myrecipes', async (req, res) => {
 });
 
 app.post('/myfavs', (req, res) => {
-  // res.send(await addRecipes(req.body.items.item)
-  // .then((result)=>{
-  //   addFavouriteRecipes(req.body.items.item.title)
-  //   .then((data)=>{
-  //     console.log("we are getting from promise", data);
-  //   });
-  // .then(addFavouriteTable(req.body.userId, addFavouriteRecipes(req.body.items.item.title))))
+
   addRecipes(req.body.items.item)
     .then((result) => {
-      console.log("We tryare afterward in ADd REceipies promise closed");
       return addFavouriteRecipes(req.body.items.item.title);
     })
     .then((recipeId) => {
-      // console.log("we are getting from promise", recipeId);
       return addFavouriteTable(recipeId, req.body.userId);
     })
     .then((data) => {
@@ -141,10 +132,8 @@ app.post('/myfavs', (req, res) => {
 
 
 app.post('/matchgame', (req, res) => {
-  // console.log('sent to the back end', req.body)
   addRecipesWithReturn(req.body.items.recipe)
     .then((recipeId) => {
-      // console.log("we are getting from promise", recipeId);
       return addGameRecipes(recipeId, req.body.userId);
     })
     .then(() => { return selectExistingGame(req.body.userId); })
@@ -152,21 +141,17 @@ app.post('/matchgame', (req, res) => {
       return res.send(result);
     });
 });
-// .then((data) => {
-//   res.send({ result: "Successful" });
-// });
+
 app.post('/matchedcolumn', (req, res) => {
   selectMealPrepRecipes(req.body.userId)
     .then((result) => {
       return res.send(result);
-      console.log("return from matched column", result);
     });
 });
 
 app.post('/getmygame', (req, res) => {
   selectExistingGame(req.body.userId)
     .then((result) => {
-      // console.log("RESULT IS ", result)
       return res.send(result);
     });
 });
@@ -174,7 +159,6 @@ app.post('/getmygame', (req, res) => {
 
 
 app.post('/myingredients', (req, res) => {
-  // console.log(req.body);
   addIngredient(req.body.ingredient)
     .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
     .then(() => res.send("add was successfull"));
@@ -205,8 +189,6 @@ app.post('/deleteIngredForUser', (req, res) => {
 
 app.post('/deletePantryItems', (req, res) => {
   deletePantryItem(req.body.ingredientId, req.body.userId);
-  // console.log(req.body.ingredientId, req.body.userId)
-
   res.send("successful deletion");
 });
 
@@ -219,12 +201,10 @@ app.post('/load-game', (req, res) => {
     .then((response) => {
       if (response.rows.length === 0) {
         // write code if game does not exist
-        console.log("did not find game");
         res.send(false);
       }
       else {
         //write code if game exists
-        console.log("found game that exists");
         res.send(true);
       }
     });
@@ -237,9 +217,8 @@ app.post('/voteYes', (req, res) => {
         return matchedRecipes(req.body.userId, response.recipe_id)
           .then(() => selectRecipeById(req.body.recipeId))
           .then((result) => res.send(result));
-      }
+      } else {res.send("Game has been deleted.")}
     });
-  // res.send("successful YES vote");
 });
 
 app.post('/voteNo', (req, res) => {
@@ -248,7 +227,6 @@ app.post('/voteNo', (req, res) => {
 });
 
 app.post('/removeGame', (req, res) => {
-  console.log("it made it!", req.body);
   deleteGameRecipes(req.body.userId)
     .then((response) => {
     res.send("game deleted");

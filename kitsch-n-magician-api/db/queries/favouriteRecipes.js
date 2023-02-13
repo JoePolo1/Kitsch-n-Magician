@@ -11,14 +11,9 @@ const getFavRecipes = (userId) => {
     WHERE favourite_recipes.user_id = $1
     `, [userId])
     .then(data => {
-      console.log("data rows from getFavs", data.rows)
       return JSON.stringify(data.rows);
     }).catch(err => {return err});
   }
-
-
-
-
 
 module.exports = getFavRecipes
 

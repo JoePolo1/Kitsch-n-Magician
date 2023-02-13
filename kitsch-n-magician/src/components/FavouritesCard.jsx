@@ -37,7 +37,7 @@ export default function FavouritesCard(props) {
   return (
     <>
     <Box>
-    <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
+    <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
     
       <Box sx={{
         display: 'flex',

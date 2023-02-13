@@ -1,7 +1,6 @@
 const db = require('../connection');
 
 const deleteGameRecipes = (user_id) => {
-  // console.log("TESTING", )
   return db.query(
     `DELETE FROM game_recipes
     WHERE household_id = (SELECT household_id FROM users WHERE users.id = $1)`,

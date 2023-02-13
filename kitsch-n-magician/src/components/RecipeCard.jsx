@@ -15,12 +15,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import { Box } from '@mui/system';
-import VeganIcon from '../Icons/Vegan';
-import VegetarianIcon from '../Icons/Vegetarian';
-import GlutenFreeIcon from '../Icons/GlutenFree';
-import NotGlutenFreeIcon from '../Icons/NotGlutenFree';
-import DairyFreeIcon from '../Icons/DairyFree';
-import NotDairyFreeIcon from '../Icons/NotDairyFree';
+import VeganIcon from './Icons/Vegan';
+import VegetarianIcon from './Icons/Vegetarian';
+import GlutenFreeIcon from './Icons/GlutenFree';
+import NotGlutenFreeIcon from './Icons/NotGlutenFree';
+import DairyFreeIcon from './Icons/DairyFree';
+import NotDairyFreeIcon from './Icons/NotDairyFree';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -44,7 +44,7 @@ export default function RecipeCard(props) {
 
 
   return (
-    <Card elevation='8' sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
+    <Card elevation={8} sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
       
       <CardHeader
           avatar={
