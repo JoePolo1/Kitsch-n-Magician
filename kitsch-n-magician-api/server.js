@@ -237,7 +237,7 @@ app.post('/voteYes', (req, res) => {
         return matchedRecipes(req.body.userId, response.recipe_id)
           .then(() => selectRecipeById(req.body.recipeId))
           .then((result) => res.send(result));
-      }
+      }else{res.send("game has been deleted")}
     });
   // res.send("successful YES vote");
 });
