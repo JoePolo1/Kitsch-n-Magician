@@ -126,20 +126,11 @@ app.post('/myrecipes', async (req, res) => {
 });
 
 app.post('/myfavs', (req, res) => {
-  // res.send(await addRecipes(req.body.items.item)
-  // .then((result)=>{
-  //   addFavouriteRecipes(req.body.items.item.title)
-  //   .then((data)=>{
-  //     console.log("we are getting from promise", data);
-  //   });
-  // .then(addFavouriteTable(req.body.userId, addFavouriteRecipes(req.body.items.item.title))))
   addRecipes(req.body.items.item)
     .then((result) => {
-      console.log("We tryare afterward in ADd REceipies promise closed");
       return addFavouriteRecipes(req.body.items.item.title);
     })
     .then((recipeId) => {
-      // console.log("we are getting from promise", recipeId);
       return addFavouriteTable(recipeId, req.body.userId);
     })
     .then((data) => {
@@ -239,8 +230,12 @@ app.post('/load-game', (req, res) => {
 });
 
 app.post('/voteYes', (req, res) => {
+  console.log("error response", req.body.recipeId)
   yesButton(req.body.userId, req.body.recipeId)
-    .then((response) => {
+  .then((response) => {
+      if(response === undefined){
+        res.send("no table")
+      }
       if (response.matcher_decision === 2) {
         return matchedRecipes(req.body.userId, response.recipe_id)
           .then(() => selectRecipeById(req.body.recipeId))
@@ -248,6 +243,8 @@ app.post('/voteYes', (req, res) => {
       } else {
         res.send("game deleted")
       }
+
+
     });
   // res.send("successful YES vote");
 });

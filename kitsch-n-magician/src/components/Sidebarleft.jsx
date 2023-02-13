@@ -7,10 +7,10 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import RecipeCard from './RecipeCard'
+import RecipeCard from './Cards/RecipeCard';
 import InputWithIcon from './InputWithIcon';
 import IngredientListItem from './IngredientListItem';
-import SearchButton from './Button';
+import SearchButton from './Buttons/Button';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import useToken from '../hooks/useToken';
@@ -566,25 +566,20 @@ const getToken = useToken().getToken()
 const UseRecipePrimarySearch = function () {
   
   const ingredientUrl = urlconverter(ingredients);
-  console.log('get token is ', getToken)
   const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`
   
     axios.get(url)
       .then((all) => {
-        console.log(all)
-        console.log("Find recipe ID is ", findRecipeId(all.data))
         return findRecipeId(all.data)
       })
       .then((recipeId) => {
         let promiseArr = [];
         for (let x of recipeId) {
-          console.log("X is ", x)
           promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`))
         }
         Promise.all(promiseArr)
 
         .then((all) => {
-          console.log("then ALL is ", all);
           for (let food of all) {
             setRecipes(recipes => ([
               ...recipes,
@@ -646,13 +641,11 @@ const handleSubmit = event => {
     const recipeItemList = recipes.map(item =>  {
       const onClick = (event) => {
         event.preventDefault()
-        console.log(item)
           try {
             const response = axios.post("/myfavs", 
               {items: {item},
               userId: getToken}
             );
-            console.log('response data is ', response)
             return response.data;
           } catch (err) {
             return err;
@@ -678,9 +671,6 @@ const handleSubmit = event => {
       )
       
     })
-    console.log("recipe item list is ", recipeItemList)
-
-
 
 //  Sidebar lower rendering
   return (
