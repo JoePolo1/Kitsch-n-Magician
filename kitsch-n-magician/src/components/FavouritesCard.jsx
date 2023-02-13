@@ -40,10 +40,14 @@ export default function FavouritesCard(props) {
     <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em', borderRadius: '25px' }}>
     
       <Box sx={{
+        
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        pt: '.5em'
+        pt: '.5em',
+        borderBottom: 4,
+        borderColor: '#F98E6E',
+    
       }}>
 
       <IconButton aria-label="title" sx={{pl:'.6em'}} >
@@ -61,11 +65,13 @@ export default function FavouritesCard(props) {
         <Box sx={{
       display: 'flex', 
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      
     }}>
       <Box sx={{
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        
       }}>
         <CardMedia
           component="img"
@@ -78,17 +84,25 @@ export default function FavouritesCard(props) {
             alignItems: 'center',
             alignContent: 'center',
             pt: "16px",
-            pl: "16px"
+            pl: "16px",
+       
           }}
         />
-        <Divider sx={{pt:'0.5em', mb: '0.5em'}}></Divider>
+        <Divider sx={{}}></Divider>
         <Box sx={{
             display:'flex',
             flexDirection:'row',
             fontSize: 'small',
             justifyContent: 'space-evenly',
+            pt:"7px",
+            pr:"7px",
+            borderTop: 4,
+            borderRight: 4,
+            borderRadius: '0px 25px 0px 25px', 
+            borderColor: '#F98E6E',
             pl: "16px",
-            pb:"7px"
+            pb:"7px",
+            
           }}>
             
             {props.vegan 
