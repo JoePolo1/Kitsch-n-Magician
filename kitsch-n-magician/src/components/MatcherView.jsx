@@ -200,51 +200,75 @@ const UseExistingGameSearch = function() {
   const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 
-  const mapMeal = mealPrep.map((item, index) => {
 
-    return (
-    
-      <DayofTheWeek
-        title={item.title}
-        ready_in_minutes={item.ready_in_minutes}
-        image={item.image}
-        spoon_url={item.spoon_url}
-        servings={item.servings}
-        summary={item.summary}
-        vegetarian={item.vegetarian}
-        vegan={item.vegan}
-        gluten_free={item.gluten_free}
-        dairy_free={item.dairy_free}
-        recipeId={item.recipe_id}
-        day={dayOfWeek[index]}
+  // const mapMeal = mealPrep.map((item, index) => {
 
-      />
-    );
-  })
-
-  // const mapMeal = dayOfWeek.map((item, index) => {
-  //   console.log("items in mealmap", mealPrep[index] )
-    
 
   //   return (
     
   //     <DayofTheWeek
-  //       title={mealPrep[index].title}
-  //       // ready_in_minutes={mealPrep[index].ready_in_minutes}
-  //       // image={mealPrep[index].image}
-  //       spoon_url={mealPrep[index].spoon_url}
-  //       // servings={mealPrep[index].servings}
-  //       // summary={mealPrep[index].summary}
-  //       // vegetarian={mealPrep[index].vegetarian}
-  //       // vegan={mealPrep[index].vegan}
-  //       // gluten_free={mealPrep[index].gluten_free}
-  //       // dairy_free={mealPrep[index].dairy_free}
-  //       // recipeId={mealPrep[index].recipe_id}
-  //       day={item}
+  //       title={item.title}
+  //       ready_in_minutes={item.ready_in_minutes}
+  //       image={item.image}
+  //       spoon_url={item.spoon_url}
+  //       servings={item.servings}
+  //       summary={item.summary}
+  //       vegetarian={item.vegetarian}
+  //       vegan={item.vegan}
+  //       gluten_free={item.gluten_free}
+  //       dairy_free={item.dairy_free}
+  //       recipeId={item.recipe_id}
+  //       day={dayOfWeek[index]}
 
   //     />
   //   );
   // })
+
+  const mapMeal = dayOfWeek.map((item, index) => {
+    console.log("items in mealmap", mealPrep[index] )
+    
+    
+    if(mealPrep[index]){
+    return (
+    
+      <DayofTheWeek
+        title={mealPrep[index].title}
+        // ready_in_minutes={mealPrep[index].ready_in_minutes}
+        // image={mealPrep[index].image}
+        spoon_url={mealPrep[index].spoon_url}
+        // servings={mealPrep[index].servings}
+        // summary={mealPrep[index].summary}
+        // vegetarian={mealPrep[index].vegetarian}
+        // vegan={mealPrep[index].vegan}
+        // gluten_free={mealPrep[index].gluten_free}
+        // dairy_free={mealPrep[index].dairy_free}
+        // recipeId={mealPrep[index].recipe_id}
+        day={item}
+
+      />
+    );
+    }else{
+
+      return (
+    
+        <DayofTheWeek
+          title={"Match to add Recipes"}
+          // ready_in_minutes={mealPrep[index].ready_in_minutes}
+          // image={mealPrep[index].image}
+          // spoon_url={mealPrep[index].spoon_url}
+          // servings={mealPrep[index].servings}
+          // summary={mealPrep[index].summary}
+          // vegetarian={mealPrep[index].vegetarian}
+          // vegan={mealPrep[index].vegan}
+          // gluten_free={mealPrep[index].gluten_free}
+          // dairy_free={mealPrep[index].dairy_free}
+          // recipeId={mealPrep[index].recipe_id}
+          day={item}
+  
+        />
+      );
+    }
+  })
 
 
   const displayPantry = async () => {

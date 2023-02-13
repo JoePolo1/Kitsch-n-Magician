@@ -16,6 +16,7 @@ const checkingGameExists = require('./db/queries/checkingGameExists');
 const yesButton = require('./db/queries/yesButton');
 const noButton = require('./db/queries/noButton');
 const selectMealPrepRecipes = require('./db/queries/selectMatchedRecipes');
+const getName = require('./db/queries/getName')
 
 
 
@@ -111,6 +112,13 @@ app.use('/login', (req, res) => {
     token: "thisIsAUserToken"
   });
 });
+
+app.post('/getname', (req, res) => {
+  getName(req.body.userId)
+  .then((response) => {
+    res.send(response)
+  })
+})
 
 app.post('/myrecipes', async (req, res) => {
   res.send(await getFavRecipes(req.body.userId));
@@ -213,13 +221,21 @@ app.post('/load-game', (req, res) => {
 });
 
 app.post('/voteYes', (req, res) => {
+  console.log("error response", req.body.recipeId)
   yesButton(req.body.userId, req.body.recipeId)
-    .then((response) => {
+  .then((response) => {
+      if(response === undefined){
+        res.send("no table")
+      }
       if (response.matcher_decision === 2) {
         return matchedRecipes(req.body.userId, response.recipe_id)
           .then(() => selectRecipeById(req.body.recipeId))
           .then((result) => res.send(result));
-      }else{res.send("game has been deleted")}
+      } else {
+        res.send("game deleted")
+      }
+
+
     });
   // res.send("successful YES vote");
 });
