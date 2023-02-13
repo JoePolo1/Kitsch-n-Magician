@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState, useEffect} from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBurger} from '@fortawesome/free-solid-svg-icons';
 import useToken from '../hooks/useToken'
+
 
 
 
@@ -39,7 +41,51 @@ function Navbar(props) {
     setAnchorElUser(null);
   };
 
+  const signout = () => {
+    props.setName('');
+  }
+
   const getToken = useToken().getToken()
+
+ 
+
+  const displayName = (getToken) => {
+    return axios.post('/getname', {
+      userId: getToken
+    })
+    .then(response => {
+      props.setName(response.data.rows[0].first_name);
+    });
+  };
+
+  // const getFirstName = async () => {
+  //   const firstName = await displayName(getToken);
+  //   return firstName;
+  // };
+
+  if (getToken) {
+    displayName(getToken)
+  }
+
+
+  
+  
+
+
+
+  // const displayMatched = async () => {
+  //   try{
+  //     const response = await axios.post("/matchedcolumn",
+  //     { userId: getToken }
+  //     )
+  //     return response.data
+  //     console.log("response data", response.data)
+  //   }catch (err){
+  //     return err;
+  //   }
+  // }
+
+  console.log("displayName result", props.name);
 
   return (
     <AppBar position="fixed" >
@@ -161,6 +207,10 @@ function Navbar(props) {
 
           </Box>
 
+          {props.name !== "" ? <p>Signed in as {props.name} </p> : <p>Not signed in</p> }
+
+
+
           <Box sx={{ flexGrow: 0, mr: 2.4 }} bgcolor= '#154c79'>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -190,8 +240,8 @@ function Navbar(props) {
                 <MenuItem onClick={props.switchRegister}>
                   <Typography textAlign="center">Register</Typography>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Logout</Typography>
+                <MenuItem onClick={useToken().deleteToken} >
+                  <Typography onClick={signout} textAlign="center">Logout</Typography>
                 </MenuItem>
 
             </Menu>

@@ -47,6 +47,9 @@ export default function SignIn(props) {
     }).then((response) => {
       // useToken().setToken(response.data.rows[0].id)
       setToken(response.data.rows[0].id)
+
+      props.setName(response.data.rows[0].first_name)
+
       
     })
   }
