@@ -1,7 +1,4 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 
@@ -11,10 +8,6 @@ export default function DayofTheWeek(props) {
 
   // Defaults to "Keep playing to fill recipes" until a match is found
   const [matchFound, setmatchFound] = useState(true)
-
-  // if(props.title){
-  //   setmatchFound(true)
-  // }
 
   return (
     <Box sx={{ flexGrow: 0, 

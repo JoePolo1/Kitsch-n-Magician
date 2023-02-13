@@ -14,7 +14,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from "react";
 import Axios from "axios";
-import PropTypes from 'prop-types';
 import useToken from '../hooks/useToken';
 
 function Copyright(props) {

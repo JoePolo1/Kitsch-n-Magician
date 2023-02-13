@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import useToken from '../hooks/useToken';
-import MatcherButton from './MatcherButton';
+import MatcherButton from './Buttons/MatcherButton';
 import { Paper } from '@mui/material';
 import MatcherCard from './Cards/MatcherCard';
 import { styled } from '@mui/material/styles';
