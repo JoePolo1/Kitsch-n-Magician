@@ -329,7 +329,9 @@ const UseExistingGameSearch = function() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.2em'}} bgcolor= '#18588c'>
+            fontSize: '1.2em',
+            bgcolor: '#F98E6E'
+            }} >
             <header> My Pantry Items</header>
           </Box>
             <List>
@@ -378,7 +380,7 @@ const UseExistingGameSearch = function() {
 
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{ flexGrow: 1, p: 3, minHeight: 1250, opacity: '0.98'  }}
       >
 
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
@@ -447,7 +449,7 @@ const UseExistingGameSearch = function() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.2em'}} bgcolor= '#18588c'>
+            fontSize: '1.2em'}} bgcolor= '#F98E6E'>
             <header> Household Matches</header></Box>
         <Divider></Divider>
 
@@ -473,13 +475,11 @@ const UseExistingGameSearch = function() {
             alignItems: 'left',
             justifyContent: 'center',
             flexDirection: 'column',
-            fontSize: '1.2em'}} >
+            fontSize: '1.2em',
+            bgcolor: '#CBF5EF',
+            opacity: '1'}} >
               
-              {/* <DayofTheWeek 
-              /> */}
               {mapMeal}
-
-              
 
             </Box>
           </Drawer>

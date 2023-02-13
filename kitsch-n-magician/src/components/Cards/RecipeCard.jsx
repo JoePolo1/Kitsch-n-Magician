@@ -44,9 +44,13 @@ export default function RecipeCard(props) {
 
 
   return (
-    <Card elevation='8' sx={{ maxWidth: 2000, marginBottom: '1.13em' }}>
-      
-      <CardHeader
+    <Card elevation={8} sx={{ maxWidth: 2000, marginBottom: '1.13em', borderRadius: '25px' }}>
+      <Box >
+      <CardHeader 
+      sx={{
+        fontSize: 20,
+        fontWeight: "Medium"
+      }}
           avatar={
             <Avatar sx={{ bgcolor: "#154c79" }} aria-label="recipe">
               <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
@@ -58,11 +62,11 @@ export default function RecipeCard(props) {
             </Button>
           }
           title={props.title}
-          sx={{
-            fontSize: 20,
-            fontWeight: "Medium"
-          }}
+          
         />
+
+
+        </Box>
         <Box sx={{
       display: 'flex', 
       flexDirection: 'row',

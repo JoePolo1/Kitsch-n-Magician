@@ -770,7 +770,7 @@ const handleSubmit = event => {
       
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, bgcolor: '#CBF5EF', p: 3, minHeight: 1300 }}
       >
 
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}

@@ -88,7 +88,7 @@ export default function MatcherCard(props) {
     <Slide direction="up" timeout={500} in={checked} mountOnEnter unmountOnExit>
       <Box sx={{ pb: 150 }}>
 
-        <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
+        <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em', borderRadius: '25px' }}>
 
           <Box sx={{
             display: 'flex',
@@ -98,7 +98,7 @@ export default function MatcherCard(props) {
           }}>
 
             <IconButton aria-label="title">
-              <Box>
+              <Box sx={{pl:'.6em'}}>
                 {props.title}
               </Box>
 

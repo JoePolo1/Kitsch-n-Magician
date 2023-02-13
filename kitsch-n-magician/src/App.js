@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import useToken from './hooks/useToken';
 import MatcherView from "./components/MatcherView";
 import PantryView2 from "./components/PantryView2";
+import { Box } from "@mui/system";
 
 
 const FAVOURITES = "FAVOURITES";
@@ -41,6 +42,7 @@ function App() {
       switchPantry={() => transition(PANTRY)}
       />
       <Fragment>
+        <Box sx={{ backgroundImage:'url(Kitchenware.png)', bgcolor: '#CBF5EF', backgroundSize: '75%', backgroundPosition: 'center' }}>
       {mode === RECIPESEARCH && <Sidebarleft />}
       {mode === FAVOURITES && <FavouritesView />}
       {mode === REGISTER && <Register />}
@@ -48,7 +50,7 @@ function App() {
       {mode === LOGOUT && <Sidebarleft />}
       {mode === MATCHER && <MatcherView />}
       {mode === PANTRY && <PantryView2 />}
-
+        </Box>
       </Fragment>
     </div>
   );
