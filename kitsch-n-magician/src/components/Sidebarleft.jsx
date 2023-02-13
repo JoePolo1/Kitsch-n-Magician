@@ -7,7 +7,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import RecipeCard from './RecipeCard'
+import RecipeCard from './Cards/RecipeCard';
 import InputWithIcon from './InputWithIcon';
 import IngredientListItem from './IngredientListItem';
 import SearchButton from './Button';

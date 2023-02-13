@@ -5,7 +5,7 @@ import Icon from '@mui/material/Icon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
-import RecipeCard from './RecipeCard';
+import RecipeCard from './Cards/RecipeCard';
 import Sidebarleft from './Sidebarleft';
 
 

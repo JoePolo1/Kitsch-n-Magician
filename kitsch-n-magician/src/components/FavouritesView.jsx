@@ -14,7 +14,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import RecipeCard from './RecipeCard'
 import { green } from '@mui/material/colors';
 import Icon from '@mui/material/Icon';
 import InputWithIcon from './InputWithIcon';
@@ -28,6 +27,7 @@ import { faSignalPerfect } from '@fortawesome/free-solid-svg-icons';
 import useToken from '../hooks/useToken'
 import {getSelectedRecipe} from '../helpers/selectors';
 import FavouritesCard from './FavouritesCard';
+import RecipeCard from './Cards/RecipeCard';
 
 
 
