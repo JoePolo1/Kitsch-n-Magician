@@ -84,7 +84,7 @@ export default function MatchedColumn(props) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.2em'}} bgcolor= '#18588c'>
+            fontSize: '1.2em'}} bgcolor= '#F98E6E'>
             <header> Household Matches</header></Box>
         <Divider></Divider>
 

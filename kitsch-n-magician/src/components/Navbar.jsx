@@ -90,7 +90,7 @@ function Navbar(props) {
 
   return (
     <AppBar position="fixed" >
-      <Box bgcolor= '#154c79' >
+      <Box bgcolor= '#0F4953' >
         <Toolbar disableGutters >
           <Box sx={{
         ml: 2.4
@@ -123,7 +123,7 @@ function Navbar(props) {
             Kitsch'n Magician
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', xl: 'none' } }} bgcolor= '#154c79'>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', xl: 'none' } }} bgcolor= '#0F4953'>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -185,7 +185,7 @@ function Navbar(props) {
           >
             Kitsch'n Magician
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#154c79' >
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#0F4953' >
             
               <Button
                 onClick={props.switchFavourites}
@@ -210,9 +210,8 @@ function Navbar(props) {
 
           {props.name !== "" ? <p>Signed in as {props.name} </p> : <p>Not signed in</p> }
 
+          <Box sx={{ flexGrow: 0, mr: 2.4 }} bgcolor= '#0F4953'>
 
-
-          <Box sx={{ flexGrow: 0, mr: 2.4 }} bgcolor= '#154c79'>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

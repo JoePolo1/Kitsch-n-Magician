@@ -65,7 +65,6 @@ const addGameRecipes = require('./db/queries/addGameRecipes');
 const selectExistingGame = require('./db/queries/selectExistingGame');
 const matchedRecipes = require('./db/queries/matchedRecipes');
 const selectRecipeById = require('./db/queries/selectRecipebyId');
-// const { default: YesButton } = require('../kitsch-n-magician/src/components/Buttons/YesButton');
 
 
 // Mount all resource routes
@@ -140,10 +139,8 @@ app.post('/myfavs', (req, res) => {
 
 
 app.post('/matchgame', (req, res) => {
-  // console.log('sent to the back end', req.body)
   addRecipesWithReturn(req.body.items.recipe)
     .then((recipeId) => {
-      // console.log("we are getting from promise", recipeId);
       return addGameRecipes(recipeId, req.body.userId);
     })
     .then(() => { return selectExistingGame(req.body.userId); })
@@ -151,9 +148,7 @@ app.post('/matchgame', (req, res) => {
       return res.send(result);
     });
 });
-// .then((data) => {
-//   res.send({ result: "Successful" });
-// });
+
 app.post('/matchedcolumn', (req, res) => {
   selectMealPrepRecipes(req.body.userId)
     .then((result) => {
@@ -165,7 +160,6 @@ app.post('/matchedcolumn', (req, res) => {
 app.post('/getmygame', (req, res) => {
   selectExistingGame(req.body.userId)
     .then((result) => {
-      // console.log("RESULT IS ", result)
       return res.send(result);
     });
 });
@@ -173,7 +167,6 @@ app.post('/getmygame', (req, res) => {
 
 
 app.post('/myingredients', (req, res) => {
-  // console.log(req.body);
   addIngredient(req.body.ingredient)
     .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
     .then(() => res.send("add was successfull"));
@@ -204,8 +197,6 @@ app.post('/deleteIngredForUser', (req, res) => {
 
 app.post('/deletePantryItems', (req, res) => {
   deletePantryItem(req.body.ingredientId, req.body.userId);
-  // console.log(req.body.ingredientId, req.body.userId)
-
   res.send("successful deletion");
 });
 

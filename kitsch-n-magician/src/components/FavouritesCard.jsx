@@ -37,7 +37,7 @@ export default function FavouritesCard(props) {
   return (
     <>
     <Box>
-    <Paper elevation='12' sx={{ maxWidth: 1000, marginBottom: '1.13em' }}>
+    <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em', borderRadius: '25px' }}>
     
       <Box sx={{
         display: 'flex',
@@ -46,7 +46,7 @@ export default function FavouritesCard(props) {
         pt: '.5em'
       }}>
 
-      <IconButton aria-label="title">
+      <IconButton aria-label="title" sx={{pl:'.6em'}} >
         {props.title}
       </IconButton>
         
