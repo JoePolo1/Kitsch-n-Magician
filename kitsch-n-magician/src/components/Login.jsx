@@ -49,6 +49,8 @@ export default function SignIn(props) {
       // useToken().setToken(response.data.rows[0].id)
       setToken(response.data.rows[0].id)
       console.log('token is ', getToken);
+      console.log("first name front-end", response.data.rows[0].first_name)
+      props.setName(response.data.rows[0].first_name)
       // console.log('session id is ', sessionId)
       // req.session.userId = sessionId
       

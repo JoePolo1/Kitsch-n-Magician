@@ -27,6 +27,8 @@ const ADD = "ADD";
 
 function App() {
   const { mode, transition, back } = useVisualMode(RECIPESEARCH)
+  const [name, setName] = useState('')
+  
 
 
 
@@ -39,12 +41,14 @@ function App() {
       switchRegister={() => transition(REGISTER)}
       switchMatcher={() => transition(MATCHER)}
       switchPantry={() => transition(PANTRY)}
+      name={name}
+      setName={setName}
       />
       <Fragment>
       {mode === RECIPESEARCH && <Sidebarleft />}
       {mode === FAVOURITES && <FavouritesView />}
       {mode === REGISTER && <Register />}
-      {mode === LOGIN && <Login />}
+      {mode === LOGIN && <Login setName={setName} />}
       {mode === LOGOUT && <Sidebarleft />}
       {mode === MATCHER && <MatcherView />}
       {mode === PANTRY && <PantryView2 />}
