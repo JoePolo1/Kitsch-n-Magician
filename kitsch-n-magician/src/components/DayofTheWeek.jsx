@@ -12,6 +12,10 @@ export default function DayofTheWeek(props) {
   // Defaults to "Keep playing to fill recipes" until a match is found
   const [matchFound, setmatchFound] = useState(true)
 
+  // if(props.title){
+  //   setmatchFound(true)
+  // }
+
   return (
     <Box sx={{ flexGrow: 0, 
       width: 239, 

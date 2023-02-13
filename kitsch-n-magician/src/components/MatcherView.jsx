@@ -44,9 +44,14 @@ export default function MatcherView() {
   const [favouriteTarget, setFavouriteTarget] = useState();
   const getToken = useToken().getToken();
   const [gameRecipes, setgameRecipes] = useState([])
-  const [mealPrep, setMealPrep] = useState([])
   const [gameCount, setGameCount] = useState(1)
   const [useExisting, setUseExisting] = useState(false)
+  // const [mealPrep, setMealPrep] = useState({
+  //   title: "Keep Playing to Match",
+  //   spoon_url: ""
+  // })
+  const [mealPrep, setMealPrep] = useState([])
+
 
 
   const findGameExists = function () {
@@ -216,6 +221,31 @@ const UseExistingGameSearch = function() {
       />
     );
   })
+
+  // const mapMeal = dayOfWeek.map((item, index) => {
+  //   console.log("items in mealmap", mealPrep[index] )
+    
+
+  //   return (
+    
+  //     <DayofTheWeek
+  //       title={mealPrep[index].title}
+  //       // ready_in_minutes={mealPrep[index].ready_in_minutes}
+  //       // image={mealPrep[index].image}
+  //       spoon_url={mealPrep[index].spoon_url}
+  //       // servings={mealPrep[index].servings}
+  //       // summary={mealPrep[index].summary}
+  //       // vegetarian={mealPrep[index].vegetarian}
+  //       // vegan={mealPrep[index].vegan}
+  //       // gluten_free={mealPrep[index].gluten_free}
+  //       // dairy_free={mealPrep[index].dairy_free}
+  //       // recipeId={mealPrep[index].recipe_id}
+  //       day={item}
+
+  //     />
+  //   );
+  // })
+
 
   const displayPantry = async () => {
 
