@@ -20,18 +20,18 @@ import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { Box, Divider, Paper } from '@mui/material';
-import VegetarianIcon from './Icons/Vegetarian';
-import NotVegetarianIcon from './Icons/NotVegetarian';
-import VeganIcon from './Icons/Vegan';
-import GlutenFreeIcon from './Icons/GlutenFree';
-import NotGlutenFreeIcon from './Icons/NotGlutenFree';
-import DairyFreeIcon from './Icons/DairyFree';
-import NotDairyFreeIcon from './Icons/NotDairyFree';
-import NotVegan from './Icons/NotVegan';
+import VegetarianIcon from '../Icons/Vegetarian';
+import NotVegetarianIcon from '../Icons/NotVegetarian';
+import VeganIcon from '../Icons/Vegan';
+import GlutenFreeIcon from '../Icons/GlutenFree';
+import NotGlutenFreeIcon from '../Icons/NotGlutenFree';
+import DairyFreeIcon from '../Icons/DairyFree';
+import NotDairyFreeIcon from '../Icons/NotDairyFree';
+import NotVegan from '../Icons/NotVegan';
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Slide from '@mui/material/Slide';
 import Switch from "@mui/material/Switch";
-import useToken from '../hooks/useToken';
+import useToken from '../../hooks/useToken';
 import axios from 'axios';
 
 // You'll need to replace some of the fake code here and replace the vegetarian code with other card's code
@@ -41,6 +41,7 @@ export default function MatcherCard(props) {
   // State to hide the card on clicking Yes or No
   const [checked, setChecked] = useState(true);
   const getToken = useToken().getToken();
+  const [gameOver, setGameOver] = useState(false)
 
 
   const removeGame = () => {
@@ -60,15 +61,21 @@ export default function MatcherCard(props) {
        console.log("Clicked yes, gamerecipes is", props.gameRecipesCount, "gamecount", props.gameCount)
      
      }else if(props.gameCount === props.gameRecipesCount && props.useExisting){
-      removeGame()
+      setGameOver(true)
      }
     axios.post('/voteYes', {
       userId: getToken,
       recipeId: props.recipeId
     }).then((response) => {
+      if(props.useExisting){
       props.setMeal((prev) => {
         return [...prev, response.data[0]];
+      }).then(() => {
+        if(gameOver){
+          removeGame()
+        }
       })
+    }
         // return console.log("clicked yes", props.gameRecipes);
         
 
@@ -85,13 +92,17 @@ export default function MatcherCard(props) {
     if (props.gameCount !== props.gameRecipesCount * 2) {
       props.setGameCount((prev) => prev + 1);
       console.log("Clicked yes, gamecount is", props.gameCount)
-    }else if(props.gameCount === props.gameRecipesCount && props.useExisting){removeGame()}
+    }else if(props.gameCount === props.gameRecipesCount && props.useExisting){setGameOver(true)}
     console.log('You just clicked No on props.recipeId: ', props);
 
     axios.post('/voteNo', {
       userId: getToken,
       recipeId: props.recipeId
-    });
+    }).then(() => {
+      if(gameOver){
+        removeGame()
+      }
+    })
   };
 
 

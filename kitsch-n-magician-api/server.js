@@ -231,13 +231,19 @@ app.post('/load-game', (req, res) => {
 });
 
 app.post('/voteYes', (req, res) => {
+  console.log("error response", req.body.recipeId)
   yesButton(req.body.userId, req.body.recipeId)
-    .then((response) => {
+  .then((response) => {
+      if(response === undefined){
+        res.send("no table")
+      }
       if (response.matcher_decision === 2) {
         return matchedRecipes(req.body.userId, response.recipe_id)
           .then(() => selectRecipeById(req.body.recipeId))
           .then((result) => res.send(result));
-      }else{res.send("game has been deleted")}
+      }
+
+
     });
   // res.send("successful YES vote");
 });
