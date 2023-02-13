@@ -321,7 +321,7 @@ const UseExistingGameSearch = function() {
             mt: '4.3em',
             width: drawerWidth,
             boxSizing: 'border-box',
-            maxHeight: '90%'
+            height: '100vh'
           }
         }}
         variant="permanent"
@@ -333,7 +333,7 @@ const UseExistingGameSearch = function() {
           flexDirection: "column",
           justifyContent: 'space-between',
           alignItems: "center",
-          height: 900
+          height: '90vh'
         }}>
 
           {/* THIS BOX DIV CONTAINS ONLY INGREDIENTS LIST AND TEXT INPUT.
@@ -343,7 +343,7 @@ const UseExistingGameSearch = function() {
             flexDirection: "column",
             justifyContent: 'flex-start',
             alignItems: 'stretch',
-            height: '90%'
+            height: '20vh'
           }}>
 
             <Box sx={{ flexGrow: 0, 
@@ -387,7 +387,8 @@ const UseExistingGameSearch = function() {
             flexDirection: 'column',
             justifyContent: 'flex-end',
             alignItems: 'center',
-            zIndex: 200
+            zIndex: 200,
+            height: '90vh'
           }}>
             <MatcherButton
               onClick={findGameExists}
