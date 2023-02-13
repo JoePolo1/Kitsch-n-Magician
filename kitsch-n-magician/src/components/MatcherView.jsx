@@ -6,42 +6,18 @@ import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import RecipeCard from './Cards/RecipeCard';
-import { green } from '@mui/material/colors';
-import Icon from '@mui/material/Icon';
-import InputWithIcon from './InputWithIcon';
 import IngredientListItem from './IngredientListItem';
-import SearchButton from './Button';
 import { useEffect } from 'react';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import useToken from '../hooks/useToken';
-import MatcherInput from './MatcherInput';
 import MatcherButton from './MatcherButton';
-import MatchedColumn from './MatchedColumn';
-// TEST IMPORTS
 import { Paper } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import CardMedia from '@mui/material/CardMedia';
-import NotGlutenFreeIcon from './Icons/NotGlutenFree';
-import CardContent from '@mui/material/CardContent';
-import VeganIcon from './Icons/Vegan';
-import Button from '@mui/material/Button';
 import MatcherCard from './Cards/MatcherCard';
-import CardHeader from '@mui/material/CardHeader';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Slide from '@mui/material/Slide';
-import Switch from "@mui/material/Switch";
 import DayofTheWeek from "./DayofTheWeek";
 
 
@@ -108,8 +84,6 @@ export default function MatcherView() {
 
     axios.get(url)
       .then((all) => {
-        // console.log(all);
-        // console.log("Find recipe ID is ", findRecipeId(all.data));
         return findRecipeId(all.data);
       })
       .then((recipeId) => {
@@ -118,7 +92,6 @@ export default function MatcherView() {
           console.log("X is ", x);
           promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`));
         }
-        //add axios call for matchgame in the promise array
         const tempRecipes = []
 
         Promise.all(promiseArr)
@@ -138,21 +111,6 @@ export default function MatcherView() {
                 gluten_free: food.data.glutenFree,
                 dairy_free: food.data.dairyFree
               })
-              // setRecipes(recipes => ([
-              //   ...recipes,
-              //   {
-              //     title: food.data.title,
-              //     ready_in_minutes: food.data.readyInMinutes,
-              //     image: food.data.image,
-              //     spoon_url: food.data.spoonacularSourceUrl,
-              //     servings: food.data.servings,
-              //     summary: food.data.summary,
-              //     vegetarian: food.data.vegetarian,
-              //     vegan: food.data.vegan,
-              //     gluten_free: food.data.glutenFree,
-              //     dairy_free: food.data.dairyFree
-              //   }
-              // ]));
             } 
             setRecipes(...recipes, tempRecipes)
             console.log('recipes', tempRecipes);
@@ -166,9 +124,6 @@ export default function MatcherView() {
               ).then((response) => {setgameRecipes(response.data)})
           }
       });
-
-    
-
   })
 };
 
@@ -199,18 +154,6 @@ const UseExistingGameSearch = function() {
     setNewIngredient('');
   };
 
-
-  // This function maps the details of a recipe and puts them in a recipe card
-  // for (let recipe of recipes) {
-  //   axios.post('/matchgame',
-  //     {
-  //       items: { recipe },
-  //       userId: getToken
-  //     }
-  //   ).then((response) => {
-  //     console.log('response data is *', response.data);
-  //   });
-  // }
 
   const gameCards = gameRecipes.map(item => {
 
@@ -248,7 +191,7 @@ const UseExistingGameSearch = function() {
       return err;
     }
   }
- 
+
   useEffect(() => {
     (async () => {
       const result = await displayMatched();
@@ -308,23 +251,6 @@ const UseExistingGameSearch = function() {
     })();
   }, []);
 
-  // return (
-  //   <RecipeCard 
-  //       title={item.title}
-  //       ready_in_minutes={item.ready_in_minutes}
-  //       image={item.image}
-  //       spoon_url={item.spoon_url}
-  //       servings={item.servings}
-  //       summary={item.summary}
-  //       vegetarian={item.vegetarian}
-  //       vegan={item.vegan}
-  //       gluten_free={item.gluten_free}
-  //       dairy_free={item.dairy_free}
-  //       onClick={onClick}
-  //   />
-  // )
-
-
 
 
       // State to hide the card on clicking Yes or No
@@ -380,11 +306,6 @@ const UseExistingGameSearch = function() {
             height: '90%'
           }}>
 
-            {/* <MatcherInput
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          value={newIngredient}
-        /> */}
             <Box sx={{ flexGrow: 0, 
             width: 239, 
             height: '3.5em', 
@@ -428,7 +349,6 @@ const UseExistingGameSearch = function() {
           }}>
             <MatcherButton
               onClick={findGameExists}
-              // onClick={console.log("ingredients name", ingredients.name)}
               sx={{ zIndex: 9000 }}
             />
           </Box>
@@ -552,9 +472,6 @@ const UseExistingGameSearch = function() {
       
     </Box>
     </Drawer>
-   
-
-
     </Box>
   );
 }
