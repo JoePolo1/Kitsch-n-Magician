@@ -694,7 +694,8 @@ const handleSubmit = event => {
             mt: '4.3em',
             width: drawerWidth,
             boxSizing: 'border-box',
-            maxHeight: '90%'
+            height: '100vh'
+
           }
         }}
         variant="permanent"
@@ -716,7 +717,8 @@ const handleSubmit = event => {
         flexDirection: "column",
         justifyContent: 'flex-start',
         alignItems: 'stretch',
-        height: '90%'
+        height: '90%',
+        mb:'4.3em'
         }}> 
         
         <InputWithIcon
@@ -759,10 +761,12 @@ const handleSubmit = event => {
             onClick={UseRecipePrimarySearch}
             sx={{ zIndex: 9000 }}
             />
+            
+            
           </Box>
         {/* END OF INGREDIENT LIST */}
         <Divider />
-
+        <Box sx={{mb: '4em', bgcolor: '#FFFFFF'}}></Box>
         {/* END OF  BOX DIV CONTAINING BOTH INGREDIENT LIST AND SEARCH BUTTON */}
         
         </Box>

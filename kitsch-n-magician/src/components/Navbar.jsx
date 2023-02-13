@@ -15,7 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBurger} from '@fortawesome/free-solid-svg-icons';
 import useToken from '../hooks/useToken'
-import axios from 'axios'
+import axios from 'axios';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -123,7 +124,7 @@ function Navbar(props) {
             Kitsch'n Magician
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', xl: 'none' } }} bgcolor= '#0F4953'>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', lg: 'none', xl: 'none' } }} >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -185,7 +186,7 @@ function Navbar(props) {
           >
             Kitsch'n Magician
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} bgcolor= '#0F4953' >
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}  >
             
               <Button
                 onClick={props.switchFavourites}
@@ -207,14 +208,14 @@ function Navbar(props) {
               </Button>
 
           </Box>
-
+            <Box sx={{mr: '1em'}}>
           {props.name !== "" ? <p>Signed in as {props.name} </p> : <p>Not signed in</p> }
-
-          <Box sx={{ flexGrow: 0, mr: 2.4 }} bgcolor= '#0F4953'>
+          </Box>
+          <Box sx={{ flexGrow: 0, mr: 2.4 }} >
 
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <FontAwesomeIcon icon={faUser} color="#CBF5EF" />
               </IconButton>
             </Tooltip>
             <Menu
