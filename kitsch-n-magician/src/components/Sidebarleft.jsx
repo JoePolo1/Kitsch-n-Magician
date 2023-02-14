@@ -259,9 +259,6 @@ const recipeItemList = recipes.map(item =>  {
         {recipeItemList.length === 1 ? 
         null
         : recipeItemList}
-
-
-
       </Box>
     </Box>
   );
