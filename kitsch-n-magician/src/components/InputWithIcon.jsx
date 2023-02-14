@@ -6,10 +6,7 @@ import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function InputWithIcon(props) {
-
-
   return (
-    
     <Box sx={{
       display: 'flex', 
       alignItems: 'flex-end',
@@ -33,7 +30,6 @@ export default function InputWithIcon(props) {
       />
       </form>
     </Box>
-
   );
 }
 
