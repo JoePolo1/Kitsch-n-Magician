@@ -134,7 +134,7 @@ export default function FavouritesView() {
         <CssBaseline />
         <AppBar 
           position="fixed"
-          sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+          sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`}}
         >
   
         </AppBar>
@@ -180,7 +180,7 @@ export default function FavouritesView() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.2em'}} bgcolor= '#18588c'>
+            fontSize: '1.2em'}} bgcolor= '#F98E6E'>
             <header> My Saved Recipes</header>
           </Box>
   
