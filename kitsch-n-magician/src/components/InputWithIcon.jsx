@@ -17,7 +17,7 @@ export default function InputWithIcon(props) {
     }}>
       <FontAwesomeIcon 
         icon={faCirclePlus}
-        color="#154c79"
+        color="#0F4953"
         sx={{ mr: 4, my: 8}}
         fontSize= '28'
         opacity={.9}

@@ -227,7 +227,15 @@ const handleSubmit = event => {
       
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{ flexGrow: 1, p: 3,
+        backgroundImage:'url(background.jpg)', 
+        bgcolor: '#CBF5EF', 
+        backgroundSize: '125%', 
+        backgroundPosition: 'center', 
+        height: '100vh',
+        opacity: '4'
+        
+        }}
       >
 
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}

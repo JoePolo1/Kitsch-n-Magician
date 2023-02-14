@@ -774,7 +774,7 @@ const handleSubmit = event => {
       
       <Box
         component="main"
-        sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, bgcolor: '#CBF5EF', p: 3, minHeight: 1300 }}
+        sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, bgcolor: '#CBF5EF', p: 3, minHeight: 1300, backgroundImage:'url(Kitchenware.png)', bgcolor: '#CBF5EF', backgroundSize: '105%', backgroundPosition: 'center' }}
       >
 
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}

@@ -21,6 +21,7 @@ import GlutenFreeIcon from '../Icons/GlutenFree';
 import NotGlutenFreeIcon from '../Icons/NotGlutenFree';
 import DairyFreeIcon from '../Icons/DairyFree';
 import NotDairyFreeIcon from '../Icons/NotDairyFree';
+import TimetoCookIcon from '../Icons/TimetoCookIcon';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -51,7 +52,9 @@ export default function RecipeCard(props) {
       borderRadius: '25px', 
       borderStyle: "solid", 
       borderWidth: '5px', 
-      borderColor:'#fc5149' }}>
+      borderColor:'#fc5149',
+      opacity: '0.982'
+    }}>
       <Box >
 
       <CardHeader 
@@ -94,17 +97,26 @@ export default function RecipeCard(props) {
         <Box sx={{
             display:'flex',
             flexDirection:'column',
-            fontSize: 'small',
+            fontSize: '1.3em',
             pl: "16px",
             pb:"7px",
-            pr: "1em",
             alignItems: 'end'
           }}>
             <Box sx={{
               display: 'flex',
               flexDirection: 'row',
-            pr: "5px"
+              pr: "0.5em",
+              pb: ".25em"
           }}>
+              <TimetoCookIcon ready_in_minutes={props.ready_in_minutes} />
+            </Box>
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              pr: "0.5em",
+              pb: ".25em"
+          }}>
+            
           {props.vegan 
             ? <VeganIcon /> 
             : props.vegetarian
@@ -114,14 +126,15 @@ export default function RecipeCard(props) {
             <Box sx={{
               display: 'flex',
               flexDirection: 'row',
-            pr: "5px"
+              pr: "0.5em",
+              pb: ".25em"
           }}>
           {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
           </Box>
           <Box sx={{
             display: 'flex',
             flexDirection: 'row',
-            pr: "5px"
+            pr: "0.5em"
           }}>
           {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
           </Box>
@@ -139,7 +152,6 @@ export default function RecipeCard(props) {
         }}>
       <IconButton aria-label="add to favorites" onClick={props.onClick} 
         sx={{
-          fontSize:'20',
           color: "white"
         }}>
           <Avatar sx={{ bgcolor: "#0F4953"}} aria-label="recipe">
@@ -161,7 +173,7 @@ export default function RecipeCard(props) {
         </Box>
       
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContent sx={{ bgcolor: '#FF7167', color: 'white', fontSize:'1.2em'}}>
           
         <div dangerouslySetInnerHTML={{ __html: props.summary }} />
           
