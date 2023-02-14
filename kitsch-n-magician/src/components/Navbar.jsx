@@ -214,7 +214,7 @@ function Navbar(props) {
           <Box sx={{ flexGrow: 0, mr: 2.4 }} >
 
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, mr: '.3em' }}>
                 <FontAwesomeIcon icon={faUser} color="#CBF5EF" />
               </IconButton>
             </Tooltip>
