@@ -60,13 +60,7 @@ export default function RecipeCard(props) {
         fontSize: 12.5,
         fontWeight: "Medium",
         bgcolor:"#fc5149",
-      }}
-          avatar={
-            <Avatar sx={{ bgcolor: "#0F4953"}} aria-label="recipe">
-              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
-            </Avatar>
-          }
-          
+      }}          
           action={
             <Button variant="contained" href={props.spoon_url} target="_blank" sx={{bgcolor: "#0F4953"}} >
             View Recipe
@@ -141,7 +135,10 @@ export default function RecipeCard(props) {
         sx={{
           fontSize:'20'
         }}>
-          <FavoriteIcon />Add to favourites
+          <Avatar sx={{ bgcolor: "#0F4953"}} aria-label="recipe">
+              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
+          </Avatar>
+          Add to favourites
         </IconButton>
         
         <ExpandMore
