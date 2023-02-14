@@ -52,7 +52,9 @@ export default function RecipeCard(props) {
       borderRadius: '25px', 
       borderStyle: "solid", 
       borderWidth: '5px', 
-      borderColor:'#fc5149' }}>
+      borderColor:'#fc5149',
+      opacity: '0.982'
+    }}>
       <Box >
 
       <CardHeader 
