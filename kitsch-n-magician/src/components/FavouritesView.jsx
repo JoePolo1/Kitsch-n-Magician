@@ -184,9 +184,8 @@ export default function FavouritesView() {
             }}
           >
             {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
-
             <Toolbar />
-
+            {/* Shows selected recipe on state update */}
             {selectedrecipe !== null && favouritesCard()}
           </Box>
         </Box>

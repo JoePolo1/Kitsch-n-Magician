@@ -8,16 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCube } from '@fortawesome/free-solid-svg-icons';
 import DeleteIngredientButton from './Buttons/DeleteIngredientButton';
 
+// Renders individual ingredients on left side bar
 export default function IngredientListItem(props) {
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-  };
-
-
-
-
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <List component="nav" >
