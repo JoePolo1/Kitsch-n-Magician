@@ -71,7 +71,9 @@ export default function MatcherCard(props) {
       recipeId: props.recipeId
     }).then((response) => {
 
-      if(props.useExisting){
+      console.log("response from vote", response)
+
+      if(props.useExisting && response.data !== "game deleted"){
       props.setMeal((prev) => {
         return [...prev, response.data[0]];
       }).then(() => {
