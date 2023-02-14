@@ -78,7 +78,7 @@ export default function MatcherView() {
     });
 
     const ingredientUrl = urlconverter(ingredientArray);
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=4&ranking1&ignorePantry=true`;
+    const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=10&ranking1&ignorePantry=true`;
     
 
     axios.get(url)
