@@ -5,12 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import { Box, Divider, Paper } from '@mui/material';
-import VegetarianIcon from './Icons/Vegetarian';
-import VeganIcon from './Icons/Vegan';
-import GlutenFreeIcon from './Icons/GlutenFree';
-import NotGlutenFreeIcon from './Icons/NotGlutenFree';
-import DairyFreeIcon from './Icons/DairyFree';
-import NotDairyFreeIcon from './Icons/NotDairyFree';
+import VegetarianIcon from '../Icons/Vegetarian';
+import VeganIcon from '../Icons/Vegan';
+import GlutenFreeIcon from '../Icons/GlutenFree';
+import NotGlutenFreeIcon from '../Icons/NotGlutenFree';
+import DairyFreeIcon from '../Icons/DairyFree';
+import NotDairyFreeIcon from '../Icons/NotDairyFree';
 
 
 const ExpandMore = styled((props) => {
