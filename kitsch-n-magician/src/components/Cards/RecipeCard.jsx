@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils, faCarrot, faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import { Box } from '@mui/system';
 import VeganIcon from '../Icons/Vegan';
@@ -60,6 +60,7 @@ export default function RecipeCard(props) {
         fontSize: 12.5,
         fontWeight: "Medium",
         bgcolor:"#fc5149",
+        color: "white"
       }}          
           action={
             <Button variant="contained" href={props.spoon_url} target="_blank" sx={{bgcolor: "#0F4953"}} >
@@ -80,11 +81,13 @@ export default function RecipeCard(props) {
     }}>
         <CardMedia
           component="img"
-          height="170"
+          height="200"
           image={props.image}
           alt={props.title}
           sx={{
-            width: 400
+            width: 400,
+            pl: ".5em",
+            pb: "0.5em"
           }}
         />
       
@@ -94,6 +97,7 @@ export default function RecipeCard(props) {
             fontSize: 'small',
             pl: "16px",
             pb:"7px",
+            pr: "1em",
             alignItems: 'end'
           }}>
             <Box sx={{
@@ -125,18 +129,21 @@ export default function RecipeCard(props) {
         
         </Box>
         
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
+
+      <Box sx={{
+          fontSize:'20',
+          bgcolor:"#fc5149",
+          width: "100%",
+          display:'flex',
+          justifyContent:'space-between'
+        }}>
       <IconButton aria-label="add to favorites" onClick={props.onClick} 
         sx={{
-          fontSize:'20'
+          fontSize:'20',
+          color: "white"
         }}>
           <Avatar sx={{ bgcolor: "#0F4953"}} aria-label="recipe">
-              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
+            <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
           </Avatar>
           Add to favourites
         </IconButton>
@@ -147,9 +154,12 @@ export default function RecipeCard(props) {
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          <Avatar sx={{ bgcolor: "#0F4953"}} aria-label="recipe">
+            <FontAwesomeIcon icon={faCarrot} color="#fc5149" beat rotate-by={90} />
+          </Avatar>
         </ExpandMore>
-      </CardActions>
+        </Box>
+      
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           
@@ -158,6 +168,7 @@ export default function RecipeCard(props) {
   
         </CardContent>
       </Collapse>
+      
     </Card>
   );
 }
