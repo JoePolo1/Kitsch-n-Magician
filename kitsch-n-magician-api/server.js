@@ -9,7 +9,6 @@ const addIngredientsByUser = require('./db/queries/addIngredientsByUser');
 const addIngredient = require('./db/queries/addIngredient');
 const deleteIngredient = require('./db/queries/deleteIngredient');
 const deleteGameRecipes = require('./db/queries/deleteGameRecipes');
-
 const displayPantry = require('./db/queries/displayKitchenItems');
 const deletePantryItem = require('./db/queries/deletePantryItem');
 const checkingGameExists = require('./db/queries/checkingGameExists');
@@ -17,12 +16,8 @@ const yesButton = require('./db/queries/yesButton');
 const noButton = require('./db/queries/noButton');
 const selectMealPrepRecipes = require('./db/queries/selectMatchedRecipes');
 const getName = require('./db/queries/getName')
-
-
-
 const express = require('express');
 const cors = require('cors');
-
 
 // Web server config
 const sassMiddleware = require('./lib/sass-middleware');
@@ -115,9 +110,9 @@ app.use('/login', (req, res) => {
 
 app.post('/getname', (req, res) => {
   getName(req.body.userId)
-  .then((response) => {
-    res.send(response)
-  })
+    .then((response) => {
+      res.send(response)
+    })
 })
 
 app.post('/myrecipes', async (req, res) => {
@@ -134,8 +129,8 @@ app.post('/myfavs', (req, res) => {
     })
     .then((data) => {
       res.send({ result: "Successful" });
-    });//addFavoriteTable code closes here.
-});//addfavourite code closes here.
+    });
+});
 
 
 app.post('/matchgame', (req, res) => {
@@ -170,14 +165,12 @@ app.post('/myingredients', (req, res) => {
   addIngredient(req.body.ingredient)
     .then((returnedIngredientId) => addIngredientsByUser(req.body.userId, returnedIngredientId))
     .then(() => res.send("add was successfull"));
-
 });
 
 app.post('/mypantry', (req, res) => {
 
   displayPantry(req.body.userId)
     .then((result) => {
-
       res.send(result);
     });
 });
@@ -223,8 +216,8 @@ app.post('/load-game', (req, res) => {
 app.post('/voteYes', (req, res) => {
   console.log("error response", req.body.recipeId)
   yesButton(req.body.userId, req.body.recipeId)
-  .then((response) => {
-      if(response === undefined){
+    .then((response) => {
+      if (response === undefined) {
         res.send("no table")
       }
       if (response.matcher_decision === 2) {
@@ -234,10 +227,7 @@ app.post('/voteYes', (req, res) => {
       } else {
         res.send("game deleted")
       }
-
-
     });
-  // res.send("successful YES vote");
 });
 
 app.post('/voteNo', (req, res) => {
@@ -249,8 +239,8 @@ app.post('/removeGame', (req, res) => {
   console.log("it made it!", req.body);
   deleteGameRecipes(req.body.userId)
     .then((response) => {
-    res.send("game deleted");
-  })
+      res.send("game deleted");
+    })
 }
 );
 
