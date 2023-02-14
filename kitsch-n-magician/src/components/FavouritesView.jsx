@@ -180,7 +180,7 @@ export default function FavouritesView() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.2em'}} bgcolor= '#F98E6E'>
+            fontSize: '1.2em'}} bgcolor= '#fc5149'>
             <header> My Saved Recipes</header>
           </Box>
   
@@ -220,10 +220,15 @@ export default function FavouritesView() {
         
         <Box
           component="main"
-          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3,
+          sx={{ flexGrow: 1, bgcolor: 'black', p: 3,
           display: 'flex',
           alignItems: 'center',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          backgroundImage:'url(Kitchenware.png)', 
+          bgcolor: '#CBF5EF', 
+          backgroundSize: '85%', 
+          backgroundPosition: 'center',
+          minHeight: '100vh'
           }}
         >
   

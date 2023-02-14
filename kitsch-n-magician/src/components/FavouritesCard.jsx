@@ -37,7 +37,14 @@ export default function FavouritesCard(props) {
   return (
     <>
     <Box>
-    <Paper elevation={12} sx={{ maxWidth: 1000, marginBottom: '1.13em', borderRadius: '25px' }}>
+    <Paper elevation={12} 
+    sx={{ 
+    maxWidth: 1000, 
+    marginBottom: '1.13em', 
+    borderRadius: '32px', 
+    borderStyle: 'solid', 
+    borderWidth: '5px',
+    borderColor: '#fc5149' }}>
     
       <Box sx={{
         
@@ -46,16 +53,18 @@ export default function FavouritesCard(props) {
         flexDirection: 'row',
         pt: '.5em',
         borderBottom: 4,
-        borderColor: '#F98E6E',
+        borderColor: '#fc5149',
+        backgroundColor: '#fc5149',
+        borderRadius: '25px 25px 0 0'
     
       }}>
 
-      <IconButton aria-label="title" sx={{pl:'.6em'}} >
+      <IconButton aria-label="title" sx={{pl:'.6em', color:'white', styled:'bold'}} >
         {props.title}
       </IconButton>
         
 
-      <IconButton aria-label="title">
+      <IconButton aria-label="title" sx={{pl:'.6em', color:'white', styled:'bold'}}>
         Ready in {props.ready_in_minutes} minutes!
       </IconButton>
           
@@ -85,23 +94,25 @@ export default function FavouritesCard(props) {
             alignContent: 'center',
             pt: "16px",
             pl: "16px",
+            pb: "16px"
        
           }}
         />
-        <Divider sx={{}}></Divider>
+        
         <Box sx={{
             display:'flex',
             flexDirection:'row',
             fontSize: 'small',
             justifyContent: 'space-evenly',
             pt:"7px",
-            pr:"7px",
             borderTop: 4,
             borderRight: 4,
             borderRadius: '0px 25px 0px 25px', 
-            borderColor: '#F98E6E',
+            borderColor: '#fc5149',
+            backgroundColor: '#fc5149',
             pl: "16px",
             pb:"7px",
+            color:'white'
             
           }}>
             
@@ -113,6 +124,7 @@ export default function FavouritesCard(props) {
             }
             <Box sx={{
             pr: "5px"
+            
           }}></Box>
             {props.gluten_free ? <GlutenFreeIcon /> : <NotGlutenFreeIcon />}
             <Box sx={{

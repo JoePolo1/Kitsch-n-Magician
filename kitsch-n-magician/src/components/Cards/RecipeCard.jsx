@@ -44,20 +44,31 @@ export default function RecipeCard(props) {
 
 
   return (
-    <Card elevation={8} sx={{ maxWidth: 2000, marginBottom: '1.13em', borderRadius: '25px' }}>
+    <Card elevation={8} 
+    sx={{ 
+      maxWidth: 2000, 
+      marginBottom: '1.13em', 
+      borderRadius: '25px', 
+      borderStyle: "solid", 
+      borderWidth: '5px', 
+      borderColor:'#fc5149' }}>
       <Box >
+
       <CardHeader 
       sx={{
-        fontSize: 20,
-        fontWeight: "Medium"
+        mb:'.5em',
+        fontSize: 12.5,
+        fontWeight: "Medium",
+        bgcolor:"#fc5149",
       }}
           avatar={
-            <Avatar sx={{ bgcolor: "#154c79" }} aria-label="recipe">
+            <Avatar sx={{ bgcolor: "#0F4953"}} aria-label="recipe">
               <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
             </Avatar>
           }
+          
           action={
-            <Button variant="contained" href={props.spoon_url} target="_blank" sx={{bgcolor: "#154c79"}} >
+            <Button variant="contained" href={props.spoon_url} target="_blank" sx={{bgcolor: "#0F4953"}} >
             View Recipe
             </Button>
           }
@@ -126,7 +137,10 @@ export default function RecipeCard(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-      <IconButton aria-label="add to favorites" onClick={props.onClick}>
+      <IconButton aria-label="add to favorites" onClick={props.onClick} 
+        sx={{
+          fontSize:'20'
+        }}>
           <FavoriteIcon />Add to favourites
         </IconButton>
         
@@ -135,7 +149,7 @@ export default function RecipeCard(props) {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-        >More info
+        >
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>

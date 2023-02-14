@@ -354,7 +354,7 @@ const UseExistingGameSearch = function() {
             alignItems: 'center',
             justifyContent: 'center',
             fontSize: '1.2em',
-            bgcolor: '#F98E6E'
+            bgcolor: '#fc5149'
             }} >
             <header> My Pantry Items</header>
           </Box>
@@ -474,7 +474,7 @@ const UseExistingGameSearch = function() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.2em'}} bgcolor= '#F98E6E'>
+            fontSize: '1.2em'}} bgcolor= '#fc5149'>
             <header> Household Matches</header></Box>
         <Divider></Divider>
 

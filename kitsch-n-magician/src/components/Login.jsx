@@ -73,7 +73,7 @@ export default function SignIn(props) {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ bgcolor: '#fc5149' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
