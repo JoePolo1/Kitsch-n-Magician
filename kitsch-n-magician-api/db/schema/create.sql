@@ -29,7 +29,7 @@
       title VARCHAR(255) NOT NULL,
       ready_in_minutes INTEGER,
       spoon_url VARCHAR(255) NOT NULL,
-      image VARCHAR(255) NOT NULL,
+      image VARCHAR(255),
       summary VARCHAR(5000) NOT NULL,
       vegetarian BOOLEAN NOT NULL DEFAULT FALSE,
       vegan BOOLEAN NOT NULL DEFAULT FALSE,

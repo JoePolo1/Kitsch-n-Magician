@@ -228,12 +228,16 @@ const handleSubmit = event => {
       <Box
         component="main"
         sx={{ flexGrow: 1, p: 3,
-        backgroundImage:'url(background.jpg)', 
+        backgroundImage:'url(pantry2.png)', 
         bgcolor: '#CBF5EF', 
-        backgroundSize: '125%', 
+        backgroundSize: '132%', 
         backgroundPosition: 'center', 
-        height: '100vh',
-        opacity: '4'
+        pt: '1300px',
+        width: '100vw',
+        opacity: '4',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: "flex-end"
         
         }}
       >

@@ -14,7 +14,8 @@ import SearchButton from './Buttons/Button';
 import { urlconverter, findRecipeId } from '../helpers/selectors';
 import axios from 'axios';
 import useToken from '../hooks/useToken';
-
+import { Paper } from '@mui/material';
+import { Fragment } from 'react';
 
 
 const drawerWidth = 240;
@@ -560,6 +561,7 @@ const [newIngredient, setNewIngredient] = useState('');
 const [recipeId, setRecipeId] = useState();
 const [recipes, setRecipes] = useState([]);
 const [favouriteTarget, setFavouriteTarget] = useState()
+const [showTitle, setshowTitle] = useState(true)
 const getToken = useToken().getToken()
 
 // Function that passes in the ingredient list state to a URL encoded string
@@ -603,6 +605,8 @@ const UseRecipePrimarySearch = function () {
 }
 
 
+
+
 const ingredientsList = ingredients.map(ingredient => {
   return (
     <IngredientListItem 
@@ -632,7 +636,6 @@ const handleSubmit = event => {
   })
   setNewIngredient('')
 }
-
 
 
 
@@ -779,10 +782,21 @@ const handleSubmit = event => {
 
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
         
-        <Toolbar />
-
         
-        {recipeItemList.length === 1 ? null : recipeItemList}
+        <Toolbar />
+        {recipeItemList.length === 0 ?
+        <Fragment>
+        <Box sx={{ display: 'flex', alignContent: "center"}}>
+            <img src='Title.png' alt='logocard' width="100%" display="flex" align-items="center"></img>
+        </Box> 
+        </Fragment> : null
+        }
+
+
+        {recipeItemList.length === 1 ? 
+        null
+        : recipeItemList}
+
 
 
       </Box>

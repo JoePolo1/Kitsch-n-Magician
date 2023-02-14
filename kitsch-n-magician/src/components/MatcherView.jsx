@@ -488,7 +488,7 @@ const UseExistingGameSearch = function() {
                 mt: '8em',
 
                 boxSizing: 'border-box',
-                maxHeight: '83%'
+                maxHeight: '86%'
               }
             }}
             variant="permanent"
