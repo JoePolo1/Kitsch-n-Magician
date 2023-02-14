@@ -39,36 +39,34 @@ export default function MatcherView() {
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState('');
-  const [recipeId, setRecipeId] = useState();
   const [recipes, setRecipes] = useState([]);
-  const [favouriteTarget, setFavouriteTarget] = useState();
   const getToken = useToken().getToken();
-  const [gameRecipes, setgameRecipes] = useState([])
-  const [gameCount, setGameCount] = useState(1)
-  const [useExisting, setUseExisting] = useState(false)
-  // const [mealPrep, setMealPrep] = useState({
-  //   title: "Keep Playing to Match",
-  //   spoon_url: ""
-  // })
-  const [mealPrep, setMealPrep] = useState([])
+  const [gameRecipes, setgameRecipes] = useState([]);
+  const [gameCount, setGameCount] = useState(1);
+  const [useExisting, setUseExisting] = useState(false);
+  const [mealPrep, setMealPrep] = useState([]);
+  const [checked, setChecked] = useState(true);
+
+  const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 
+  //handles primary functionality, checks if game already exists to either make an api call or pull from an existing game to play
 
-  const findGameExists = function () {
+  const findGameExists = function() {
     axios.post('/load-game', { userId: getToken })
-      .then((response) =>  {
+      .then((response) => {
         if (response.data === false) {
-          UseRecipePrimarySearch()
+          UseRecipeStartGameSearch();
         } else {
-          UseExistingGameSearch()
-          setUseExisting(true)
+          UseExistingGameSearch();
+          setUseExisting(true);
         }
-      })
-  }
+      });
+  };
 
 
   // Function that passes in the ingredient list state to a URL encoded string
-  const UseRecipePrimarySearch = function() {
+  const UseRecipeStartGameSearch = function() {
 
     const ingredientArray = ingredients.map(ingredient => {
 
@@ -79,7 +77,7 @@ export default function MatcherView() {
 
     const ingredientUrl = urlconverter(ingredientArray);
     const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_SPOON_KEY}&ingredients=${ingredientUrl}&number=10&ranking1&ignorePantry=true`;
-    
+
 
     axios.get(url)
       .then((all) => {
@@ -90,7 +88,7 @@ export default function MatcherView() {
         for (let x of recipeId) {
           promiseArr.push(axios.get(`https://api.spoonacular.com/recipes/${x}/information?apiKey=${process.env.REACT_APP_SPOON_KEY}&includeNutrition=false`));
         }
-        const tempRecipes = []
+        const tempRecipes = [];
 
         Promise.all(promiseArr)
 
@@ -107,9 +105,9 @@ export default function MatcherView() {
                 vegan: food.data.vegan,
                 gluten_free: food.data.glutenFree,
                 dairy_free: food.data.dairyFree
-              })
-            } 
-            setRecipes(...recipes, tempRecipes)
+              });
+            }
+            setRecipes(...recipes, tempRecipes);
             for (let recipe of tempRecipes) {
 
               axios.post('/matchgame',
@@ -117,21 +115,22 @@ export default function MatcherView() {
                   items: { recipe },
                   userId: getToken
                 }
-              ).then((response) => {setgameRecipes(response.data)})
-          }
+              ).then((response) => { setgameRecipes(response.data); });
+            }
+          });
       });
-  })
-};
+  };
 
-const UseExistingGameSearch = function() {
+  //function that checks the back if a game already exists
+  const UseExistingGameSearch = function() {
 
-  axios.post('/getmygame', {
-    userId: getToken
-  }
-  ).then((response) => {setgameRecipes(response.data)})
+    axios.post('/getmygame', {
+      userId: getToken
+    }
+    ).then((response) => { setgameRecipes(response.data); });
+  };
 
-}
-
+  //renders ingredients that are in the pantry
   const ingredientsList = ingredients.map(ingredient => {
     return (
       <IngredientListItem
@@ -140,17 +139,8 @@ const UseExistingGameSearch = function() {
     );
   });
 
-  const handleChange = event => {
-    setNewIngredient(event.target.value);
-  };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    setIngredients([newIngredient.trim(), ...ingredients]);
-    setNewIngredient('');
-  };
-
-
+  //renders game cards to be played in matcher game
   const gameCards = gameRecipes.map(item => {
 
     return (
@@ -173,69 +163,39 @@ const UseExistingGameSearch = function() {
         useExisting={useExisting}
       />
     );
-
   });
 
+  //function that displays matched items in the meal plan column
   const displayMatched = async () => {
-    try{
+    try {
       const response = await axios.post("/matchedcolumn",
-      { userId: getToken }
-      )
-      return response.data
-    }catch (err){
+        { userId: getToken }
+      );
+      return response.data;
+    } catch (err) {
       return err;
     }
-  }
+  };
 
   useEffect(() => {
     (async () => {
       const result = await displayMatched();
       setMealPrep(result);
-      
-    })()
+
+    })();
   }, []);
 
-
-
-  const dayOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-
-
-
-  // const mapMeal = mealPrep.map((item, index) => {
-
-
-  //   return (
-    
-  //     <DayofTheWeek
-  //       title={item.title}
-  //       ready_in_minutes={item.ready_in_minutes}
-  //       image={item.image}
-  //       spoon_url={item.spoon_url}
-  //       servings={item.servings}
-  //       summary={item.summary}
-  //       vegetarian={item.vegetarian}
-  //       vegan={item.vegan}
-  //       gluten_free={item.gluten_free}
-  //       dairy_free={item.dairy_free}
-  //       recipeId={item.recipe_id}
-  //       day={dayOfWeek[index]}
-
-  //     />
-  //   );
-  // })
-
+  //function that maps the day of the week and mealprep items and renders them in the meal prep column. If mealPrep item exists then render that, else render placeholder
   const mapMeal = dayOfWeek.map((item, index) => {
-    console.log("items in mealmap", mealPrep[index] )
-    
-    
-    if(mealPrep[index]){
-    return (
-    
-      <DayofTheWeek
-        title={mealPrep[index].title}
+
+    if (mealPrep[index]) {
+      return (
+        <DayofTheWeek
+          title={mealPrep[index].title}
+          spoon_url={mealPrep[index].spoon_url}
+          day={item}
         // ready_in_minutes={mealPrep[index].ready_in_minutes}
         // image={mealPrep[index].image}
-        spoon_url={mealPrep[index].spoon_url}
         // servings={mealPrep[index].servings}
         // summary={mealPrep[index].summary}
         // vegetarian={mealPrep[index].vegetarian}
@@ -243,34 +203,21 @@ const UseExistingGameSearch = function() {
         // gluten_free={mealPrep[index].gluten_free}
         // dairy_free={mealPrep[index].dairy_free}
         // recipeId={mealPrep[index].recipe_id}
-        day={item}
-
-      />
-    );
-    }else{
+        />
+      );
+    } else {
 
       return (
-    
         <DayofTheWeek
           title={"Match to add Recipes"}
-          // ready_in_minutes={mealPrep[index].ready_in_minutes}
-          // image={mealPrep[index].image}
-          // spoon_url={mealPrep[index].spoon_url}
-          // servings={mealPrep[index].servings}
-          // summary={mealPrep[index].summary}
-          // vegetarian={mealPrep[index].vegetarian}
-          // vegan={mealPrep[index].vegan}
-          // gluten_free={mealPrep[index].gluten_free}
-          // dairy_free={mealPrep[index].dairy_free}
-          // recipeId={mealPrep[index].recipe_id}
           day={item}
-  
         />
       );
     }
-  })
+  });
 
 
+  //display pantry in real time and remove or add items from the database
   const displayPantry = async () => {
 
     try {
@@ -280,7 +227,6 @@ const UseExistingGameSearch = function() {
       return response.data;
     } catch (err) {
       return err;
-
     }
   };
 
@@ -291,14 +237,9 @@ const UseExistingGameSearch = function() {
     })();
   }, []);
 
-
-
-      // State to hide the card on clicking Yes or No
-  const [checked, setChecked] = useState(true)
-
   const handleToggle = () => {
     setChecked((prev) => !prev);
-  }
+  };
 
   return (
     <Box sx={{
@@ -346,18 +287,19 @@ const UseExistingGameSearch = function() {
             height: '20vh'
           }}>
 
-            <Box sx={{ flexGrow: 0, 
-            width: 239, 
-            height: '3.5em', 
-            color: "#FFFFFF",
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '1.2em',
-            bgcolor: '#fc5149'
+            <Box sx={{
+              flexGrow: 0,
+              width: 239,
+              height: '3.5em',
+              color: "#FFFFFF",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1.2em',
+              bgcolor: '#fc5149'
             }} >
-            <header> My Pantry Items</header>
-          </Box>
+              <header> My Pantry Items</header>
+            </Box>
             <List>
               <Drawer
                 sx={{
@@ -374,7 +316,7 @@ const UseExistingGameSearch = function() {
                 variant="permanent"
                 anchor="left"
               >
-
+                {/* Renders ingredient list that is being mapped in the left side */}
                 {ingredientsList}
               </Drawer>
 
@@ -405,7 +347,7 @@ const UseExistingGameSearch = function() {
 
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, minHeight: 1250, opacity: '0.98'  }}
+        sx={{ flexGrow: 1, p: 3, minHeight: 1250, opacity: '0.98' }}
       >
 
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
@@ -425,16 +367,16 @@ const UseExistingGameSearch = function() {
           control={<Switch checked={checked} onChange={handleToggle} />}
           label="Show"
           /> */}
-            <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
-              <Box>
+          <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
+            <Box>
               {gameCards}
-              </Box>
-            </Slide>
+            </Box>
+          </Slide>
         </Box>
       </Box>
-     {/* where right column exists */}
-    <Divider orientation="vertical" flexItem />
-    <AppBar 
+      {/* where right column exists */}
+      <Divider orientation="vertical" flexItem />
+      <AppBar
         position="fixed"
         sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
       >
@@ -456,65 +398,66 @@ const UseExistingGameSearch = function() {
         variant="permanent"
         anchor="right"
       >
+        <Box
+          sx={{
+            width: '100%',
+            height: '100%',
+            maxWidth: 250,
+            bgcolor: 'background.paper'
+          }}
+        >
 
-
-    <Box
-      sx={{ 
-        width: '100%', 
-        height: '100%', 
-        maxWidth: 250, 
-        bgcolor: 'background.paper' 
-      }}
-    >
-      
-        <Box sx={{ flexGrow: 0, 
-            width: 239, 
-            height: '3.5em', 
+          <Box sx={{
+            flexGrow: 0,
+            width: 239,
+            height: '3.5em',
             color: "#FFFFFF",
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.2em'}} bgcolor= '#fc5149'>
+            fontSize: '1.2em'
+          }} bgcolor='#fc5149'>
             <header> Household Matches</header></Box>
-        <Divider></Divider>
+          <Divider></Divider>
 
-        <List>
-          <Drawer
-            sx={{
-              display: 'flex',
+          <List>
+            <Drawer
+              sx={{
+                display: 'flex',
 
-              flexShrink: 0,
-              '& .MuiDrawer-paper': {
-                mt: '8em',
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                  mt: '8em',
 
-                boxSizing: 'border-box',
-                maxHeight: '86%'
-              }
-            }}
-            variant="permanent"
-            anchor="right"
-          >
-          <Box sx={{ flexGrow: 0, 
-            width: 239, 
-            display: 'flex',
-            alignItems: 'left',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            fontSize: '1.2em',
-            bgcolor: '#CBF5EF',
-            opacity: '1',
-            height: '100vh'
-            }} >
-              
-              {mapMeal}
+                  boxSizing: 'border-box',
+                  maxHeight: '86%'
+                }
+              }}
+              variant="permanent"
+              anchor="right"
+            >
+              <Box sx={{
+                flexGrow: 0,
+                width: 239,
+                display: 'flex',
+                alignItems: 'left',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                fontSize: '1.2em',
+                bgcolor: '#CBF5EF',
+                opacity: '1',
+                height: '100vh'
+              }} >
+                {/* Renders meals that were matched in the matcher game */}
+                {mapMeal}
 
-            </Box>
-          </Drawer>
+              </Box>
+            </Drawer>
 
-        </List>
-      
-    </Box>
-    </Drawer>
+          </List>
+
+        </Box>
+      </Drawer>
     </Box>
   );
 }
