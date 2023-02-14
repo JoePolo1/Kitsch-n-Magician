@@ -105,7 +105,6 @@ const handleSubmit = event => {
   setNewIngredient('')
 }
 
-
 // This function maps the details of a recipe and renders them in a recipe card
 const recipeItemList = recipes.map(item =>  {
       const onClick = (event) => {
