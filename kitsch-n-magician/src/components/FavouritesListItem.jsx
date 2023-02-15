@@ -23,8 +23,7 @@ export default function IngredientListItem(props) {
   //   )  })
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}         onClick={props.onClick}>
-      <List component="nav" >
+    <Box sx={{ width: '100%', maxWidth: 230, bgcolor: "#caf4da", borderRadius: '25px', mt: "0.25em", ml: "0.25em", mr: "0.25em", boxShadow: 6, borderBottom: '2px solid #4E5755', borderRight: '2px solid #4E5755' }}         onClick={props.onClick}>
         <ListItemButton 
         >
           <ListItemIcon sx={{ minWidth: 30}} >
@@ -38,7 +37,6 @@ export default function IngredientListItem(props) {
               setSelectedrecipe={props.setSelectedrecipe}
               />
         </ListItemButton>
-      </List>
     </Box>
   );
 }

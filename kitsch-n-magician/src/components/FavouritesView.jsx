@@ -152,6 +152,7 @@ export default function FavouritesView() {
                         mt: "8em",
                         boxSizing: "border-box",
                         maxHeight: "90%",
+                        bgcolor: '#88e3d3'
                       },
                     }}
                     variant="permanent"
@@ -180,7 +181,7 @@ export default function FavouritesView() {
               bgcolor: "#CBF5EF",
               backgroundSize: "85%",
               backgroundPosition: "center",
-              minHeight: "100vh",
+              minHeight: "100vh"
             }}
           >
             {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}

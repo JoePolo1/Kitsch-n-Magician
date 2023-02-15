@@ -17,8 +17,7 @@ export default function PantryListItem(props) {
 
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <List component="nav" >
+    <Box sx={{ width: '100%', maxWidth: 215, bgcolor: "#caf4da", borderRadius: '25px', mt: "0.25em", ml: "0.25em", mr: "0.25em", boxShadow: 6, borderBottom: '2px solid #4E5755', borderRight: '2px solid #4E5755' }}>
         <ListItemButton 
         >
           <ListItemIcon sx={{ minWidth: 30}}>
@@ -31,7 +30,6 @@ export default function PantryListItem(props) {
               setIngredients={props.setIngredients}
             />
           </ListItemButton>
-      </List>
     </Box>
   );
 }

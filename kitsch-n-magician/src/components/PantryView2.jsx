@@ -138,7 +138,7 @@ export default function PantryView(props) {
             mt: "4.3em",
             width: drawerWidth,
             boxSizing: "border-box",
-            height: "100vh",
+            height: "100vh"
           },
         }}
         variant="permanent"
@@ -152,6 +152,7 @@ export default function PantryView(props) {
             justifyContent: "space-between",
             alignItems: "center",
             height: "90vh",
+            bgcolor: "#88e3d3"
           }}
         >
           {/* THIS BOX DIV CONTAINS ONLY INGREDIENTS LIST AND TEXT INPUT.
@@ -163,6 +164,7 @@ export default function PantryView(props) {
               justifyContent: "flex-start",
               alignItems: "stretch",
               height: "25vh",
+              bgcolor: "#88e3d3"
             }}
           >
             <PantryInput
@@ -179,6 +181,7 @@ export default function PantryView(props) {
                     mt: "8em",
                     boxSizing: "border-box",
                     maxHeight: "58%",
+                    bgcolor: "#88e3d3"
                   },
                 }}
                 variant="permanent"
@@ -196,11 +199,12 @@ export default function PantryView(props) {
               alignItems: "center",
               zIndex: 200,
               height: "90vh",
+              bgcolor: "#88e3d3"
             }}
           >
             <MatcherButton
               onClick={UseRecipePrimarySearch}
-              sx={{ zIndex: 9000 }}
+              sx={{ zIndex: 9000, color: '#0f4953' }}
             />
           </Box>
           {/* END OF INGREDIENT LIST */}
@@ -223,6 +227,7 @@ export default function PantryView(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-end",
+          bgcolor: "#CBF5EF"
         }}
       >
         {/* END OF LEFT NAV/BEGINNING OF MAIN CONTAINER */}
