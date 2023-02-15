@@ -1,14 +1,11 @@
 import  React, {Fragment, useState} from "react";
-import logo from './logo.svg';
 import './App.scss';
 import Navbar from './components/Navbar';
 import Sidebarleft from './components/Sidebarleft';
-import ModeSwitcher from './components/modeSwitcher';
 import useVisualMode from "./hooks/useVisualMode";
 import FavouritesView from "./components/FavouritesView";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import useToken from './hooks/useToken';
 import MatcherView from "./components/MatcherView";
 import PantryView2 from "./components/PantryView2";
 import { Box } from "@mui/system";
@@ -21,17 +18,11 @@ const LOGOUT = "LOGOUT";
 const REGISTER = "REGISTER";
 const PANTRY = "PANTRY"
 const MATCHER = "MATCHER";
-const DELETE = "DELETE";
-const ADD = "ADD";
-
-
 
 function App() {
   const { mode, transition, back } = useVisualMode(RECIPESEARCH)
   const [name, setName] = useState('')
   
-
-
 
   return (
     <div>
