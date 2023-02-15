@@ -74,7 +74,7 @@ Recipe cards populate in the middle of the screen and show the user time to prep
 From here, users may also navigate to the [login](#the-login-page) or [register](#the-registration-page) page, the [My Recipes](#my-recipes-page) (favourites) page, the [Pantry](#my-pantry), and the [Matcher](#the-matcher) page.
 
 
-![Landing Page](https://user-images.githubusercontent.com/116989045/210008775-0b7508bd-1810-40b8-812d-3ce3d10f9abe.png)
+![Landing Page](https://http.cat/404)
 
 ### The Landing Page - Reverse Recipe Search - Advanced API Configuration
 
@@ -86,14 +86,14 @@ Kitsch'n Magician uses two API calls to spoonacular, one that retrieves ingredie
 
 ***NOTE: As mentioned [above](#warnings--first-time-use-tips), the registration page is not currently functional and exists only for Demo Mode purposes. See the instructions [above](#warnings--first-time-use-tips) for help with testing Demo user login sessions.***
 
-![Registration](https://user-images.githubusercontent.com/116989045/210008819-7c955bf0-12ea-43c3-b73c-28c65a88a162.png)
+![Registration](https://http.cat/404)
 
 
 ### The Login Page
 
 Existing users may log in via the login portal using their username and password as shown below:
 
-![Login Page](https://user-images.githubusercontent.com/116989045/210020925-14c720d4-6788-4182-af28-6276aafe8cc7.png)
+![Login Page](https://http.cat/404)
 
 ### My Recipes Page
 
