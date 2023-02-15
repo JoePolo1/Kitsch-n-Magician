@@ -23,12 +23,11 @@ export default function DayofTheWeek(props) {
           flexGrow: 0,
           width: 239,
           display: "flex",
-          alignItems: "left",
+          alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          pl: "1em",
           bgcolor: "#88E3D3",
-          height: "3em",
+          height: "1.5em",
         }}
       >
         <p>{props.day}:</p>
@@ -46,10 +45,29 @@ export default function DayofTheWeek(props) {
             minHeight: "3em",
             justifyContent: "center",
             flexDirection: "column",
-            bgcolor: "#CAF4DA",
+            bgcolor: props.color,
+            borderRadius: '25px', 
+            mt: "0.25em", 
+            ml: "0.25em", 
+            mr: "0.25em", 
+            boxShadow: 6, 
+            borderBottom: '2px solid #4E5755', 
+            borderRight: '2px solid #4E5755'
           }}
+
+          // {{ display: "flex", 
+          // flexDirection: "column", 
+          // width: "100%", maxWidth: 215, 
+          // bgcolor: "#caf4da", 
+          // borderRadius: '25px', 
+          // mt: "0.25em", 
+          // ml: "0.25em", 
+          // mr: "0.25em", 
+          // boxShadow: 6, 
+          // borderBottom: '2px solid #4E5755', 
+          // borderRight: '2px solid #4E5755'}}
         >
-          <a href={props.spoon_url} target="_blank">
+          <a href={props.spoon_url} target="_blank" style={{color:props.textcolor, textDecoration:"none", fontWeight:props.textweight}}>
             {props.title}
           </a>
         </Box>

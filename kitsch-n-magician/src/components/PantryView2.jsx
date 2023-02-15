@@ -181,7 +181,7 @@ export default function PantryView(props) {
                     mt: "8em",
                     boxSizing: "border-box",
                     maxHeight: "58%",
-                    bgcolor: "#88e3d3"
+                    bgcolor: "#88e3d3",
                   },
                 }}
                 variant="permanent"
