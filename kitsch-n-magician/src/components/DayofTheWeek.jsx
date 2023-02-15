@@ -62,7 +62,7 @@ export default function DayofTheWeek(props) {
             alignItems: "center",
             height: "3em",
             justifyContent: "center",
-            flexDirection: "column",
+            flexDirection: "column"
           }}
         >
           <p>Keep playing to match!</p>
