@@ -187,7 +187,7 @@ export default function MatcherView() {
           day={item}
           color={"#fc5148"}
           textcolor={"white"}
-          textweight={"bold"}
+          textweight={"none"}
           // ready_in_minutes={mealPrep[index].ready_in_minutes}
           // image={mealPrep[index].image}
           // servings={mealPrep[index].servings}
@@ -246,7 +246,8 @@ export default function MatcherView() {
             mt: "4.3em",
             width: drawerWidth,
             boxSizing: "border-box",
-            height: "100vh"
+            height: "100vh",
+            
           },
         }}
         variant="permanent"
@@ -383,6 +384,7 @@ export default function MatcherView() {
             width: drawerWidth,
             boxSizing: "border-box",
             maxHeight: "100%",
+            
           },
         }}
         variant="permanent"
@@ -393,7 +395,7 @@ export default function MatcherView() {
             width: "100%",
             height: "100%",
             maxWidth: 250,
-            bgcolor: "background.paper",
+            bgcolor: "#CAF4DA",
           }}
         >
           <Box
@@ -439,7 +441,7 @@ export default function MatcherView() {
                   justifyContent: "flex-start",
                   flexDirection: "column",
                   fontSize: "1.2em",
-                  bgcolor: "#CBF5EF",
+                  bgcolor: "#88e3d3",
                   opacity: "1",
                   height: "100vh"
                 }}
