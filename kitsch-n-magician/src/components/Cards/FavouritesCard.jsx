@@ -24,7 +24,7 @@ export default function FavouritesCard(props) {
             borderRadius: "32px",
             borderStyle: "solid",
             borderWidth: "5px",
-            borderColor: "#fc5149",
+            borderColor: "#fc5148",
           }}
         >
           <Box
@@ -34,7 +34,7 @@ export default function FavouritesCard(props) {
               flexDirection: "row",
               pt: ".5em",
               borderBottom: 4,
-              borderColor: "#fc5149",
+              borderColor: "#fc5148",
               backgroundColor: "#fc5149",
               borderRadius: "25px 25px 0 0",
             }}
@@ -53,6 +53,7 @@ export default function FavouritesCard(props) {
             </IconButton>
           </Box>
           <Box
+
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -63,7 +64,10 @@ export default function FavouritesCard(props) {
               sx={{
                 display: "flex",
                 flexDirection: "column",
+                backgroundColor:'#caf4da',
+                borderRadius: "25px"
               }}
+            
             >
               <CardMedia
                 component="img"
@@ -72,6 +76,7 @@ export default function FavouritesCard(props) {
                 sx={{
                   maxWidth: 900,
                   maxHeight: 300,
+                  backgroundColor:'#caf4da',
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
@@ -79,6 +84,7 @@ export default function FavouritesCard(props) {
                   pt: "16px",
                   pl: "16px",
                   pb: "16px",
+                  
                 }}
               />
               <Box
@@ -91,7 +97,11 @@ export default function FavouritesCard(props) {
                   borderTop: 4,
                   borderRight: 4,
                   borderRadius: "0px 25px 0px 25px",
-                  borderColor: "#fc5149",
+                  // borderColor: "#fc5149",
+                  borderStyle:"solid",
+                  borderBottom: 0,
+                  borderLeft: 0,
+                  borderColor: '#fc5148',
                   backgroundColor: "#fc5149",
                   pl: "16px",
                   pb: "7px",
@@ -117,7 +127,12 @@ export default function FavouritesCard(props) {
                 {props.dairy_free ? <DairyFreeIcon /> : <NotDairyFreeIcon />}
               </Box>
             </Box>
-            <CardContent sx={{ maxWidth: 650 }}>
+            <CardContent 
+            sx={{ 
+              maxWidth: 650,  
+              backgroundColor:'#caf4da', 
+              borderRadius: '0px 0px 25px 0px',
+              pb: 0,}}>
               <div dangerouslySetInnerHTML={{ __html: props.summary }} />
             </CardContent>
           </Box>

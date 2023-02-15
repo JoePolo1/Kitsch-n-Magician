@@ -29,7 +29,6 @@ const usersRoutes = require('./routes/users');
 
 const express = require('express');
 const cors = require('cors');
-
 // Web server config
 const bodyparser = require("body-parser");
 // serve static files from ../build (needed for React)
@@ -107,7 +106,6 @@ app.post('/myfavs', (req, res) => {
       res.send({ result: "Successful" });
     });
 });
-
 
 //adds recipes to the recipes table and adding this table to the gamerecipes table
 app.post('/matchgame', (req, res) => {
@@ -193,7 +191,6 @@ app.post('/voteYes', (req, res) => {
     .then((response) => {
       if (response === undefined) {
         res.send("no table");
-
       }
       if (response.matcher_decision === 2) {
         return matchedRecipes(req.body.userId, response.recipe_id)
@@ -218,7 +215,6 @@ app.post('/removeGame', (req, res) => {
       res.send("game deleted");
     });
   }
-
 );
 
 app.listen(PORT, () => {
