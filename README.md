@@ -74,11 +74,9 @@ Recipe cards populate in the middle of the screen and show the user time to prep
 https://user-images.githubusercontent.com/116848899/219198125-6b71bfb7-2dcc-4c2b-8446-f1b3c6da9566.mov
 
 
-
 From here, users may also navigate to the [login](#the-login-page) or [register](#the-registration-page) page, the [My Recipes](#my-recipes-page) (favourites) page, the [Pantry](#my-pantry), and the [Matcher](#the-matcher) page.
 
 
-![Landing Page](https://http.cat/404)
 
 ### The Landing Page - Reverse Recipe Search - Advanced API Configuration
 
