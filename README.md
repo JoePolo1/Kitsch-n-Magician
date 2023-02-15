@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# Kitsch'n Magician Web Application
+=========
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+When you're leading a busy life with little time to spare, meal planning can be a challenge. People often find themselves scrambling with the decision of what to cook for their next meal, and it can be a source of contention for people living together.
 
-## Available Scripts
+The solution? Kitsch'n Magician. This application takes count of your current kitchen and pantry inventory and returns recipe suggestions based on what you already have, removing the need to leave the house and pick up additional ingredients at the store. Users in the same household can add or remove items in the pantry, and they can also play a matching game where two people select recipes until they match on agreed recipes, adding automatically to meal plans for the week ahead.
 
-In the project directory, you can run:
+Kitsch'n Magician is a Single Page App using React and Material UI for the front end, and Express and PG for the server end. Full dependencies are listed further below in the readme.
 
-### `npm start`
+------------(INSERT REALLY COOL MOVIE HERE OF GENERAL USE)---------
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Collaborators
 
-### `npm test`
+This project was created by:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Hoss Agina](https://github.com/Hoss-Agina)
+- [Tyler Brown](https://github.com/Tbrowwnnn)
+- [Joe Polo](https://github.com/JoePolo1)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
+2. Update the .env file with your correct local information 
+  - DB_USER: `labber` 
+  - DB_PASS: `123` 
+  - DB_NAME: `kitchen`
+  - DB_PORT: `5432`
+3. This app uses the Spoonacular API to enable recipe search functionality. You can [subscribe to Spoonacular](https://spoonacular.com/food-api) for free or premium services. The API key can be found on your user profile page following subscription. 
+4. Install spoonacular's API key in the .env file in the main subdirectory under the name `SPOON_KEY`.
+5. Install dependencies: `npm i`
+6. Reset database: `npm run db:reset`
+  - Check the db folder to see what gets created and seeded in the SDB
+7. Run the server: `npm start` from the api directory
+8. Run the client: `npm start` from the kitsch-n-magician subdirectory
+  - Note: nodemon is used, so you should not have to restart your server
+9. Visit `http://localhost:3000/`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Warnings & First Time Use Tips
 
-### `npm run eject`
+- Use the `npm run db:reset` command each time there is a change to the database schema or seeds. 
+  - It runs through each of the files, in order, and executes them against the database. 
+  - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
+- Users must be logged into an account in order to use the app features.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+IMPORTANT: This app version is currently built for development Demo Mode and does not have bcrypt or cookie storage implemented. It currently uses local storage instead of cookies for session hosting and does not have a functional registration page. In order to demo this as a new user and household, seeding new user info to the database is required. It is recommended to use fake passwords in the Dev environment until bcrypt is implemented in a future update.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Axios 1.3
+- React 18.x or above
+- Node 10.x or above
+- NPM 5.x or above
+- Express 4.18
+- pg 8.5 or above
+- Storybook React 6.5 or above
+- dotenv 2.0
+- morgan 1.9.1
+- Nodemon 2.0
+- MUI
+- SCSS 1.35
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Features
 
-## Learn More
+### The Landing Page - Reverse Recipe Search
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The primary feature of the Kitsch'n Magician app is simply to add items to your kitchen list via a simple user interface, and search for recipes using yuour existing ingredients. A logged in user may type in ingredients that they own in the input field as shown below, then review recipes suggested by the app based on those ingredients.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Recipe cards populate in the middle of the screen and show the user time to prepare, gluten free/contains gluten, vegan or vegetarian stats as well as a summary of the recipe by clicking on the carrot expander. To keep the view of our app simple, the recipe steps are not shown on this page. Instead, clicking on the View Recipe button will open a new window with the full recipe details on the Spoonacular website. A user may also add recipes to their favourites list to save them for later.
 
-### Code Splitting
+----------VIDEO---------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+From here, users may also navigate to the [login](#the-login-page) or [register](#the-registration-page) page, the [My Recipes](#my-recipes-page) (favourites) page, the [Pantry](#my-pantry), and the [Matcher](#the-matcher) page.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Landing Page](https://user-images.githubusercontent.com/116989045/210008775-0b7508bd-1810-40b8-812d-3ce3d10f9abe.png)
 
-### Making a Progressive Web App
+### The Landing Page - Reverse Recipe Search - Advanced API Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Kitsch'n Magician uses two API calls to spoonacular, one that retrieves ingredients and recipe IDs, and the other which fetches the recipe data itself to parse into the recipe cards. The [documentation on the Spooonacular Website](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients) outlines the ability to adjust this recipe search based on specific parameters shown in the screenshot below. You can change the number of search results, choose to ignore pantry items or not (this is set to true by default) and maximize/minimize missing ingredients or used ingredients:
 
-### Advanced Configuration
+![Spoonacular API Parameters](https://user-images.githubusercontent.com/116989045/210008775-0b7508bd-1810-40b8-812d-3ce3d10f9abe.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### The Registration Page
 
-### Deployment
+***NOTE: As mentioned [above](#warnings--first-time-use-tips), the registration page is not currently functional and exists only for Demo Mode purposes. See the instructions [above](#warnings--first-time-use-tips) for help with testing Demo user login sessions.***
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Registration](https://user-images.githubusercontent.com/116989045/210008819-7c955bf0-12ea-43c3-b73c-28c65a88a162.png)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### The Login Page
+
+Existing users may log in via the login portal using their username and password as shown below:
+
+![Login Page](https://user-images.githubusercontent.com/116989045/210020925-14c720d4-6788-4182-af28-6276aafe8cc7.png)
+
+### My Recipes Page
+
+The My Recipes page consists of all recipes that a user has added to their favourites list. Selecting a recipe title on the left populates an expanded view card with the same details as the landing page recipe cards. Clicking the delete button automatically removes a recipe from My Recipes.
+
+### My Pantry
+
+The pantry is a shared user experience - if two users are logged in they can simultaneously add and remove ingredients from their kitchen after they go shopping or use up ingredients in recipes. Adding or removing items from the pantry is as simple as typing ingredients in the input field on the left and pressing enter. Clicking the delete button automatically removes an item.
+
+### The Matcher
+
+Elegantly dubbed "Tinder, but for food" by it's creators, the Matcher presents (default) 10 recipes to two users based on their existing pantry for them as a helpful decider on what to eat through the week. As users select recipes to match on, if a recipe is voted yes by both people it will be auto*magic*ally added to the meal plan on the right. Clicking on the button for the recipe will navigate a new browser tab to the full spoonacular website with all of the recipe details.
+
+-----------MATCHER VIDEO GOES HERE---------
+
+
+
