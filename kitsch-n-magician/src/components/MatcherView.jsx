@@ -185,6 +185,9 @@ export default function MatcherView() {
           title={mealPrep[index].title}
           spoon_url={mealPrep[index].spoon_url}
           day={item}
+          color={"#fc5148"}
+          textcolor={"white"}
+          textweight={"bold"}
           // ready_in_minutes={mealPrep[index].ready_in_minutes}
           // image={mealPrep[index].image}
           // servings={mealPrep[index].servings}
@@ -197,7 +200,7 @@ export default function MatcherView() {
         />
       );
     } else {
-      return <DayofTheWeek title={"Match to add Recipes"} day={item} />;
+      return <DayofTheWeek title={"Match to add Recipes"} day={item} color={"#CAF4DA"} textcolor={"black"} textweight="none"/>;
     }
   });
 
@@ -268,7 +271,7 @@ export default function MatcherView() {
               flexDirection: "column",
               justifyContent: "flex-start",
               alignItems: "stretch",
-              height: "20vh"
+              height: "25vh"
             }}
           >
             <Box
@@ -413,7 +416,8 @@ export default function MatcherView() {
           <List>
             <Drawer
               sx={{
-                display: "flex",
+
+                
 
                 flexShrink: 0,
                 "& .MuiDrawer-paper": {
@@ -432,7 +436,7 @@ export default function MatcherView() {
                   width: 239,
                   display: "flex",
                   alignItems: "left",
-                  justifyContent: "center",
+                  justifyContent: "flex-start",
                   flexDirection: "column",
                   fontSize: "1.2em",
                   bgcolor: "#CBF5EF",
