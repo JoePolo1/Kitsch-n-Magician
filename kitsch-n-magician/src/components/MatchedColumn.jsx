@@ -60,7 +60,8 @@ export default function MatchedColumn(props) {
             mt: '4.3em',
             width: drawerWidth,
             boxSizing: 'border-box',
-            maxHeight: '100%'
+            maxHeight: '100%',
+            bgColor: '#CAF4DA'
           }
         }}
         variant="permanent"
@@ -110,7 +111,7 @@ export default function MatchedColumn(props) {
             alignItems: 'left',
             justifyContent: 'center',
             flexDirection: 'column',
-            fontSize: '1.2em'}} >
+            fontSize: '1.2em',}} >
               
               <DayofTheWeek 
               day={props.day}/>

@@ -14,6 +14,7 @@ import NotDairyFreeIcon from "../Icons/NotDairyFree";
 import Slide from "@mui/material/Slide";
 import useToken from "../../hooks/useToken";
 import axios from "axios";
+import "./MatcherCard.scss";
 
 // You'll need to replace some of the fake code here and replace the vegetarian code with other card's code
 
@@ -189,22 +190,36 @@ export default function MatcherCard(props) {
             maxWidth: 1000,
           }}
         >
-          <Button
+          {/* <Button
             variant="contained"
-            sx={{ color: "#EB5A47", fontWeight: 900, bgcolor: "#154c79" }}
+            size='large'
+            sx={{ color: "white", fontWeight: 900, bgcolor: "red" }}
             onClick={voteNo}
             checked={checked}
           >
             NOPE
-          </Button>
-          <Button
+          </Button> */}
+          <button class="nope"
+            onClick={voteNo}
+            checked={checked}>
+            Nope
+          </button>
+          <button class="yes"
+            onClick={voteYes}
+            checked={checked}>
+            Let's Eat!
+          </button>
+          {/* <Button
             variant="contained"
-            sx={{ color: "#96EB78", fontWeight: 900, bgcolor: "#154c79" }}
+            sx={{ 
+              color: "white", 
+              fontWeight: 900, 
+              bgcolor: "#138808" }}
             onClick={voteYes}
             checked={checked}
           >
             YES!
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </Slide>

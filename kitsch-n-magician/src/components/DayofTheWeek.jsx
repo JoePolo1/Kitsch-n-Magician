@@ -15,7 +15,7 @@ export default function DayofTheWeek(props) {
         alignItems: "left",
         justifyContent: "center",
         flexDirection: "column",
-        bgcolor: "#CBF5EF",
+        bgcolor: "#88e3d3",
       }}
     >
       <Box
