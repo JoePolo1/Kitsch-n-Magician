@@ -80,7 +80,7 @@ From here, users may also navigate to the [login](#the-login-page) or [register]
 
 Kitsch'n Magician uses two API calls to spoonacular, one that retrieves ingredients and recipe IDs, and the other which fetches the recipe data itself to parse into the recipe cards. The [documentation on the Spooonacular Website](https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients) outlines the ability to adjust this recipe search based on specific parameters shown in the screenshot below. You can change the number of search results, choose to ignore pantry items or not (this is set to true by default) and maximize/minimize missing ingredients or used ingredients:
 
-![Spoonacular API Parameters](https://user-images.githubusercontent.com/116989045/210008775-0b7508bd-1810-40b8-812d-3ce3d10f9abe.png)
+![Spoonacular API Parameters](https://github.com/JoePolo1/Kitsch-n-Magician/blob/main/docs/searchparameters.png?raw=true)
 
 ### The Registration Page
 
