@@ -120,7 +120,8 @@ export default function MatcherCard(props) {
               pt: ".5em",
               bgcolor: "#fc5148",
               borderRadius: "20px 20px 0 0",
-              color: 'white'
+              color: 'white',
+         
             }}
           >
             <IconButton aria-label="title">
@@ -144,6 +145,7 @@ export default function MatcherCard(props) {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              fontFamily: 'orienta', 
             }}
           >
             <Box

@@ -29,7 +29,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const drawerWidth = 240;
+const drawerWidth = 240
+;
 
 export default function MatcherView() {
   const [ingredients, setIngredients] = useState([]);
