@@ -65,7 +65,7 @@ function App() {
       {mode === RECIPESEARCH && <Sidebarleft />}
       {mode === FAVOURITES && <FavouritesView />}
       {mode === REGISTER && <Register />}
-      {mode === LOGIN && <Login setName={setName} />}
+      {mode === LOGIN && <Login setName={setName} recipeSearch={() => transition(RECIPESEARCH)}/>}
       {mode === LOGOUT && <Sidebarleft />}
       {mode === MATCHER && <MatcherView />}
       {mode === PANTRY && <PantryView2 />}

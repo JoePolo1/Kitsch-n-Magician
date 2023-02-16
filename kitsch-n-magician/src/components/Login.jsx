@@ -52,7 +52,7 @@ export default function SignIn(props) {
       // useToken().setToken(response.data.rows[0].id)
       setToken(response.data.rows[0].id);
       props.setName(response.data.rows[0].first_name);
-    });
+    }).then(props.recipeSearch)
   };
 
   const handleSubmit = (event) => {
