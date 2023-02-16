@@ -9,7 +9,11 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils, faCarrot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUtensils,
+  faCarrot,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import VeganIcon from "../Icons/Vegan";
@@ -19,7 +23,6 @@ import NotGlutenFreeIcon from "../Icons/NotGlutenFree";
 import DairyFreeIcon from "../Icons/DairyFree";
 import NotDairyFreeIcon from "../Icons/NotDairyFree";
 import TimetoCookIcon from "../Icons/TimetoCookIcon";
-
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -49,28 +52,30 @@ export default function RecipeCard(props) {
         borderStyle: "solid",
         borderWidth: "5px",
         borderColor: "#fc5149",
-        opacity: "0.982"
+        opacity: "0.982",
       }}
     >
       <Box
-      sx={{
-        display: "flex",
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        background: "#fc5149"
-      }}>
-        <Typography 
-        variant="headers"
-        noWrap
-        component="a"
         sx={{
-          fontFamily: "lobster",
-          fontSize: 30,
-          m: "0.5em",
-          color: "white"
-        }}>
-         {/* variant='headers'
+          display: "flex",
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          background: "#fc5149",
+        }}
+      >
+        <Typography
+          variant="headers"
+          noWrap
+          component="a"
+          sx={{
+            fontFamily: "lobster",
+            fontSize: 30,
+            m: "0.5em",
+            color: "white",
+          }}
+        >
+          {/* variant='headers'
           sx={{
             mb: ".5em",
             fontSize: 12.5,
@@ -80,21 +85,23 @@ export default function RecipeCard(props) {
             color: "white",
           }} */}
           {/* action={ */}
-
-          {props.title}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Avatar sx={{ bgcolor: "#0F4953", mr: ".5em" }} aria-label="recipe">
+              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
+            </Avatar>
+            {props.title}
+          </Box>
           {/* }> */}
-          
-          
         </Typography>
 
         <Button
-              variant="contained"
-              href={props.spoon_url}
-              target="_blank"
-              sx={{ bgcolor: "#0F4953", m: "1em", borderRadius: "20px"}}
-            >
-              View Recipe
-            </Button>
+          variant="contained"
+          href={props.spoon_url}
+          target="_blank"
+          sx={{ bgcolor: "#0F4953", m: "1em", borderRadius: "20px" }}
+        >
+          View Recipe
+        </Button>
       </Box>
       <Box
         sx={{
@@ -113,6 +120,7 @@ export default function RecipeCard(props) {
             width: 400,
             pl: ".5em",
             pb: "0.5em",
+            pt: "0.5em"
           }}
         />
         <Box
@@ -184,11 +192,12 @@ export default function RecipeCard(props) {
           onClick={props.onClick}
           sx={{
             color: "white",
+            pl: ".8em"
           }}
         >
-          <Avatar sx={{ bgcolor: "#0F4953" }} aria-label="recipe">
-            <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
-          </Avatar>
+          <Box sx={{ mr: "0.3em" }}>
+            <FontAwesomeIcon icon={faHeart} color="darkred" />
+          </Box>
           Add to My Recipes
         </IconButton>
         <ExpandMore
