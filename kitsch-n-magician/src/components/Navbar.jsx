@@ -122,10 +122,11 @@ function Navbar(props) {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                fontFamily: 'orienta', 
+                display: { xs: "block", md: "none", },
               }}
             >
-              <MenuItem onClick={props.switchFavourites}>
+              <MenuItem sx={{fontFamily: 'orienta',}}onClick={props.switchFavourites} >
                 <Typography textAlign="center">My Recipes</Typography>
               </MenuItem>
               <MenuItem onClick={props.switchMatcher}>

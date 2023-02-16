@@ -10,7 +10,8 @@ export default function InputWithIcon(props) {
     <Box sx={{
       display: 'flex', 
       alignItems: 'flex-end',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      fontFamily: 'orienta',
     }}>
       <FontAwesomeIcon 
         icon={faCirclePlus}
@@ -21,12 +22,16 @@ export default function InputWithIcon(props) {
       />
       <form onSubmit={props.onSubmit} >
       <TextField  
+      
       id="input-with-sx" 
       label="Add items to your kitchen"
       variant="standard" 
       onChange={props.onChange} 
       value={props.value}
-      sx={{width: 206}}
+      sx={{
+        width: 206,
+        fontFamily: 'orienta',
+      }}
       />
       </form>
     </Box>

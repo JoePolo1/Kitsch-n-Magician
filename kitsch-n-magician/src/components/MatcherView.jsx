@@ -298,6 +298,7 @@ export default function MatcherView() {
                   display: "flex",
 
                   flexShrink: 0,
+                  fontFamily: 'orienta', 
                   "& .MuiDrawer-paper": {
                     mt: "8em",
 
@@ -323,7 +324,8 @@ export default function MatcherView() {
               alignItems: "center",
               zIndex: 200,
               height: "90vh",
-              bgcolor: "#88e3d3"
+              bgcolor: "#88e3d3",
+              fontFamily: 'orienta', 
             }}
           >
             <MatcherButton onClick={findGameExists} sx={{ zIndex: 9000 }} />

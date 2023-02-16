@@ -166,6 +166,7 @@ export default function Sidebarleft() {
             width: drawerWidth,
             boxSizing: "border-box",
             height: "100vh",
+            
           },
         }}
         variant="permanent"
@@ -180,6 +181,7 @@ export default function Sidebarleft() {
             alignItems: "center",
             height: "95vh",
             bgcolor: "#88e3d3",
+            fontFamily: 'orienta',
           }}
         >
           {/* THIS BOX DIV CONTAINS ONLY INGREDIENTS LIST AND TEXT INPUT.
@@ -191,6 +193,7 @@ export default function Sidebarleft() {
               justifyContent: "flex-start",
               alignItems: "stretch",
               height: "25vh",
+              fontFamily: 'orienta',
             }}
           >
             {/* handles input field actions */}
@@ -208,7 +211,8 @@ export default function Sidebarleft() {
                     mt: "8em",
                     boxSizing: "border-box",
                     maxHeight: "58%",
-                    bgcolor: "#88e3d3"
+                    bgcolor: "#88e3d3",
+                    fontFamily: 'orienta',
                   },
                 }}
                 variant="permanent"
