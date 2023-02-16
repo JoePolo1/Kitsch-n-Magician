@@ -46,9 +46,11 @@ export default function FavouritesCard(props) {
               aria-label="title"
               sx={{ pl: ".6em", color: "white", styled: "bold" }}
             >
+              {/* FIX ME BEFORE DEMO!!!! */}
               <Box class='titles' 
               sx={{ 
                 display: "flex", 
+                flexDirection: 'row',
                 // alignContent: "center", 
                 alignItems: "center", 
                 fontFamily: "lobster"
