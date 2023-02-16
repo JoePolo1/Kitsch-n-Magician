@@ -105,6 +105,7 @@ export default function FavouritesCard(props) {
                   backgroundColor: "#fc5149",
                   pl: "16px",
                   pb: "7px",
+                  fontSize: '1.1em',
                   color: "white",
                 }}
               >
