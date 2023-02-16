@@ -53,14 +53,6 @@ export default function FavouritesCard(props) {
                 alignItems: "center", 
                 fontFamily: "lobster"
                 }}>
-            <Avatar 
-            sx={{ 
-              bgcolor: "#0F4953", 
-              mr: ".5em" 
-              }} 
-              aria-label="recipe">
-              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
-            </Avatar>
               {props.title}
               </Box>
             </IconButton>
