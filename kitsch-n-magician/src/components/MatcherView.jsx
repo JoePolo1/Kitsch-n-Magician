@@ -297,7 +297,6 @@ export default function MatcherView() {
               <Drawer
                 sx={{
                   display: "flex",
-
                   flexShrink: 0,
                   fontFamily: 'orienta', 
                   "& .MuiDrawer-paper": {

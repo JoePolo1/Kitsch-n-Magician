@@ -87,7 +87,7 @@ export default function FavouritesCard(props) {
                 sx={{
                   maxWidth: 900,
                   maxHeight: 300,
-                  backgroundColor:'#caf4da',
+                  backgroundColor:'white',
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
@@ -142,7 +142,7 @@ export default function FavouritesCard(props) {
             <CardContent 
             sx={{ 
               maxWidth: 650,  
-              backgroundColor:'#caf4da', 
+              backgroundColor:'white', 
               borderRadius: '0px 0px 25px 0px',
               fontFamily: 'orienta',
               pb: 0,}}>
