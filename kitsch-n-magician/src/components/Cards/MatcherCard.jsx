@@ -15,6 +15,9 @@ import Slide from "@mui/material/Slide";
 import useToken from "../../hooks/useToken";
 import axios from "axios";
 import "./MatcherCard.scss";
+import Avatar from "@mui/material/Avatar";
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // You'll need to replace some of the fake code here and replace the vegetarian code with other card's code
 
@@ -122,7 +125,12 @@ export default function MatcherCard(props) {
           >
             <IconButton aria-label="title">
               <div class='titles'>
-              <Box sx={{ pl: ".6em", color: 'white', fontSize: '1.2em', pb: '.2em' }}>{props.title}</Box>
+              <Box sx={{ pl: ".6em", color: 'white', fontSize: '1.2em', pb: '.2em', display: "flex", justifyItems: "center" }}>
+              <Avatar sx={{ bgcolor: "#0F4953", mr: ".5em" }} aria-label="recipe">
+              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
+            </Avatar>
+                {props.title}
+                </Box>
               </div>
             </IconButton>
             <IconButton aria-label="title">
