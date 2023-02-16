@@ -176,7 +176,7 @@ export default function RecipeCard(props) {
         }}
       >
         <IconButton
-          aria-label="add to favorites"
+          aria-label="add to My Recipes"
           onClick={props.onClick}
           sx={{
             color: "white",
@@ -185,7 +185,7 @@ export default function RecipeCard(props) {
           <Avatar sx={{ bgcolor: "#0F4953" }} aria-label="recipe">
             <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
           </Avatar>
-          Add to favourites
+          Add to My Recipes
         </IconButton>
         <ExpandMore
           expand={expanded}
