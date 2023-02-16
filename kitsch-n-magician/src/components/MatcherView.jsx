@@ -352,7 +352,10 @@ export default function MatcherView() {
             flexDirection: "column",
           }}
         >
-          <button class="startmatch" onClick={findGameExists}>
+          <button class="startmatch" onClick={findGameExists}
+          sx={{
+         
+          }}>
           {/* <Box sx={{ maxWidth: 1000, m: 0, p:0, fontSize: '2em', bgcolor:"#fc5149", color: 'white' }}> */}
                   Click here to start matching recipes!
           {/* </Box> */}
