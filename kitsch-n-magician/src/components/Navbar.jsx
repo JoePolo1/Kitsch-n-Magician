@@ -18,6 +18,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 function Navbar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const getToken = useToken().getToken();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,7 +40,6 @@ function Navbar(props) {
     props.setName("");
   };
 
-  const getToken = useToken().getToken();
 
   const displayName = (getToken) => {
     return axios
