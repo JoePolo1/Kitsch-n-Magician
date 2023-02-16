@@ -49,7 +49,7 @@ export default function RecipeCard(props) {
         borderStyle: "solid",
         borderWidth: "5px",
         borderColor: "#fc5149",
-        opacity: "0.982",
+        opacity: "0.982"
       }}
     >
       <Box
@@ -57,7 +57,8 @@ export default function RecipeCard(props) {
         display: "flex",
         width: '100%',
         flexDirection: 'row',
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        background: "#fc5149"
       }}>
         <Typography 
         variant="headers"
@@ -66,6 +67,8 @@ export default function RecipeCard(props) {
         sx={{
           fontFamily: "lobster",
           fontSize: 30,
+          m: "0.5em",
+          color: "white"
         }}>
          {/* variant='headers'
           sx={{
@@ -79,18 +82,19 @@ export default function RecipeCard(props) {
           {/* action={ */}
 
           {props.title}
-            <Button
-              variant="contained"
-              href={props.spoon_url}
-              target="_blank"
-              sx={{ bgcolor: "#0F4953" }}
-            >
-              View Recipe
-            </Button>
           {/* }> */}
           
           
         </Typography>
+
+        <Button
+              variant="contained"
+              href={props.spoon_url}
+              target="_blank"
+              sx={{ bgcolor: "#0F4953", m: "1em", borderRadius: "20px"}}
+            >
+              View Recipe
+            </Button>
       </Box>
       <Box
         sx={{
