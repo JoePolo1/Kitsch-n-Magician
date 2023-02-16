@@ -69,9 +69,7 @@ The primary feature of the Kitsch'n Magician app is simply to add items to your 
 
 Recipe cards populate in the middle of the screen and show the user time to prepare, gluten free/contains gluten, vegan or vegetarian stats as well as a summary of the recipe by clicking on the carrot expander. To keep the view of our app simple, the recipe steps are not shown on this page. Instead, clicking on the View Recipe button will open a new window with the full recipe details on the Spoonacular website. A user may also add recipes to their favourites list to save them for later.
 
-
-
-https://user-images.githubusercontent.com/116848899/219198125-6b71bfb7-2dcc-4c2b-8446-f1b3c6da9566.mov
+https://user-images.githubusercontent.com/116848899/219498837-aa87fb1d-3fe3-455b-b89e-f2ab03d1f11c.mov
 
 
 From here, users may also navigate to the [login](#the-login-page) or [register](#the-registration-page) page, the [My Recipes](#my-recipes-page) (favourites) page, the [Pantry](#my-pantry), and the [Matcher](#the-matcher) page.
@@ -94,28 +92,27 @@ Kitsch'n Magician uses two API calls to spoonacular, one that retrieves ingredie
 
 Existing users may log in via the login portal using their username and password as shown below:
 
-https://user-images.githubusercontent.com/116848899/219199623-89b8ec63-4f20-405c-96f4-b4d9d20e0643.mov
+https://user-images.githubusercontent.com/116848899/219498891-ebb4074d-7fca-4b9a-b2fa-72e9b3de8fad.mov
 
 
 ### My Recipes Page
 
 The My Recipes page consists of all recipes that a user has added to their favourites list. Selecting a recipe title on the left populates an expanded view card with the same details as the landing page recipe cards. Clicking the delete button automatically removes a recipe from My Recipes.
 
-https://user-images.githubusercontent.com/116848899/219200303-ee560b0f-df45-4f20-9b7d-b304540fdce3.mov
+https://user-images.githubusercontent.com/116848899/219499011-9a2aebe2-680f-43de-9815-cb3d84af69c0.mov
 
 
 ### My Pantry
 
 The pantry is a shared user experience - if two users are logged in they can simultaneously add and remove ingredients from their kitchen after they go shopping or use up ingredients in recipes. Adding or removing items from the pantry is as simple as typing ingredients in the input field on the left and pressing enter. Clicking the delete button automatically removes an item.
 
-https://user-images.githubusercontent.com/116848899/219200938-60beb423-6aec-49d7-81a5-63768213160d.mov
+
+https://user-images.githubusercontent.com/116848899/219499141-88847fbf-0ab7-4b6f-b15c-155ac4ef07f3.mov
 
 
 ### The Matcher
 
 Elegantly dubbed "Tinder, but for food" by it's creators, the Matcher presents (default) 10 recipes to two users based on their existing pantry for them as a helpful decider on what to eat through the week. As users select recipes to match on, if a recipe is voted yes by both people it will be auto*magic*ally added to the meal plan on the right. Clicking on the button for the recipe will navigate a new browser tab to the full spoonacular website with all of the recipe details.
 
-
-https://user-images.githubusercontent.com/116848899/219223562-da1f3385-58a3-4731-a3ea-712a1879b646.mov
-
+https://user-images.githubusercontent.com/116848899/219499224-9143840a-fedc-4bb8-9691-586f9c093f79.mov
 
