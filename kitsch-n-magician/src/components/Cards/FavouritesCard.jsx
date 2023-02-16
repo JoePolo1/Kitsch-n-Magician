@@ -46,8 +46,19 @@ export default function FavouritesCard(props) {
               aria-label="title"
               sx={{ pl: ".6em", color: "white", styled: "bold" }}
             >
-              <Box class='titles' sx={{ display: "flex", alignContent: "center", alignItems: "center"}}>
-            <Avatar sx={{ bgcolor: "#0F4953", mr: ".5em" }} aria-label="recipe">
+              <Box class='titles' 
+              sx={{ 
+                display: "flex", 
+                alignContent: "center", 
+                alignItems: "center", 
+                fontFamily: "lobster"
+                }}>
+            <Avatar 
+            sx={{ 
+              bgcolor: "#0F4953", 
+              mr: ".5em" 
+              }} 
+              aria-label="recipe">
               <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
             </Avatar>
               {props.title}
@@ -55,7 +66,11 @@ export default function FavouritesCard(props) {
             </IconButton>
             <IconButton
               aria-label="title"
-              sx={{ pl: ".6em", color: "white", styled: "bold" }}
+              sx={{ 
+                pl: ".6em", 
+                color: "white", 
+                styled: "bold" 
+              }}
             >
               <div class='titles'>
               Ready in {props.ready_in_minutes} minutes!
@@ -116,8 +131,9 @@ export default function FavouritesCard(props) {
                   backgroundColor: "#fc5149",
                   pl: "16px",
                   pb: "7px",
-                  fontSize: '1.1em',
+                  fontSize: '0.9em',
                   color: "white",
+                  fontFamily: 'orienta', 
                 }}
               >
                 {props.vegan ? (
@@ -154,7 +170,11 @@ export default function FavouritesCard(props) {
           variant="contained"
           href={props.spoonacularSourceUrl}
           target="_blank"
-          sx={{ bgcolor: "#154c79" }}
+
+          sx={{ bgcolor: "#154c79",
+          fontSize: '1.1em',
+          fontFamily: 'orienta', 
+        }}
         >
           View Recipe
         </Button>
