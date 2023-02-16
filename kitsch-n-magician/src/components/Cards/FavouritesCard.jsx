@@ -84,7 +84,6 @@ export default function FavouritesCard(props) {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: 'space-between',
-                backgroundColor:'#caf4da',
                 borderRadius: "25px"
               }}
             
