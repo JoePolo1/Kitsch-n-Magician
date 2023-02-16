@@ -37,7 +37,8 @@ function Navbar(props) {
   };
 
   const signout = () => {
-    props.setName("");
+    props.setName("")
+    props.recipeSearch()
   };
 
 
