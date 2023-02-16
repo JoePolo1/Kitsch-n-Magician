@@ -53,6 +53,7 @@ export default function RecipeCard(props) {
         borderWidth: "5px",
         borderColor: "#fc5149",
         opacity: "0.982",
+
       }}
     >
       <Box
@@ -62,6 +63,7 @@ export default function RecipeCard(props) {
           flexDirection: "row",
           justifyContent: "space-between",
           background: "#fc5149",
+          boxShadow: '2' 
         }}
       >
         <Typography
@@ -93,12 +95,17 @@ export default function RecipeCard(props) {
           </Box>
           {/* }> */}
         </Typography>
-
+        {/* view recipe button */}
         <Button
           variant="contained"
           href={props.spoon_url}
           target="_blank"
-          sx={{ bgcolor: "#0F4953", m: "1em", borderRadius: "20px" }}
+          sx={{
+            bgcolor: "#0F4953",
+            m: "1em",
+            borderRadius: "20px",
+            fontFamily: 'orienta',
+          }}
         >
           View Recipe
         </Button>
@@ -131,6 +138,7 @@ export default function RecipeCard(props) {
             pl: "16px",
             pb: "7px",
             alignItems: "end",
+            fontFamily: 'orienta', 
           }}
         >
           <Box
@@ -149,6 +157,7 @@ export default function RecipeCard(props) {
               flexDirection: "row",
               pr: "0.5em",
               pb: ".25em",
+              
             }}
           >
             {props.vegan ? (
@@ -185,6 +194,7 @@ export default function RecipeCard(props) {
           width: "100%",
           display: "flex",
           justifyContent: "space-between",
+          
         }}
       >
         <IconButton
@@ -192,10 +202,11 @@ export default function RecipeCard(props) {
           onClick={props.onClick}
           sx={{
             color: "white",
-            pl: ".8em"
+            pl: ".8em",
+            fontFamily: 'orienta', 
           }}
         >
-          <Box sx={{ mr: "0.3em" }}>
+          <Box sx={{ mr: "0.3em", fontFamily: 'orienta',  }}>
             <FontAwesomeIcon icon={faHeart} color="darkred" />
           </Box>
           Add to My Recipes
@@ -216,14 +227,29 @@ export default function RecipeCard(props) {
           </Avatar>
         </ExpandMore>
       </Box>
+      <Box  sx={{ 
+          bgcolor: "#fc5149", 
+          color: "white", 
+          fontFamily: 'orienta',
+        }}>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent
-          sx={{ bgcolor: "#FF7167", color: "white", fontSize: "1.2em" }}
+        
+          sx={{ 
+          bgcolor: "#ffdcda", 
+          color: "black", 
+          fontSize: "1.2em",
+          fontFamily: 'orienta',
+          m: "1.5em",
+          borderRadius: '0 0 25px 25px',
+          boxShadow: '10' 
+        }}
         >
           {/* Renders a summary and keeps HTML styling in the card */}
           <div dangerouslySetInnerHTML={{ __html: props.summary }} />
         </CardContent>
       </Collapse>
+      </Box>
     </Card>
   );
 }
