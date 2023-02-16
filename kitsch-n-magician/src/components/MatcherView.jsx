@@ -247,7 +247,7 @@ export default function MatcherView() {
             mt: "4.3em",
             width: drawerWidth,
             boxSizing: "border-box",
-            height: "100vh",
+            height: "100vh"
 
           },
         }}
@@ -297,12 +297,10 @@ export default function MatcherView() {
               <Drawer
                 sx={{
                   display: "flex",
-
                   flexShrink: 0,
                   fontFamily: 'orienta', 
                   "& .MuiDrawer-paper": {
                     mt: "8em",
-
                     boxSizing: "border-box",
                     maxHeight: "100%",
                     bgcolor: "#88e3d3",
@@ -385,7 +383,7 @@ export default function MatcherView() {
             mt: "4.3em",
             width: drawerWidth,
             boxSizing: "border-box",
-            maxHeight: "100%",
+            maxHeight: "100%"
 
           },
         }}

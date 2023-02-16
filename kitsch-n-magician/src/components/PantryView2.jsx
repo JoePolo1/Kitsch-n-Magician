@@ -180,7 +180,7 @@ export default function PantryView(props) {
                   "& .MuiDrawer-paper": {
                     mt: "8em",
                     boxSizing: "border-box",
-                    maxHeight: "58%",
+                    maxHeight: "90%",
                     bgcolor: "#88e3d3",
                   },
                 }}
@@ -191,7 +191,7 @@ export default function PantryView(props) {
               </Drawer>
             </List>
           </Box>
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -206,7 +206,7 @@ export default function PantryView(props) {
               onClick={UseRecipePrimarySearch}
               sx={{ zIndex: 9000, color: '#0f4953' }}
             />
-          </Box>
+          </Box> */}
           {/* END OF INGREDIENT LIST */}
           <Divider />
           {/* END OF  BOX DIV CONTAINING BOTH INGREDIENT LIST AND SEARCH BUTTON */}

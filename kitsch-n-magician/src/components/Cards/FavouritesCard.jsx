@@ -10,6 +10,9 @@ import GlutenFreeIcon from "../Icons/GlutenFree";
 import NotGlutenFreeIcon from "../Icons/NotGlutenFree";
 import DairyFreeIcon from "../Icons/DairyFree";
 import NotDairyFreeIcon from "../Icons/NotDairyFree";
+import Avatar from "@mui/material/Avatar";
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function FavouritesCard(props) {
 
@@ -43,9 +46,12 @@ export default function FavouritesCard(props) {
               aria-label="title"
               sx={{ pl: ".6em", color: "white", styled: "bold" }}
             >
-              <div class='titles'>
+              <Box class='titles' sx={{ display: "flex", alignItems: "center"}}>
+            <Avatar sx={{ bgcolor: "#0F4953", mr: ".5em" }} aria-label="recipe">
+              <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
+            </Avatar>
               {props.title}
-              </div>
+              </Box>
             </IconButton>
             <IconButton
               aria-label="title"
@@ -81,7 +87,7 @@ export default function FavouritesCard(props) {
                 sx={{
                   maxWidth: 900,
                   maxHeight: 300,
-                  backgroundColor:'#caf4da',
+                  backgroundColor:'white',
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
@@ -136,7 +142,7 @@ export default function FavouritesCard(props) {
             <CardContent 
             sx={{ 
               maxWidth: 650,  
-              backgroundColor:'#caf4da', 
+              backgroundColor:'white', 
               borderRadius: '0px 0px 25px 0px',
               fontFamily: 'orienta',
               pb: 0,}}>
