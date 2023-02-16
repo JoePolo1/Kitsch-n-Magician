@@ -57,6 +57,7 @@ function App() {
       switchRegister={() => transition(REGISTER)}
       switchMatcher={() => transition(MATCHER)}
       switchPantry={() => transition(PANTRY)}
+      recipeSearch={() => transition(RECIPESEARCH)}
       name={name}
       setName={setName}
       />
