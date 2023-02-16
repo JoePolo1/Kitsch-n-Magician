@@ -132,6 +132,7 @@ export default function FavouritesCard(props) {
               maxWidth: 650,  
               backgroundColor:'#caf4da', 
               borderRadius: '0px 0px 25px 0px',
+              fontFamily: 'orienta',
               pb: 0,}}>
               <div dangerouslySetInnerHTML={{ __html: props.summary }} />
             </CardContent>

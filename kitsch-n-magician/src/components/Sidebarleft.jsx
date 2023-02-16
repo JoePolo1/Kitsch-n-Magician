@@ -76,9 +76,10 @@ export default function Sidebarleft() {
   };
 
   //maps typed in ingredients and renders on page
-  const ingredientsList = ingredients.map((ingredient) => {
+  const ingredientsList = ingredients.map((ingredient, index) => {
     return (
       <IngredientListItem
+        key={index}
         name={ingredient}
         ingredients={ingredients}
         setIngredients={setIngredients}
@@ -110,7 +111,7 @@ export default function Sidebarleft() {
   };
 
   // This function maps the details of a recipe and renders them in a recipe card
-  const recipeItemList = recipes.map((item) => {
+  const recipeItemList = recipes.map((item, index) => {
     const onClick = (event) => {
       event.preventDefault();
       try {
@@ -126,6 +127,7 @@ export default function Sidebarleft() {
 
     return (
       <RecipeCard
+        key={index}
         title={item.title}
         ready_in_minutes={item.ready_in_minutes}
         image={item.image}

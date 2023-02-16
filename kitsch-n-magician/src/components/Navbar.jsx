@@ -73,16 +73,16 @@ function Navbar(props) {
             />
           </Box>
           <Typography
-            variant="h6"
+            variant="headers"
             noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              fontSize: 22,
+              fontFamily: "lobster",
+              // fontWeight: 700,
+              fontSize: 30,
               letterSpacing: ".05rem",
               color: "inherit",
               textDecoration: "none",

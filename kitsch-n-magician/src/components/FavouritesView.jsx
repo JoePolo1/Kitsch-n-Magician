@@ -137,7 +137,9 @@ export default function FavouritesView() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "1.2em",
+                    fontFamily:'lobster',
+                    pb: '1em',
+                    fontSize: "1.5em",
                   }}
                   bgcolor="#fc5149"
                 >
