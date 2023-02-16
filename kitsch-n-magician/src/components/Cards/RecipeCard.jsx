@@ -71,7 +71,7 @@ export default function RecipeCard(props) {
           sx={{
             fontFamily: "lobster",
             fontSize: 30,
-            m: "0.5em",
+            m: "0.3em",
             color: "white",
           }}
         >
