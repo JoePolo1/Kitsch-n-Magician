@@ -46,7 +46,7 @@ export default function FavouritesCard(props) {
               aria-label="title"
               sx={{ pl: ".6em", color: "white", styled: "bold" }}
             >
-              <Box class='titles' sx={{ display: "flex", alignItems: "center"}}>
+              <Box class='titles' sx={{ display: "flex", alignContent: "center", alignItems: "center"}}>
             <Avatar sx={{ bgcolor: "#0F4953", mr: ".5em" }} aria-label="recipe">
               <FontAwesomeIcon icon={faUtensils} color="lightgrey" beat />
             </Avatar>
