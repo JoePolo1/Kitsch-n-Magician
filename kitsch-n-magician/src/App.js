@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import MatcherView from "./components/MatcherView";
 import PantryView2 from "./components/PantryView2";
 import { Box } from "@mui/system";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 const FAVOURITES = "FAVOURITES";
@@ -22,10 +23,33 @@ const MATCHER = "MATCHER";
 function App() {
   const { mode, transition, back } = useVisualMode(RECIPESEARCH)
   const [name, setName] = useState('')
+
+  const theme = createTheme({
+    typography: {
+      headers:{
+        fontFamily: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          'Lobster',
+          'Cassandra',
+          'Oleo Script Swash Caps',
+          'Open Sans'
+        ].join(',')
+    }},
+  });
   
 
   return (
     <div>
+      <ThemeProvider theme={theme}>
       <Navbar 
       switchFavourites={() => transition(FAVOURITES)} 
       switchLogin={() => transition(LOGIN)} 
@@ -47,6 +71,7 @@ function App() {
       {mode === PANTRY && <PantryView2 />}
         </Box>
       </Fragment>
+      </ThemeProvider>
     </div>
   );
 }

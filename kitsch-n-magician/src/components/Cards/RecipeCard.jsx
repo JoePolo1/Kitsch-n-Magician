@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils, faCarrot } from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
@@ -51,16 +52,33 @@ export default function RecipeCard(props) {
         opacity: "0.982",
       }}
     >
-      <Box>
-        <CardHeader
+      <Box
+      sx={{
+        display: "flex",
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: "space-between"
+      }}>
+        <Typography 
+        variant="headers"
+        noWrap
+        component="a"
+        sx={{
+          fontFamily: "lobster",
+          fontSize: 30,
+        }}>
+         {/* variant='headers'
           sx={{
             mb: ".5em",
             fontSize: 12.5,
+            fontFamily: "lobster",
             fontWeight: "Medium",
             bgcolor: "#fc5149",
             color: "white",
-          }}
-          action={
+          }} */}
+          {/* action={ */}
+
+          {props.title}
             <Button
               variant="contained"
               href={props.spoon_url}
@@ -69,9 +87,10 @@ export default function RecipeCard(props) {
             >
               View Recipe
             </Button>
-          }
-          title={props.title}
-        />
+          {/* }> */}
+          
+          
+        </Typography>
       </Box>
       <Box
         sx={{

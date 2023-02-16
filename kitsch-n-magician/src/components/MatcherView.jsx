@@ -53,7 +53,7 @@ export default function MatcherView() {
 
   //handles primary functionality, checks if game already exists to either make an api call or pull from an existing game to play
 
-  const findGameExists = function () {
+  const findGameExists = function() {
     axios.post("/load-game", { userId: getToken }).then((response) => {
       if (response.data === false) {
         UseRecipeStartGameSearch();
@@ -65,7 +65,7 @@ export default function MatcherView() {
   };
 
   // Function that passes in the ingredient list state to a URL encoded string
-  const UseRecipeStartGameSearch = function () {
+  const UseRecipeStartGameSearch = function() {
     const ingredientArray = ingredients.map((ingredient) => {
       return ingredient.name;
     });
@@ -90,38 +90,38 @@ export default function MatcherView() {
         const tempRecipes = [];
 
         Promise.all(promiseArr)
-        .then((all) => {
-          for (let food of all) {
-            tempRecipes.push({
-              title: food.data.title,
-              ready_in_minutes: food.data.readyInMinutes,
-              image: food.data.image,
-              spoon_url: food.data.spoonacularSourceUrl,
-              servings: food.data.servings,
-              summary: food.data.summary,
-              vegetarian: food.data.vegetarian,
-              vegan: food.data.vegan,
-              gluten_free: food.data.glutenFree,
-              dairy_free: food.data.dairyFree,
-            });
-          }
-          setRecipes(...recipes, tempRecipes);
-          for (let recipe of tempRecipes) {
-            axios
-              .post("/matchgame", {
-                items: { recipe },
-                userId: getToken,
-              })
-              .then((response) => {
-                setgameRecipes(response.data);
+          .then((all) => {
+            for (let food of all) {
+              tempRecipes.push({
+                title: food.data.title,
+                ready_in_minutes: food.data.readyInMinutes,
+                image: food.data.image,
+                spoon_url: food.data.spoonacularSourceUrl,
+                servings: food.data.servings,
+                summary: food.data.summary,
+                vegetarian: food.data.vegetarian,
+                vegan: food.data.vegan,
+                gluten_free: food.data.glutenFree,
+                dairy_free: food.data.dairyFree,
               });
-          }
-        });
+            }
+            setRecipes(...recipes, tempRecipes);
+            for (let recipe of tempRecipes) {
+              axios
+                .post("/matchgame", {
+                  items: { recipe },
+                  userId: getToken,
+                })
+                .then((response) => {
+                  setgameRecipes(response.data);
+                });
+            }
+          });
       });
   };
 
   //function that checks the back if a game already exists
-  const UseExistingGameSearch = function () {
+  const UseExistingGameSearch = function() {
     axios
       .post("/getmygame", {
         userId: getToken,
@@ -188,19 +188,19 @@ export default function MatcherView() {
           color={"#fc5148"}
           textcolor={"white"}
           textweight={"none"}
-          // ready_in_minutes={mealPrep[index].ready_in_minutes}
-          // image={mealPrep[index].image}
-          // servings={mealPrep[index].servings}
-          // summary={mealPrep[index].summary}
-          // vegetarian={mealPrep[index].vegetarian}
-          // vegan={mealPrep[index].vegan}
-          // gluten_free={mealPrep[index].gluten_free}
-          // dairy_free={mealPrep[index].dairy_free}
-          // recipeId={mealPrep[index].recipe_id}
+        // ready_in_minutes={mealPrep[index].ready_in_minutes}
+        // image={mealPrep[index].image}
+        // servings={mealPrep[index].servings}
+        // summary={mealPrep[index].summary}
+        // vegetarian={mealPrep[index].vegetarian}
+        // vegan={mealPrep[index].vegan}
+        // gluten_free={mealPrep[index].gluten_free}
+        // dairy_free={mealPrep[index].dairy_free}
+        // recipeId={mealPrep[index].recipe_id}
         />
       );
     } else {
-      return <DayofTheWeek title={"Match to add Recipes"} day={item} color={"#CAF4DA"} textcolor={"black"} textweight="none"/>;
+      return <DayofTheWeek title={"Match to add Recipes"} day={item} color={"#CAF4DA"} textcolor={"black"} textweight="none" />;
     }
   });
 
@@ -247,7 +247,7 @@ export default function MatcherView() {
             width: drawerWidth,
             boxSizing: "border-box",
             height: "100vh",
-            
+
           },
         }}
         variant="permanent"
@@ -284,7 +284,9 @@ export default function MatcherView() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "1.2em",
+                fontSize: "1.5em",
+                fontFamily: 'lobster',
+                pb: '1em',
                 bgcolor: "#fc5149"
               }}
             >
@@ -384,7 +386,7 @@ export default function MatcherView() {
             width: drawerWidth,
             boxSizing: "border-box",
             maxHeight: "100%",
-            
+
           },
         }}
         variant="permanent"
@@ -407,7 +409,9 @@ export default function MatcherView() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "1.2em",
+              fontSize: "1.5em",
+              fontFamily: 'lobster',
+              pb: '1em',
             }}
             bgcolor="#fc5149"
           >
@@ -419,7 +423,7 @@ export default function MatcherView() {
             <Drawer
               sx={{
 
-                
+
 
                 flexShrink: 0,
                 "& .MuiDrawer-paper": {
@@ -443,7 +447,9 @@ export default function MatcherView() {
                   fontSize: "1.2em",
                   bgcolor: "#88e3d3",
                   opacity: "1",
-                  height: "100vh"
+                  height: "100vh",
+                  fontFamily: 'orienta',
+                  pb: '1em',
                 }}
               >
                 {/* Renders meals that were matched in the matcher game */}
