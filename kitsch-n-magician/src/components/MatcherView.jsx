@@ -19,6 +19,7 @@ import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Slide from "@mui/material/Slide";
 import DayofTheWeek from "./DayofTheWeek";
+import Button from "@mui/material/Button";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -303,8 +304,9 @@ export default function MatcherView() {
                     mt: "8em",
 
                     boxSizing: "border-box",
-                    maxHeight: "58%",
-                    bgcolor: "#88e3d3"
+                    maxHeight: "100%",
+                    bgcolor: "#88e3d3",
+                    alignItems: 'center'
                   },
                 }}
                 variant="permanent"
@@ -328,7 +330,7 @@ export default function MatcherView() {
               fontFamily: 'orienta', 
             }}
           >
-            <MatcherButton onClick={findGameExists} sx={{ zIndex: 9000 }} />
+            
           </Box>
           {/* END OF INGREDIENT LIST */}
           <Divider />
@@ -351,15 +353,11 @@ export default function MatcherView() {
             flexDirection: "column",
           }}
         >
-          <Box sx={{ mb: "1em", maxWidth: 1000 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <Item>
-                  Match on meal ideas with your household by selecting below:
-                </Item>
-              </Grid>
-            </Grid>
-          </Box>
+          <button class="startmatch" onClick={findGameExists}>
+          {/* <Box sx={{ maxWidth: 1000, m: 0, p:0, fontSize: '2em', bgcolor:"#fc5149", color: 'white' }}> */}
+                  Click here to start matching recipes!
+          {/* </Box> */}
+          </button>
           {/* {ingredientsList.length === 1 ? null : ingredientsList} */}
           {/* BEGINNING OF TEST CODE  */}
           {/* <FormControlLabel

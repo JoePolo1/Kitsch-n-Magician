@@ -121,10 +121,14 @@ export default function MatcherCard(props) {
             }}
           >
             <IconButton aria-label="title">
+              <div class='titles'>
               <Box sx={{ pl: ".6em", color: 'white', fontSize: '1.2em', pb: '.2em' }}>{props.title}</Box>
+              </div>
             </IconButton>
             <IconButton aria-label="title">
+            <div class='titles'>
             <Box sx={{pr: ".6em", color: 'white', fontSize: '1.2em', pb: '.2em' }}>Ready in {props.ready_in_minutes} minutes!</Box>
+            </div>
             </IconButton>
           </Box>
           <Box
@@ -154,6 +158,7 @@ export default function MatcherCard(props) {
                   alignContent: "center",
                   pt: "16px",
                   pl: "16px",
+                  pb: "16px"
                 }}
               />
               <Box

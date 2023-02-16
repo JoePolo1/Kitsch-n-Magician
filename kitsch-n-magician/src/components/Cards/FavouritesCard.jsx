@@ -43,13 +43,17 @@ export default function FavouritesCard(props) {
               aria-label="title"
               sx={{ pl: ".6em", color: "white", styled: "bold" }}
             >
+              <div class='titles'>
               {props.title}
+              </div>
             </IconButton>
             <IconButton
               aria-label="title"
               sx={{ pl: ".6em", color: "white", styled: "bold" }}
             >
+              <div class='titles'>
               Ready in {props.ready_in_minutes} minutes!
+              </div>
             </IconButton>
           </Box>
           <Box
