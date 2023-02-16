@@ -103,7 +103,11 @@ export default function MatcherCard(props) {
       <Box sx={{ pb: 150 }}>
         <Paper
           elevation={12}
-          sx={{ maxWidth: 1000, marginBottom: "1.13em", borderRadius: "25px" }}
+          sx={{ maxWidth: 1000, marginBottom: "1.13em", borderRadius: "25px", border: '4px solid #fc5148',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+        }}
         >
           <Box
             sx={{
@@ -111,13 +115,16 @@ export default function MatcherCard(props) {
               justifyContent: "space-between",
               flexDirection: "row",
               pt: ".5em",
+              bgcolor: "#fc5148",
+              borderRadius: "20px 20px 0 0",
+              color: 'white'
             }}
           >
             <IconButton aria-label="title">
-              <Box sx={{ pl: ".6em" }}>{props.title}</Box>
+              <Box sx={{ pl: ".6em", color: 'white', fontSize: '1.2em', pb: '.2em' }}>{props.title}</Box>
             </IconButton>
             <IconButton aria-label="title">
-              Ready in {props.ready_in_minutes} minutes!
+            <Box sx={{pr: ".6em", color: 'white', fontSize: '1.2em', pb: '.2em' }}>Ready in {props.ready_in_minutes} minutes!</Box>
             </IconButton>
           </Box>
           <Box
@@ -131,6 +138,7 @@ export default function MatcherCard(props) {
               sx={{
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: 'space-between'
               }}
             >
               <CardMedia
@@ -148,7 +156,6 @@ export default function MatcherCard(props) {
                   pl: "16px",
                 }}
               />
-              <Divider sx={{ pt: "0.5em", mb: "0.5em" }}></Divider>
               <Box
                 sx={{
                   display: "flex",
@@ -157,6 +164,11 @@ export default function MatcherCard(props) {
                   justifyContent: "space-evenly",
                   pl: "16px",
                   pb: "7px",
+                  fontSize: '1.1em',
+                  bgcolor: "#fc5148",
+                  pt: '0.5em',
+                  pr: '0.25em',
+                  borderRadius: "0 25px 0 0"
                 }}
               >
                 {props.vegan ? (
