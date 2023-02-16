@@ -49,7 +49,7 @@ export default function FavouritesCard(props) {
               <Box class='titles' 
               sx={{ 
                 display: "flex", 
-                alignContent: "center", 
+                // alignContent: "center", 
                 alignItems: "center", 
                 fontFamily: "lobster"
                 }}>
